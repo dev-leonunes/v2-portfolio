@@ -1,27 +1,49 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import 'tailwindcss';
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --primary-emphasis-color: #22d4fd;
+  --secondary-emphasis-color: #10b981;
+  --lightest-emphasis-color: #ccd6f6;
+  --light-emphasis-color: #a8b2d1;
+  --normal-emphasis-color: #8892b0;
+  --background: #0a192f;
+  --foreground: #233554;
+  --main-text: #ededed;
+
+  --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+  --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
 }
 
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--main-text);
 }
 
 body {
-  color: var(--foreground);
+  /* color: var(--foreground); */
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  margin: auto;
+  width: 100%;
+  max-width: 1200px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.container-hero {
+  margin: auto;
+  width: 100%;
+  max-width: 1000px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 * {
@@ -35,8 +57,54 @@ a {
   text-decoration: none;
 }
 
+#nav-decoration {
+  color: #22d4fd;
+}
+
+.hello {
+  color: var(--primary-emphasis-color);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0px 0px 10px 4px;
+}
+
+.big-heading {
+  color: var(--lightest-emphasis-color);
+  font-family: var(--font-sans);
+  font-size: 70px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.big-heading h2 {
+  color: var(--light-emphasis-color);
+}
+
+.description {
+  color: var(--normal-emphasis-color);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 20px 380px 10px 0px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--primary-emphasis-color);
 }
