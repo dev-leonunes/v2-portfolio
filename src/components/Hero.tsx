@@ -1,4 +1,4 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 import { TechsBadge } from './techs-badge';
 import { Button } from './button';
 import { HiArrowNarrowRight } from 'react-icons/hi';
