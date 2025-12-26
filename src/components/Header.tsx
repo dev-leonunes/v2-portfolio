@@ -12,7 +12,7 @@ const NAV_ITEMS = [
 export const Header = () => {
   return (
     <header className="absolute top-0 w-full z-10 h-24 flex items-center">
-      <div className="mx-auto w-full max-w-[1200px] px-6 flex items-center justify-between">
+      <div className="container mx-auto px-6 lg:px-12 max-w-7xl flex items-center justify-between">
         <Link href="/">
           <Image width={58} height={49} src="/next.svg" alt="Logo" />
         </Link>

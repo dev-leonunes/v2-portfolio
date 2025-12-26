@@ -35,56 +35,48 @@ const TECHS = [
 
 export const HeroSection = () => {
   return (
-    <section className="w-full lg:h-[655px] flex flex-col justify-end pb-10 sm:pb-32 py-32 lg:pb-[110px]">
-      <div className="mx-auto w-full max-w-[1000px] px-6 flex items-start justify-between flex-col-reverse lg:flex-row">
-        <div className="w-full lg:max-w-[1000px]">
-          <p className="text-[#22d4fd] text-base font-normal mb-[10px] ml-1 font-mono">
-            Olá, meu nome é
+    <section className="w-full min-h-[70vh] flex items-center pt-32">
+      <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
+        <div className="w-full max-w-4xl">
+          <p className="font-mono text-sm mb-4 text-accent">Olá, meu nome é</p>
+
+          <h1 className="text-4xl lg:text-6xl font-bold mb-3 text-balance text-text">
+            Leonardo Nunes.
+          </h1>
+
+          <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-balance text-secondary">
+            Desenvolvedor de software.
+          </h2>
+
+          <p className="text-lg leading-relaxed mb-6 max-w-2xl text-secondary">
+            Sou um Desenvolvedor de Software apaixonado por tecnologia e
+            inovação e especializado em construir experiências digitais.
+            Atualmente trabalho com tecnologias como:
           </p>
 
-          <div className="text-[70px] font-semibold leading-[1.1] m-0 font-display">
-            <h1 className="text-[#ccd6f6] m-0">Leonardo Nunes.</h1>
-
-            <h2 className="text-[#a8b2d1] m-0">Desenvolvedor de software.</h2>
-          </div>
-
-          <div className="mt-5 mb-[10px] mr-[380px]">
-            <p className="text-[#8892b0] text-lg font-normal leading-[1.3] font-display">
-              Sou um Desenvolvedor de Software apaixonado por tecnologia e
-              inovação e especializado em construir experiências digitais.
-              Atualmente trabalho com tecnologias como:
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-x-2 gap-y-3">
+          <div className="flex flex-wrap gap-3 mb-8">
             {TECHS.map((tech, i) => (
               <TechsBadge tech={tech} key={`tech-${i}`} />
             ))}
           </div>
 
-          <div className="flex items-center flex-col sm:flex-row gap-4 mt-10">
+          <div className="flex flex-wrap items-center gap-6">
             <Button
               className={cn(
-                "text-[#22d4fd] bg-transparent text-base font-normal leading-none",
-                "py-5 px-7 border border-[#22d4fd] rounded-[5px] mt-10",
+                "font-mono px-8 border-2 border-accent text-accent bg-transparent",
                 "transition-all duration-[250ms] ease-[cubic-bezier(0.645,0.045,0.355,1)]",
-                "hover:shadow-[4px_4px_0_0_#22d4fd] hover:-translate-x-[5px] hover:-translate-y-[5px]",
-                "w-max font-mono"
+                "hover:shadow-[4px_4px_0_0] hover:shadow-accent hover:-translate-x-[5px] hover:-translate-y-[5px]"
               )}
             >
-              Vamos conversar?
-              <HiArrowNarrowRight size={18} />
+              Vamos conversar? →
             </Button>
 
-            <div className="flex items-center text-2xl gap-4 mt-[2.4rem] ml-6 text-[#8892b0]">
+            <div className="flex items-center gap-4 text-secondary">
               <a
                 href={CONTACT.Github.url}
                 target="_blank"
-                rel="noreferrer"
-                className={cn(
-                  "transition-all duration-[250ms] ease-[cubic-bezier(0.645,0.045,0.355,1)]",
-                  "hover:-translate-y-[5px] hover:text-[#ccd6f6]"
-                )}
+                rel="noopener noreferrer"
+                className="hover:opacity-70 transition-opacity"
               >
                 {CONTACT.Github.icon}
               </a>
@@ -92,11 +84,8 @@ export const HeroSection = () => {
               <a
                 href={CONTACT.Linkedin.url}
                 target="_blank"
-                rel="noreferrer"
-                className={cn(
-                  "transition-all duration-[250ms] ease-[cubic-bezier(0.645,0.045,0.355,1)]",
-                  "hover:-translate-y-[5px] hover:text-[#ccd6f6]"
-                )}
+                rel="noopener noreferrer"
+                className="hover:opacity-70 transition-opacity"
               >
                 {CONTACT.Linkedin.icon}
               </a>
@@ -104,24 +93,14 @@ export const HeroSection = () => {
               <a
                 href={CONTACT.Whatsapp.url}
                 target="_blank"
-                rel="noreferrer"
-                className={cn(
-                  "transition-all duration-[250ms] ease-[cubic-bezier(0.645,0.045,0.355,1)]",
-                  "hover:-translate-y-[5px] hover:text-[#ccd6f6]"
-                )}
+                rel="noopener noreferrer"
+                className="hover:opacity-70 transition-opacity"
               >
                 {CONTACT.Whatsapp.icon}
               </a>
             </div>
           </div>
         </div>
-
-        {/* <Image
-                    width={420}
-                    height={400}
-                    src="/public/hero.png"
-                    alt="Foto de perfil do dev Leonardo Nunes"
-                /> */}
       </div>
     </section>
   );

@@ -1,43 +1,73 @@
 @import 'tailwindcss';
 
-@theme {
-  --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-  --font-display: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+:root {
+  --background: #0F172A;
+  --foreground: #475569;
+  --text: #F8FAFC;
+  --accent: #F59E0B;
+  --secondary: #94A3B8;
+  --muted: #475569;
 }
 
-:root {
-  --primary-emphasis-color: #22d4fd;
-  --secondary-emphasis-color: #10b981;
-  --lightest-emphasis-color: #ccd6f6;
-  --light-emphasis-color: #a8b2d1;
-  --normal-emphasis-color: #8892b0;
-  --background: #0a192f;
-  --foreground: #233554;
-  --main-text: #ededed;
+@media (prefers-color-scheme: light) {
+  :root:not(.dark) {
+    --background: #F8FAFC;
+    --foreground: #475569;
+    --text: #0F172A;
+    --accent: #D97706;
+    --secondary: #475569;
+    --muted: #94A3B8;
+  }
+}
 
-  --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+:root.light {
+  --background: #F8FAFC;
+  --foreground: #475569;
+  --text: #0F172A;
+  --accent: #D97706;
+  --secondary: #475569;
+  --muted: #94A3B8;
+}
+
+:root.dark {
+  --background: #0F172A;
+  --foreground: #475569;
+  --text: #F8FAFC;
+  --accent: #F59E0B;
+  --secondary: #94A3B8;
+  --muted: #475569;
+}
+
+@theme inline {
+  --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+  --font-display: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-text: var(--text);
+  --color-accent: var(--accent);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
 }
 
 @layer base {
+  * {
+    @apply border-foreground/20;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
   html,
   body {
     max-width: 100vw;
     overflow-x: hidden;
-    background-color: var(--background);
-    color: var(--main-text);
   }
 
   body {
-    background: var(--background);
-    font-family: Arial, Helvetica, sans-serif;
+    @apply bg-background text-text;
+    font-family: var(--font-display), Arial, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
   }
 
   a {
@@ -50,10 +80,10 @@
   }
 
   *::-webkit-scrollbar-track {
-    background: var(--background);
+    @apply bg-background;
   }
 
   *::-webkit-scrollbar-thumb {
-    background: var(--primary-emphasis-color);
+    @apply bg-accent;
   }
 }
