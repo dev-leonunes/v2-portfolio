@@ -1,11 +1,11 @@
 import { TechsBadge } from "./techs-badge";
 import { Button } from "./button";
-import { HiArrowNarrowRight } from "react-icons/hi";
 import {
   TbBrandGithub,
   TbBrandLinkedin,
   TbBrandWhatsapp,
 } from "react-icons/tb";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const CONTACT = {
@@ -68,7 +68,7 @@ export const HeroSection = () => {
                 "hover:shadow-[4px_4px_0_0] hover:shadow-accent hover:-translate-x-[5px] hover:-translate-y-[5px]"
               )}
             >
-              Vamos conversar? →
+              Vamos conversar? <ArrowRight size={12} />
             </Button>
 
             <div className="flex items-center gap-4 text-secondary">
