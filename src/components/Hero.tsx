@@ -1,11 +1,10 @@
-import { TechsBadge } from "./techs-badge";
-import { Button } from "./button";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   TbBrandGithub,
   TbBrandLinkedin,
   TbBrandWhatsapp,
 } from "react-icons/tb";
-import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const CONTACT = {
@@ -25,11 +24,13 @@ const CONTACT = {
 
 const TECHS = [
   "Node.js",
+  "React",
   "JavaScript",
   "TypeScript",
   "HTML",
   "CSS",
   "PostgreSQL",
+  "MongoDB",
   "WordPress",
 ];
 
@@ -40,7 +41,7 @@ export const HeroSection = () => {
         <div className="w-full max-w-4xl">
           <p className="font-mono text-sm mb-4 text-accent">Olá, meu nome é</p>
 
-          <h1 className="text-4xl lg:text-6xl font-bold mb-3 text-balance text-text">
+          <h1 className="text-4xl lg:text-6xl font-bold mb-3 text-balance text-foreground">
             Leonardo Nunes.
           </h1>
 
@@ -56,19 +57,19 @@ export const HeroSection = () => {
 
           <div className="flex flex-wrap gap-3 mb-8">
             {TECHS.map((tech, i) => (
-              <TechsBadge tech={tech} key={`tech-${i}`} />
+              <Badge key={`tech-${i}`}>{tech}</Badge>
             ))}
           </div>
 
           <div className="flex flex-wrap items-center gap-6">
             <Button
               className={cn(
-                "font-mono px-8 border-2 border-accent text-accent bg-transparent",
-                "transition-all duration-[250ms] ease-[cubic-bezier(0.645,0.045,0.355,1)]",
-                "hover:shadow-[4px_4px_0_0] hover:shadow-accent hover:-translate-x-[5px] hover:-translate-y-[5px]"
+                "font-mono px-8 border-2 border-accent text-accent bg-transparent hover:bg-transparent",
+                "transition-all duration-250 ease-[cubic-bezier(0.645,0.045,0.355,1)]",
+                "hover:shadow-[4px_4px_0_0] hover:shadow-accent hover:-translate-x-1.25 hover:-translate-y-1.25"
               )}
             >
-              Vamos conversar? <ArrowRight size={12} />
+              Vamos conversar? →
             </Button>
 
             <div className="flex items-center gap-4 text-secondary">
