@@ -6,8 +6,8 @@ import { NavItem } from "./nav-items";
 import { ThemeToggle } from "./theme-toggle";
 
 const NAV_ITEMS = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projetos" },
+  { href: "#about", label: "Sobre" },
+  { href: "#projects", label: "Projetos" },
 ];
 
 export const Header = () => {
@@ -19,8 +19,8 @@ export const Header = () => {
         </Link>
 
         <nav className="flex items-center gap-4 sm:gap-10">
-          {NAV_ITEMS.map((item) => (
-            <NavItem {...item} key={item.label} />
+          {NAV_ITEMS.map((item, index) => (
+            <NavItem {...item} index={index} key={item.label} />
           ))}
           <ThemeToggle />
         </nav>

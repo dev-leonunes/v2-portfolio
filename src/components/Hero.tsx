@@ -1,42 +1,11 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  TbBrandGithub,
-  TbBrandLinkedin,
-  TbBrandWhatsapp,
-} from "react-icons/tb";
 import { cn } from "@/lib/utils";
-
-const CONTACT = {
-  Github: {
-    url: "https://github.com/dev-leonunes/",
-    icon: <TbBrandGithub size={24} />,
-  },
-  Linkedin: {
-    url: "https://www.linkedin.com/in/leonardo-nunes-dev/",
-    icon: <TbBrandLinkedin size={24} />,
-  },
-  Whatsapp: {
-    url: "https://wa.me/557391225081",
-    icon: <TbBrandWhatsapp size={24} />,
-  },
-};
-
-const TECHS = [
-  "Node.js",
-  "React",
-  "JavaScript",
-  "TypeScript",
-  "HTML",
-  "CSS",
-  "PostgreSQL",
-  "MongoDB",
-  "WordPress",
-];
+import { CONTACT, TECHS } from "@/constants";
 
 export const HeroSection = () => {
   return (
-    <section className="w-full min-h-[70vh] flex items-center pt-32">
+    <section className="w-full min-h-[70vh] flex items-center pt-36 pb-20">
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
         <div className="w-full max-w-4xl">
           <p className="font-mono text-sm mb-4 text-accent">Olá, meu nome é</p>
@@ -79,7 +48,7 @@ export const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="hover:opacity-70 transition-opacity"
               >
-                {CONTACT.Github.icon}
+                <CONTACT.Github.icon size={24} />
               </a>
 
               <a
@@ -88,7 +57,7 @@ export const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="hover:opacity-70 transition-opacity"
               >
-                {CONTACT.Linkedin.icon}
+                <CONTACT.Linkedin.icon size={24} />
               </a>
 
               <a
@@ -97,7 +66,7 @@ export const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="hover:opacity-70 transition-opacity"
               >
-                {CONTACT.Whatsapp.icon}
+                <CONTACT.Whatsapp.icon size={24} />
               </a>
             </div>
           </div>
