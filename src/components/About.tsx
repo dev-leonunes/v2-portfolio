@@ -55,8 +55,8 @@ export const AboutSection = () => {
 
               <ul className="grid grid-cols-2 gap-2 text-sm font-mono">
                 {ABOUT_TECHS.map((tech) => (
-                  <li key={tech} className="flex items-start gap-2">
-                    <span className="text-accent mt-1">▹</span>
+                  <li key={tech} className="flex items-baseline gap-2">
+                    <span className="text-accent shrink-0">▹</span>
                     <span>{tech}</span>
                   </li>
                 ))}

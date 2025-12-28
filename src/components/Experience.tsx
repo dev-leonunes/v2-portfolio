@@ -63,9 +63,9 @@ export const ExperienceSection = () => {
                 {selectedExperience.responsibilities.map((resp, index) => (
                   <li
                     key={index}
-                    className="flex items-start gap-3 text-secondary"
+                    className="flex items-baseline gap-3 text-secondary"
                   >
-                    <span className="text-accent mt-1 shrink-0">▹</span>
+                    <span className="text-accent font-mono shrink-0">▹</span>
                     <span className="leading-relaxed">{resp}</span>
                   </li>
                 ))}

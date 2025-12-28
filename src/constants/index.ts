@@ -36,7 +36,7 @@ export const ABOUT_TECHS = [
   "React",
   "Node.js",
   "AdonisJS / Express",
-  "PostgreSQL",
+  "PostgreSQL / MySQL",
   "MongoDB",
   "Tailwind CSS",
   "WordPress",
