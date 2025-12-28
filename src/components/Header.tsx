@@ -8,7 +8,7 @@ import { ThemeToggle } from "./theme-toggle";
 const NAV_ITEMS = [
   { href: "#about", label: "Sobre" },
   { href: "#experience", label: "Experiências" },
-  { href: "#projects", label: "Projetos" },
+  // { href: "#projects", label: "Projetos" },
 ];
 
 export const Header = () => {

@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { EXPERIENCES } from "@/constants";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
 
 export const ExperienceSection = () => {
   const [selectedExperience, setSelectedExperience] = useState(EXPERIENCES[0]);
@@ -13,11 +15,26 @@ export const ExperienceSection = () => {
       className="w-full min-h-screen flex items-center py-18"
     >
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
-        <h2 className="text-3xl lg:text-4xl font-bold mb-12 flex items-center gap-4">
-          <span className="font-mono text-xl text-accent">02.</span>
-          <span className="text-foreground">Experiências</span>
-          <div className="flex-1 h-px bg-border ml-4 max-w-xs"></div>
-        </h2>
+        <div className="flex items-center justify-between mb-12 flex-wrap gap-4">
+          <h2 className="text-3xl lg:text-4xl font-bold flex items-center gap-4">
+            <span className="font-mono text-xl text-accent">02.</span>
+            <span className="text-foreground">Experiências</span>
+            <div className="flex-1 h-px bg-border ml-4 max-w-xs"></div>
+          </h2>
+
+          <a href="/Resume.pdf" download="Leonardo-Nunes-CV.pdf">
+            <Button
+              className={cn(
+                "font-mono px-6 border-2 border-accent text-accent bg-transparent hover:bg-transparent cursor-pointer",
+                "transition-all duration-250 ease-[cubic-bezier(0.645,0.045,0.355,1)]",
+                "hover:shadow-[4px_4px_0_0] hover:shadow-accent hover:-translate-x-1.25 hover:-translate-y-1.25"
+              )}
+            >
+              <Download size={18} />
+              Baixar Currículo
+            </Button>
+          </a>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-8">
           <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible">
@@ -26,7 +43,7 @@ export const ExperienceSection = () => {
                 key={exp.id}
                 onClick={() => setSelectedExperience(exp)}
                 className={cn(
-                  "relative px-6 py-3 text-left font-mono text-sm whitespace-nowrap lg:whitespace-normal",
+                  "relative px-6 py-3 text-left font-mono text-sm whitespace-nowrap lg:whitespace-normal cursor-pointer",
                   "transition-all duration-200 border-l-2 lg:border-l-2 border-b-2 lg:border-b-0",
                   selectedExperience.id === exp.id
                     ? "border-accent text-accent bg-accent/5"
