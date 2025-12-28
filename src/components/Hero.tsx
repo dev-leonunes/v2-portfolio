@@ -10,11 +10,11 @@ export const HeroSection = () => {
         <div className="w-full max-w-4xl">
           <p className="font-mono text-sm mb-4 text-accent">Olá, meu nome é</p>
 
-          <h1 className="text-4xl lg:text-6xl font-bold mb-3 text-balance text-foreground">
+          <h1 className="text-5xl lg:text-7xl font-bold mb-3 text-balance text-foreground">
             Leonardo Nunes.
           </h1>
 
-          <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-balance text-secondary">
+          <h2 className="text-4xl lg:text-6xl font-bold mb-6 text-balance text-secondary">
             Desenvolvedor de software.
           </h2>
 

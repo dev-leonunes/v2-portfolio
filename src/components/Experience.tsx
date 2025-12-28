@@ -1,0 +1,95 @@
+"use client";
+
+import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { EXPERIENCES } from "@/constants";
+
+export const ExperienceSection = () => {
+  const [selectedExperience, setSelectedExperience] = useState(EXPERIENCES[0]);
+
+  return (
+    <section
+      id="experience"
+      className="w-full min-h-screen flex items-center py-18"
+    >
+      <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
+        <h2 className="text-3xl lg:text-4xl font-bold mb-12 flex items-center gap-4">
+          <span className="font-mono text-xl text-accent">02.</span>
+          <span className="text-foreground">Experiências</span>
+          <div className="flex-1 h-px bg-border ml-4 max-w-xs"></div>
+        </h2>
+
+        <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-8">
+          <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible">
+            {EXPERIENCES.map((exp) => (
+              <button
+                key={exp.id}
+                onClick={() => setSelectedExperience(exp)}
+                className={cn(
+                  "relative px-6 py-3 text-left font-mono text-sm whitespace-nowrap lg:whitespace-normal",
+                  "transition-all duration-200 border-l-2 lg:border-l-2 border-b-2 lg:border-b-0",
+                  selectedExperience.id === exp.id
+                    ? "border-accent text-accent bg-accent/5"
+                    : "border-border text-secondary hover:bg-accent/5 hover:text-accent"
+                )}
+              >
+                {exp.company}
+              </button>
+            ))}
+          </div>
+
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-1">
+                {selectedExperience.role}
+              </h3>
+              <p className="text-accent font-mono text-sm mb-2">
+                @ {selectedExperience.company}
+              </p>
+              <p className="text-secondary font-mono text-xs">
+                {selectedExperience.period}
+              </p>
+            </div>
+
+            <p className="text-secondary leading-relaxed">
+              {selectedExperience.description}
+            </p>
+
+            <div>
+              <h4 className="text-foreground font-semibold mb-3">
+                Responsabilidades:
+              </h4>
+              <ul className="space-y-3">
+                {selectedExperience.responsibilities.map((resp, index) => (
+                  <li
+                    key={index}
+                    className="flex items-start gap-3 text-secondary"
+                  >
+                    <span className="text-accent mt-1 shrink-0">▹</span>
+                    <span className="leading-relaxed">{resp}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-foreground font-semibold mb-3">
+                Tecnologias:
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {selectedExperience.technologies.map((tech, index) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1 text-xs font-mono bg-accent/10 text-accent rounded border border-accent/20"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
