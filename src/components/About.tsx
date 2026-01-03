@@ -1,11 +1,61 @@
 "use client";
 
+import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ABOUT_TECHS } from "@/constants";
 
 export const AboutSection = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [hasPlayed, setHasPlayed] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasPlayed) {
+          videoRef.current?.play();
+          setHasPlayed(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, [hasPlayed]);
+
+  const handleEnded = () => {
+    if (videoRef.current && !videoRef.current.loop) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.loop = true;
+      videoRef.current.play();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.loop = false;
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
+
   return (
-    <section id="about" className="w-full min-h-screen flex items-center py-18">
+    <section
+      id="about"
+      className="w-full min-h-screen flex items-center py-18"
+      ref={sectionRef}
+    >
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="order-2 lg:order-1">
@@ -82,6 +132,8 @@ export const AboutSection = () => {
                     "transition-transform duration-300 ease-out",
                     "group-hover:-translate-x-1 group-hover:-translate-y-1"
                   )}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
                 >
                   <div
                     className={cn(
@@ -91,33 +143,15 @@ export const AboutSection = () => {
                     )}
                   ></div>
 
-                  {/* Placeholder da Imagem */}
-                  <div className="w-full h-full bg-muted flex items-center justify-center relative">
-                    {/* Aqui será colocada a imagem posteriormente */}
-                    <svg
-                      className="w-24 h-24 text-muted-foreground opacity-50"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                      />
-                    </svg>
-
-                    {/* Quando adicionar a imagem, use: */}
-                    {/* <Image
-                      src="/caminho-da-sua-imagem.jpg"
-                      alt="Foto de perfil"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 350px, 400px"
-                    /> */}
-                  </div>
+                  <video
+                    ref={videoRef}
+                    className="w-full h-full object-cover"
+                    src="/IMG_4657.mp4"
+                    muted
+                    playsInline
+                    onEnded={handleEnded}
+                    preload="auto"
+                  />
                 </div>
               </div>
             </div>

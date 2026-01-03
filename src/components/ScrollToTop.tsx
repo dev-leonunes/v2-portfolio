@@ -61,7 +61,7 @@ export const ScrollToTop = () => {
             "border-2 border-accent",
             "flex items-center justify-center cursor-pointer",
             "transition-transform duration-300 ease-out",
-            "focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2",
+            "focus:outline-none",
             "group-hover:-translate-x-1 group-hover:-translate-y-1",
             "z-10"
           )}
