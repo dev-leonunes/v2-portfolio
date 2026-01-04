@@ -154,7 +154,7 @@ export const PROJECTS: Project[] = [
     title: "Dr. Júlio Cézar",
     description:
       "Site profissional com seção 'Sobre Mim', especialidades, agendamento direto via WhatsApp e integração com redes sociais. Estrutura otimizada para SEO e performance.",
-    image: "./drjulio.png",
+    image: "/drjulio.png",
     technologies: [
       "React",
       "TypeScript",

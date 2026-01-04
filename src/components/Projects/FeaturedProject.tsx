@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { type Project } from "@/constants";
 import { ImagePlaceholder } from "./ImagePlaceholder";
@@ -20,17 +21,19 @@ export const FeaturedProject = ({
     >
       {/* Imagem */}
       <div className="flex-1 relative group">
-        <div className="relative rounded-lg overflow-hidden border-2 border-accent">
+        <div className="relative rounded-lg overflow-hidden border-2 border-accent aspect-video">
           <div className="absolute inset-0 z-10 bg-accent/20 mix-blend-multiply transition-all duration-300 group-hover:bg-transparent" />
 
           {project.image ? (
-            <img
+            <Image
               src={project.image}
               alt={project.title}
-              className="w-full aspect-video object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+              fill
+              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           ) : (
-            <div className="w-full aspect-video bg-linear-to-br from-muted to-muted/50 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
+            <div className="w-full h-full bg-linear-to-br from-muted to-muted/50 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
               <ImagePlaceholder size={64} />
             </div>
           )}

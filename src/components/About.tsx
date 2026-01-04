@@ -146,7 +146,7 @@ export const AboutSection = () => {
                   <video
                     ref={videoRef}
                     className="w-full h-full object-cover"
-                    src="/IMG_4657.mp4"
+                    src="/devleo-about.mp4"
                     muted
                     playsInline
                     onEnded={handleEnded}
