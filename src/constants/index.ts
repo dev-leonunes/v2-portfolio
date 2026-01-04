@@ -133,3 +133,135 @@ export const EXPERIENCES = [
     technologies: ["TypeScript", "NestJS", "PostgreSQL", "TypeORM"],
   },
 ];
+
+export type ProjectType = "personal" | "freelance";
+
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  image?: string;
+  technologies: string[];
+  type: ProjectType;
+  featured: boolean;
+  githubUrl?: string;
+  liveUrl?: string;
+}
+
+export const PROJECTS: Project[] = [
+  {
+    id: "site-dr-julio",
+    title: "Dr. Júlio Cézar",
+    description:
+      "Site profissional com seção 'Sobre Mim', especialidades, agendamento direto via WhatsApp e integração com redes sociais. Estrutura otimizada para SEO e performance.",
+    image: "./drjulio.png",
+    technologies: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Vite",
+      "SEO",
+    ],
+    type: "freelance",
+    featured: true,
+    liveUrl: "https://drjuliocezar.com.br",
+  },
+  {
+    id: "foco-em-noticias",
+    title: "Foco em Notícias",
+    description:
+      "Portal Foco em Notícias, um projeto que se destaca pelo uso estratégico de técnicas de SEO.",
+    image: "/news-portal-2.png",
+    technologies: ["WordPress", "Elementor", "SEO"],
+    type: "freelance",
+    featured: true,
+    liveUrl: "https://focoemnoticias.online/",
+  },
+  {
+    id: "fibras-maravigirl",
+    title: "Fibras Maravigirl",
+    description:
+      "E-commerce desenvolvido na plataforma Nuvemshop, com personalização de layout via CSS e HTML para adaptar às necessidades do cliente.",
+    image: "/e-commerce.png",
+    technologies: ["Nuvemshop", "HTML", "CSS"],
+    type: "freelance",
+    featured: false,
+    liveUrl: "https://fibrasmaravigirl2.lojavirtualnuvem.com.br/",
+  },
+  {
+    id: "vem-ver-noticias",
+    title: "Vem Ver Notícias",
+    description:
+      "Portal desenvolvido como projeto freelancer em WordPress, usando Elementor e estratégias de SEO.",
+    image: "/news-portal.png",
+    technologies: ["WordPress", "Elementor", "SEO"],
+    type: "freelance",
+    featured: false,
+    liveUrl: "https://vemvernoticias.online/",
+  },
+  {
+    id: "the-legend-of-zelda",
+    title: "The Legend of Zelda",
+    description:
+      "Mini-game tributo ao jogo original onde o objetivo é coletar 3 itens e abrir uma porta para enfrentar o chefão.",
+    image: "/legend-of-zelda.png",
+    technologies: ["JavaScript", "p5.js"],
+    type: "personal",
+    featured: false,
+    githubUrl: "https://github.com/dev-leonunes/the-legend-of-zelda-p5.js",
+    liveUrl: "https://dev-leonunes.github.io/the-legend-of-zelda-p5.js/",
+  },
+  {
+    id: "amigo-secreto",
+    title: "Amigo Secreto",
+    description:
+      "Gerador de amigo secreto que sorteia os participantes e informa quem é o amigo secreto de cada um.",
+    image: "/secret-friend.png",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    type: "personal",
+    featured: false,
+    githubUrl: "https://github.com/dev-leonunes/challenge-amigo-secreto",
+    liveUrl: "https://dev-leonunes.github.io/challenge-amigo-secreto/",
+  },
+  {
+    id: "encrypt-text",
+    title: "Encrypt Text",
+    description:
+      "Encriptador de texto simples que utiliza um algoritmo de substituição para criptografar e descriptografar mensagens.",
+    image: "/encrypt-text.png",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    type: "personal",
+    featured: false,
+    githubUrl: "https://github.com/dev-leonunes/encrypt-text-alura",
+    liveUrl: "https://dev-leonunes.github.io/encrypt-text-alura/",
+  },
+  {
+    id: "sistema-dindin",
+    title: "Sistema DinDin",
+    description:
+      "RESTful API desenvolvida para gerenciamento de finanças pessoais.",
+    technologies: ["Node.js", "Express.js", "PostgreSQL", "JWT"],
+    type: "personal",
+    featured: false,
+    githubUrl: "https://github.com/dev-leonunes/sistema-dindin-API",
+  },
+  {
+    id: "sistema-pdv",
+    title: "Sistema PDV",
+    description: "Aplicação Back-end para sistema frente de caixa.",
+    technologies: ["Node.js", "Express.js", "PostgreSQL", "Knex", "JWT", "AWS"],
+    type: "personal",
+    featured: false,
+    githubUrl: "https://github.com/dev-leonunes/sistema-pdv-API",
+  },
+  {
+    id: "sistema-bancario",
+    title: "Sistema Bancario",
+    description: "Aplicação Back-end que simula um sistema bancário simples.",
+    technologies: ["TypeScript", "Node.js", "Express.js", "MongoDB", "Vitest"],
+    type: "personal",
+    featured: false,
+    githubUrl: "https://github.com/dev-leonunes/sistema-bancario-API",
+  },
+];
