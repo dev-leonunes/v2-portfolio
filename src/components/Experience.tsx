@@ -12,7 +12,7 @@ export const ExperienceSection = () => {
   return (
     <section
       id="experience"
-      className="w-full min-h-screen flex items-center py-18"
+      className="w-full min-h-screen flex items-center py-16 lg:py-18"
     >
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
         <div className="flex items-center justify-between mb-12 flex-wrap gap-4">

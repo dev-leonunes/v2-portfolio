@@ -19,7 +19,7 @@ export const ProjectsSection = () => {
   return (
     <section
       id="projects"
-      className="w-full min-h-screen flex items-center py-24 lg:py-32"
+      className="w-full min-h-screen flex items-center py-16 lg:py-24 xl:py-32"
     >
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
         <div className="flex items-center justify-between mb-12 flex-wrap gap-4">
@@ -36,7 +36,7 @@ export const ProjectsSection = () => {
         </div>
 
         {/* Projetos em Destaque */}
-        <div className="space-y-20 mb-20">
+        <div className="space-y-16 lg:space-y-20 mb-16 lg:mb-20">
           {featuredProjects.map((project, index) => (
             <FeaturedProject key={project.id} project={project} index={index} />
           ))}

@@ -9,18 +9,16 @@ export const OtherProject = ({ project }: { project: Project }) => {
     <div className="group rounded-lg border-2 border-border overflow-hidden hover:border-accent hover:-translate-y-1 transition-all duration-300">
       {/* Imagem */}
       <div className="relative w-full h-48 overflow-hidden bg-muted">
-        <div className="absolute inset-0 z-10 bg-accent/30 mix-blend-multiply transition-opacity duration-300 group-hover:opacity-0" />
-
         {project.image ? (
           <Image
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover transition-all duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0"
+            className="object-cover transition-all duration-500 group-hover:scale-110"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
-          <div className="w-full h-full bg-linear-to-br from-muted to-muted/50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0">
+          <div className="w-full h-full bg-linear-to-br from-muted to-muted/50 flex items-center justify-center transition-all duration-500 group-hover:scale-110">
             <ImagePlaceholder size={48} />
           </div>
         )}
