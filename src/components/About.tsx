@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ABOUT_TECHS } from "@/constants";
+import { FadeUp, FadeIn } from "@/components/animations";
 
 export const AboutSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -59,13 +60,16 @@ export const AboutSection = () => {
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="order-2 lg:order-1">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-6 flex items-center gap-4">
-              <span className="font-mono text-xl text-accent">01.</span>
-              <span className="text-foreground">Sobre Mim</span>
-              <div className="flex-1 h-px bg-border ml-4 max-w-xs"></div>
-            </h2>
+            <FadeUp>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6 flex items-center gap-4">
+                <span className="font-mono text-xl text-accent">01.</span>
+                <span className="text-foreground">Sobre Mim</span>
+                <div className="flex-1 h-px bg-border ml-4 max-w-xs"></div>
+              </h2>
+            </FadeUp>
 
-            <div className="space-y-4 text-secondary text-base leading-relaxed">
+            <FadeUp delay={0.1}>
+              <div className="space-y-4 text-secondary text-base leading-relaxed">
               <p>
                 Olá! Meu nome é Leonardo e sou desenvolvedor de software com
                 foco em aplicações web. Minha trajetória começou durante a
@@ -112,10 +116,12 @@ export const AboutSection = () => {
                 ))}
               </ul>
             </div>
+            </FadeUp>
           </div>
 
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-87.5 lg:max-w-100 group">
+            <FadeIn delay={0.2}>
+              <div className="relative w-full max-w-87.5 lg:max-w-100 group">
               <div className="relative">
                 <div
                   className={cn(
@@ -155,6 +161,7 @@ export const AboutSection = () => {
                 </div>
               </div>
             </div>
+            </FadeIn>
           </div>
         </div>
       </div>
