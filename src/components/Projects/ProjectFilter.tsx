@@ -25,13 +25,13 @@ export const ProjectFilter = ({
     FILTER_OPTIONS.find((opt) => opt.value === filterType)?.label || "Todos";
 
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <button
           className={cn(
             "flex items-center gap-2 px-4 py-2 border-2 border-accent rounded-lg",
             "text-accent font-mono text-sm bg-transparent",
-            "hover:bg-accent/5 transition-colors"
+            "hover:bg-accent/5 transition-colors",
           )}
         >
           <Filter size={16} />
@@ -45,7 +45,7 @@ export const ProjectFilter = ({
             onClick={() => onFilterChange(option.value)}
             className={cn(
               "cursor-pointer font-mono",
-              filterType === option.value && "text-accent bg-accent/5"
+              filterType === option.value && "text-accent bg-accent/5",
             )}
           >
             {option.label}

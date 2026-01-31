@@ -4,7 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { NavItem } from "./nav-items";
 import { ThemeToggle } from "./theme-toggle";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Menu } from "lucide-react";
@@ -42,10 +47,11 @@ export const Header = () => {
                 size="icon"
                 className="text-accent hover:bg-accent/10 h-12 w-12"
               >
-                <Menu className="h-7 w-7" />
+                <Menu className="h-5! w-5!" />
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-70">
+              <SheetTitle className="sr-only">Menu</SheetTitle>
               <nav className="flex flex-col gap-6 mt-8">
                 {NAV_ITEMS.map((item, index) => (
                   <Link

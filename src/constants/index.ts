@@ -94,7 +94,9 @@ export const EXPERIENCES = [
     ],
     technologies: [
       "React",
+      "TypeScript",
       "JavaScript",
+      "Node.js",
       "WordPress",
       "Elementor",
       "HTML",
@@ -130,7 +132,16 @@ export const EXPERIENCES = [
       "Colaboração em equipe multidisciplinar",
       "Participação no ciclo completo de desenvolvimento",
     ],
-    technologies: ["TypeScript", "NestJS", "PostgreSQL", "TypeORM"],
+    technologies: [
+      "TypeScript",
+      "NestJS",
+      "Node.js",
+      "PostgreSQL",
+      "TypeORM",
+      "Docker",
+      "Git",
+      "Git Flow",
+    ],
   },
 ];
 
