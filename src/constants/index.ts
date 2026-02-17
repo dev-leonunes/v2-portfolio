@@ -190,6 +190,29 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://focoemnoticias.online/",
   },
   {
+    id: "gestao-estoque-app",
+    title: "Sistema de Gestão de Estoque",
+    description:
+      "Aplicação full stack para gerenciamento de produtos e movimentações de estoque (entradas e saídas), com controle de estoque mínimo, filtros e foco em experiência de uso.",
+    image: "/stock-management.png",
+    technologies: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "NestJS",
+      "TypeORM",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "TanStack Query",
+      "Axios",
+    ],
+    type: "personal",
+    featured: true,
+    githubUrl: "https://github.com/dev-leonunes/gestao-estoque-app",
+    liveUrl: "https://gestao-estoque-app-frontend.vercel.app/",
+  },
+  {
     id: "fibras-maravigirl",
     title: "Fibras Maravigirl",
     description:
