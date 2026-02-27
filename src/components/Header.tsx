@@ -11,7 +11,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -22,12 +22,39 @@ const NAV_ITEMS = [
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const updateTheme = () => {
+      setIsDarkTheme(root.classList.contains("dark"));
+    };
+
+    updateTheme();
+
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(root, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <header className="absolute top-0 w-full z-10 h-16 lg:h-24 flex items-center">
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl flex items-center justify-between">
         <Link href="/">
-          <Image width={58} height={49} src="/next.svg" alt="Logo" />
+          <Image
+            width={96}
+            height={42}
+            src={isDarkTheme ? "/Logo-dark.png" : "/Logo-light.png"}
+            alt="Logo"
+            className="h-7 w-auto lg:h-8"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
