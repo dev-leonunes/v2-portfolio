@@ -19,7 +19,7 @@ export const NavItem = ({ label, href, index, active = false }: NavItemProps) =>
           ? "text-accent after:w-full"
           : "text-secondary after:w-0 hover:text-accent hover:-translate-y-0.5 hover:after:w-full",
       ].join(" ")}
-      aria-current={active ? "page" : undefined}
+      aria-current={active ? "location" : undefined}
     >
       <span className="text-accent">{String(index + 1).padStart(2, "0")}.</span> {label}
     </Link>

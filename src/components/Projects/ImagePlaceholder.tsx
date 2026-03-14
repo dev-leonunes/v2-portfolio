@@ -72,7 +72,7 @@ export const ImagePlaceholder = ({
       <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-3 text-muted-foreground">
         <ImageOff className="size-8 opacity-70" aria-hidden="true" />
         <span className="font-mono text-[0.7rem] uppercase tracking-[0.14em]">
-          Preview indisponivel
+          Preview indisponível
         </span>
       </div>
     </div>

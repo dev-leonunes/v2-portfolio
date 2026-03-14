@@ -68,7 +68,7 @@ export const Header = () => {
       if (!sections.length) return;
 
       const probe = window.scrollY + window.innerHeight * 0.38;
-      let current = sections[0].id;
+      let current = "";
 
       for (const section of sections) {
         if (probe >= section.offsetTop) {
@@ -156,7 +156,7 @@ export const Header = () => {
                       ].join(" ")}
                       aria-current={
                         activeSection === item.href.slice(1)
-                          ? "page"
+                          ? "location"
                           : undefined
                       }
                     >

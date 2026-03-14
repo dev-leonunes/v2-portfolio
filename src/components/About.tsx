@@ -70,7 +70,7 @@ export const AboutSection = () => {
 
             <FadeUp delay={0.1}>
               <p className="font-mono text-xs tracking-[0.18em] uppercase text-accent mb-5">
-                Trajetoria e foco
+                Trajetória e foco
               </p>
 
               <div className="space-y-4 text-muted-foreground text-base leading-relaxed">
