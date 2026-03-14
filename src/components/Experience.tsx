@@ -14,7 +14,7 @@ export const ExperienceSection = () => {
   return (
     <section
       id="experience"
-      className="w-full min-h-screen flex items-center py-16 lg:py-18"
+      className="w-full section-shell section-anchor relative"
     >
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
         <FadeUp>
@@ -41,7 +41,7 @@ export const ExperienceSection = () => {
         </FadeUp>
 
         <FadeUp delay={0.1}>
-          <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-8 lg:gap-10">
             <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible">
               {EXPERIENCES.map((exp) => (
                 <button
@@ -52,7 +52,7 @@ export const ExperienceSection = () => {
                     "transition-all duration-200 border-l-2 lg:border-l-2 border-b-2 lg:border-b-0",
                     selectedExperience.id === exp.id
                       ? "border-accent text-accent bg-accent/5"
-                      : "border-border text-secondary hover:bg-accent/5 hover:text-accent",
+                      : "border-border text-muted-foreground hover:bg-accent/5 hover:text-accent",
                   )}
                 >
                   {exp.company}
@@ -60,14 +60,14 @@ export const ExperienceSection = () => {
               ))}
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-6 rounded-2xl border border-border/70 bg-muted/10 p-6 lg:p-8 shadow-[0_26px_60px_-52px_color-mix(in_oklab,var(--accent)_60%,transparent)]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={selectedExperience.id}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.46, ease: [0.22, 1, 0.36, 1] }}
                   className="space-y-6"
                 >
                   <div>
@@ -77,12 +77,12 @@ export const ExperienceSection = () => {
                     <p className="text-accent font-mono text-sm mb-2">
                       @ {selectedExperience.company}
                     </p>
-                    <p className="text-secondary font-mono text-xs">
+                    <p className="text-muted-foreground font-mono text-xs tracking-wide">
                       {selectedExperience.period}
                     </p>
                   </div>
 
-                  <p className="text-secondary leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed">
                     {selectedExperience.description}
                   </p>
 
@@ -95,7 +95,7 @@ export const ExperienceSection = () => {
                         (resp, index) => (
                           <li
                             key={index}
-                            className="flex items-baseline gap-3 text-secondary"
+                            className="flex items-baseline gap-3 text-muted-foreground"
                           >
                             <span className="text-accent font-mono shrink-0">
                               ▹
@@ -115,7 +115,7 @@ export const ExperienceSection = () => {
                       {selectedExperience.technologies.map((tech, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1 text-xs font-mono bg-accent/10 text-accent rounded border border-accent/20"
+                          className="px-3 py-1 text-xs font-mono bg-accent/14 text-accent rounded-full border border-accent/30"
                         >
                           {tech}
                         </span>

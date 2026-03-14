@@ -1,7 +1,9 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion, type Variants, useReducedMotion } from "framer-motion";
 import { type ReactNode } from "react";
+
+const EASE_OUT_EXPO: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 interface FadeUpProps {
   children: ReactNode;
@@ -12,17 +14,17 @@ interface FadeUpProps {
 }
 
 const fadeUpVariants: Variants = {
-  hidden: {
+  hidden: (custom: { reduceMotion: boolean }) => ({
     opacity: 0,
-    y: 20,
-  },
+    y: custom.reduceMotion ? 0 : 28,
+  }),
   visible: (custom: { delay: number; duration: number }) => ({
     opacity: 1,
     y: 0,
     transition: {
       delay: custom.delay,
       duration: custom.duration,
-      ease: [0.645, 0.045, 0.355, 1],
+      ease: EASE_OUT_EXPO,
     },
   }),
 };
@@ -30,17 +32,23 @@ const fadeUpVariants: Variants = {
 export const FadeUp = ({
   children,
   delay = 0,
-  duration = 0.5,
+  duration = 0.68,
   className,
   once = true,
 }: FadeUpProps) => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once, amount: 0.1 }}
       variants={fadeUpVariants}
-      custom={{ delay, duration }}
+      custom={{
+        delay: shouldReduceMotion ? 0 : delay,
+        duration: shouldReduceMotion ? Math.min(duration, 0.3) : duration,
+        reduceMotion: shouldReduceMotion,
+      }}
       className={className}
     >
       {children}
@@ -74,25 +82,27 @@ const staggerItemVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
-      ease: [0.645, 0.045, 0.355, 1],
+      duration: 0.56,
+      ease: EASE_OUT_EXPO,
     },
   },
 };
 
 export const StaggerContainer = ({
   children,
-  staggerDelay = 0.1,
+  staggerDelay = 0.14,
   className,
   once = true,
 }: StaggerContainerProps) => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once, amount: 0.1 }}
       variants={staggerContainerVariants}
-      custom={staggerDelay}
+      custom={shouldReduceMotion ? 0 : staggerDelay}
       className={className}
     >
       {children}
@@ -132,7 +142,7 @@ const fadeInVariants: Variants = {
     transition: {
       delay: custom.delay,
       duration: custom.duration,
-      ease: [0.645, 0.045, 0.355, 1],
+      ease: EASE_OUT_EXPO,
     },
   }),
 };
@@ -140,17 +150,22 @@ const fadeInVariants: Variants = {
 export const FadeIn = ({
   children,
   delay = 0,
-  duration = 0.5,
+  duration = 0.62,
   className,
   once = true,
 }: FadeInProps) => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once, amount: 0.1 }}
       variants={fadeInVariants}
-      custom={{ delay, duration }}
+      custom={{
+        delay: shouldReduceMotion ? 0 : delay,
+        duration: shouldReduceMotion ? Math.min(duration, 0.28) : duration,
+      }}
       className={className}
     >
       {children}

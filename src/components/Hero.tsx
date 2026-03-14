@@ -6,29 +6,38 @@ import { FadeUp } from "@/components/animations";
 
 export const HeroSection = () => {
   return (
-    <section className="w-full min-h-[70vh] flex items-center pt-24 lg:pt-36 pb-12 lg:pb-20">
+    <section
+      id="home"
+      className="relative isolate overflow-hidden w-full flex items-center hero-shell"
+    >
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-20 left-1/2 h-105 w-105 -translate-x-1/2 rounded-full bg-accent/15 blur-[120px]" />
+        <div className="absolute top-28 -left-16 h-60 w-60 rounded-full bg-primary/20 blur-[90px]" />
+        <div className="absolute bottom-10 right-0 h-52 w-52 rounded-full bg-accent/20 blur-[100px]" />
+      </div>
+
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
-        <div className="w-full max-w-4xl">
+        <div className="w-full max-w-4xl px-0 py-10 sm:py-12 lg:py-14">
           <FadeUp delay={0.1}>
-            <p className="font-mono text-sm mb-4 text-accent">
+            <p className="font-mono text-xs sm:text-sm tracking-[0.2em] uppercase mb-4 text-accent">
               Olá, meu nome é
             </p>
           </FadeUp>
 
           <FadeUp delay={0.2}>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-3 text-balance text-foreground">
+            <h1 className="font-display text-[2.55rem] leading-[0.98] sm:text-6xl lg:text-8xl font-semibold mb-3 text-balance text-foreground">
               Leonardo Nunes.
             </h1>
           </FadeUp>
 
           <FadeUp delay={0.3}>
-            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-6 text-balance text-secondary">
+            <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-medium mb-7 text-balance text-secondary">
               Desenvolvedor de software.
             </h2>
           </FadeUp>
 
           <FadeUp delay={0.4}>
-            <p className="text-base sm:text-lg leading-relaxed mb-6 max-w-2xl text-secondary">
+            <p className="text-base sm:text-lg leading-relaxed mb-7 max-w-2xl text-secondary">
               Sou um Desenvolvedor de Software apaixonado por tecnologia e
               inovação e especializado em construir experiências digitais.
               Atualmente trabalho com tecnologias como:
@@ -36,7 +45,7 @@ export const HeroSection = () => {
           </FadeUp>
 
           <FadeUp delay={0.5}>
-            <div className="flex flex-wrap gap-3 mb-8">
+            <div className="flex flex-wrap gap-3 mb-9">
               {TECHS.map((tech, i) => (
                 <Badge key={`tech-${i}`}>{tech}</Badge>
               ))}
@@ -48,7 +57,7 @@ export const HeroSection = () => {
               <Button
                 className={cn(
                   "font-mono px-6 sm:px-8 border-2 border-accent text-accent bg-transparent hover:bg-transparent",
-                  "transition-all duration-250 ease-[cubic-bezier(0.645,0.045,0.355,1)]",
+                  "transition-all duration-250 ease-[cubic-bezier(0.645,0.045,0.355,1)] focus-visible:ring-2 focus-visible:ring-accent/50",
                   "hover:shadow-[4px_4px_0_0] hover:shadow-accent hover:-translate-x-1.25 hover:-translate-y-1.25",
                 )}
               >
@@ -60,7 +69,7 @@ export const HeroSection = () => {
                   href={CONTACT.Github.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:opacity-70 transition-opacity"
+                  className="hover:text-accent transition-colors duration-200"
                 >
                   <CONTACT.Github.icon size={24} />
                 </a>
@@ -69,7 +78,7 @@ export const HeroSection = () => {
                   href={CONTACT.Linkedin.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:opacity-70 transition-opacity"
+                  className="hover:text-accent transition-colors duration-200"
                 >
                   <CONTACT.Linkedin.icon size={24} />
                 </a>
@@ -78,7 +87,7 @@ export const HeroSection = () => {
                   href={CONTACT.Whatsapp.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:opacity-70 transition-opacity"
+                  className="hover:text-accent transition-colors duration-200"
                 >
                   <CONTACT.Whatsapp.icon size={24} />
                 </a>
