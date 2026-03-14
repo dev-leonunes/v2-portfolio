@@ -21,7 +21,7 @@ export const AboutSection = () => {
           setHasPlayed(true);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     observer.observe(section);
@@ -54,7 +54,7 @@ export const AboutSection = () => {
   return (
     <section
       id="about"
-      className="w-full min-h-screen flex items-center py-16 lg:py-18"
+      className="w-full section-shell section-anchor relative"
       ref={sectionRef}
     >
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
@@ -69,98 +69,115 @@ export const AboutSection = () => {
             </FadeUp>
 
             <FadeUp delay={0.1}>
-              <div className="space-y-4 text-secondary text-base leading-relaxed">
-              <p>
-                Olá! Meu nome é Leonardo e sou desenvolvedor de software com
-                foco em aplicações web. Minha trajetória começou durante a
-                graduação, quando passei a explorar o desenvolvimento de
-                sistemas e interfaces, aprofundando meus conhecimentos em HTML,
-                CSS e JavaScript e entendendo na prática como transformar ideias
-                em soluções funcionais.
+              <p className="font-mono text-xs tracking-[0.18em] uppercase text-accent mb-5">
+                Trajetoria e foco
               </p>
 
-              <p>
-                Atualmente, atuo como{" "}
-                <span className="text-accent">Desenvolvedor Full Stack</span>,
-                com experiência em{" "}
-                <span className="text-accent">
-                  aplicações web e microsserviços
-                </span>
-                , passando por{" "}
-                <span className="text-accent">ambientes corporativos</span>,{" "}
-                <span className="text-accent">projetos educacionais</span> e{" "}
-                <span className="text-accent">trabalhos freelancers</span>. Já
-                atuei no desenvolvimento de sistemas para monitoramento
-                industrial, plataformas web e APIs, sempre buscando código
-                limpo, performance e boa experiência de uso.
-              </p>
+              <div className="space-y-4 text-muted-foreground text-base leading-relaxed">
+                <p>
+                  Olá! Meu nome é Leonardo e sou desenvolvedor de software com
+                  foco em aplicações web. Minha trajetória começou durante a
+                  graduação, quando passei a explorar o desenvolvimento de
+                  sistemas e interfaces, aprofundando meus conhecimentos em
+                  HTML, CSS e JavaScript e entendendo na prática como
+                  transformar ideias em soluções funcionais.
+                </p>
 
-              <p>
-                Além disso, trabalho como{" "}
-                <span className="text-accent">desenvolvedor freelancer</span>,
-                criando sites e aplicações com foco em performance,
-                responsividade e SEO.
-              </p>
+                <p>
+                  Atualmente, atuo como{" "}
+                  <span className="text-accent font-semibold">
+                    Desenvolvedor Full Stack
+                  </span>
+                  , com experiência em{" "}
+                  <span className="text-accent font-semibold">
+                    aplicações web e microsserviços
+                  </span>
+                  , passando por{" "}
+                  <span className="text-accent font-semibold">
+                    ambientes corporativos
+                  </span>
+                  ,{" "}
+                  <span className="text-accent font-semibold">
+                    projetos educacionais
+                  </span>{" "}
+                  e{" "}
+                  <span className="text-accent font-semibold">
+                    trabalhos freelancers
+                  </span>
+                  . Já atuei no desenvolvimento de sistemas para monitoramento
+                  industrial, plataformas web e APIs, sempre buscando código
+                  limpo, performance e boa experiência de uso.
+                </p>
 
-              <p className="text-sm">
-                Aqui estão algumas tecnologias com as quais tenho trabalhado
-                recentemente:
-              </p>
+                <p>
+                  Além disso, trabalho como{" "}
+                  <span className="text-accent font-semibold">
+                    desenvolvedor freelancer
+                  </span>
+                  , criando sites e aplicações com foco em performance,
+                  responsividade e SEO.
+                </p>
 
-              <ul className="grid grid-cols-2 gap-2 text-sm font-mono">
-                {ABOUT_TECHS.map((tech) => (
-                  <li key={tech} className="flex items-baseline gap-2">
-                    <span className="text-accent shrink-0">▹</span>
-                    <span>{tech}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                <p className="text-sm text-foreground/90">
+                  Aqui estão algumas tecnologias com as quais tenho trabalhado
+                  recentemente:
+                </p>
+
+                <ul className="grid grid-cols-2 gap-2 text-sm font-mono">
+                  {ABOUT_TECHS.map((tech) => (
+                    <li key={tech} className="flex items-baseline gap-2">
+                      <span className="text-accent shrink-0">▹</span>
+                      <span>{tech}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </FadeUp>
           </div>
 
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
             <FadeIn delay={0.2}>
               <div className="relative w-full max-w-87.5 lg:max-w-100 group">
-              <div className="relative">
-                <div
-                  className={cn(
-                    "absolute inset-0 w-full h-full border-2 border-accent rounded",
-                    "translate-x-5 translate-y-5 z-0",
-                    "transition-transform duration-300 ease-out",
-                    "group-hover:translate-x-6 group-hover:translate-y-6"
-                  )}
-                ></div>
-
-                <div
-                  className={cn(
-                    "relative w-full aspect-square rounded overflow-hidden z-10",
-                    "transition-transform duration-300 ease-out",
-                    "group-hover:-translate-x-1 group-hover:-translate-y-1"
-                  )}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
+                <div className="pointer-events-none absolute -inset-8 -z-10 rounded-full bg-accent/20 blur-3xl opacity-65" />
+                <div className="relative">
                   <div
                     className={cn(
-                      "absolute inset-0 bg-accent/30 mix-blend-multiply z-20",
-                      "transition-opacity duration-300",
-                      "group-hover:opacity-0"
+                      "absolute inset-0 w-full h-full border border-accent/70 rounded-2xl",
+                      "translate-x-4 translate-y-4 z-0",
+                      "transition-transform duration-300 ease-out",
+                      "group-hover:translate-x-5 group-hover:translate-y-5",
                     )}
                   ></div>
 
-                  <video
-                    ref={videoRef}
-                    className="w-full h-full object-cover"
-                    src="/devleo-about.mp4"
-                    muted
-                    playsInline
-                    onEnded={handleEnded}
-                    preload="auto"
-                  />
+                  <div
+                    className={cn(
+                      "relative w-full aspect-square rounded-2xl overflow-hidden z-10 border border-border/70",
+                      "transition-transform duration-300 ease-out",
+                      "group-hover:-translate-x-1 group-hover:-translate-y-1",
+                    )}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <div
+                      className={cn(
+                        "absolute inset-0 bg-accent/35 mix-blend-multiply z-20",
+                        "transition-opacity duration-300",
+                        "group-hover:opacity-0",
+                      )}
+                    ></div>
+
+                    <video
+                      ref={videoRef}
+                      className="w-full h-full object-cover"
+                      src="/devleo-about.mp4"
+                      muted
+                      playsInline
+                      onEnded={handleEnded}
+                      preload="auto"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
             </FadeIn>
           </div>
         </div>

@@ -5,13 +5,13 @@ import { type ProjectType, PROJECTS } from "@/constants";
 import { ProjectFilter } from "./ProjectFilter";
 import { FeaturedProject } from "./FeaturedProject";
 import { OtherProject } from "./OtherProject";
-import { FadeUp, StaggerContainer, StaggerItem } from "@/components/animations";
+import { FadeUp } from "@/components/animations";
 
 export const ProjectsSection = () => {
   const [filterType, setFilterType] = useState<ProjectType | "all">("all");
 
   const filteredProjects = PROJECTS.filter((project) =>
-    filterType === "all" ? true : project.type === filterType
+    filterType === "all" ? true : project.type === filterType,
   );
 
   const featuredProjects = filteredProjects.filter((p) => p.featured);
@@ -20,7 +20,7 @@ export const ProjectsSection = () => {
   return (
     <section
       id="projects"
-      className="w-full min-h-screen flex items-center py-16 lg:py-24 xl:py-32"
+      className="w-full section-shell section-anchor relative"
     >
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
         <FadeUp>
@@ -41,7 +41,7 @@ export const ProjectsSection = () => {
         {/* Projetos em Destaque */}
         <div className="space-y-16 lg:space-y-20 mb-16 lg:mb-20">
           {featuredProjects.map((project, index) => (
-            <FadeUp key={project.id} delay={index * 0.1}>
+            <FadeUp key={project.id} delay={index * 0.12} duration={0.78}>
               <FeaturedProject project={project} index={index} />
             </FadeUp>
           ))}
@@ -55,22 +55,19 @@ export const ProjectsSection = () => {
                 Outros Projetos
               </h3>
             </FadeUp>
-            <StaggerContainer
-              staggerDelay={0.08}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {otherProjects.map((project) => (
-                <StaggerItem key={project.id}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:auto-rows-[1fr]">
+              {otherProjects.map((project, index) => (
+                <FadeUp key={project.id} delay={index * 0.08} duration={0.66}>
                   <OtherProject project={project} />
-                </StaggerItem>
+                </FadeUp>
               ))}
-            </StaggerContainer>
+            </div>
           </div>
         )}
 
         {filteredProjects.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-secondary text-lg">
+          <div className="text-center py-12 rounded-2xl border border-dashed border-border bg-muted/10">
+            <p className="text-muted-foreground text-lg">
               Nenhum projeto encontrado com este filtro.
             </p>
           </div>

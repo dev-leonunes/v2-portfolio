@@ -14,8 +14,8 @@ export const ProjectTypeBadge = ({
 }) => (
   <span
     className={cn(
-      "rounded-full font-mono bg-accent/20 text-accent",
-      size === "sm" ? "px-2 py-1 text-xs" : "px-3 py-1 text-xs"
+      "rounded-full font-mono bg-accent/15 text-accent border border-accent/30 tracking-wide",
+      size === "sm" ? "px-2 py-1 text-[11px]" : "px-3 py-1 text-xs",
     )}
   >
     {getTypeLabel(type)}

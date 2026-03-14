@@ -29,16 +29,16 @@ export const ProjectFilter = ({
       <DropdownMenuTrigger asChild>
         <button
           className={cn(
-            "flex items-center gap-2 px-4 py-2 border-2 border-accent rounded-lg",
-            "text-accent font-mono text-sm bg-transparent",
-            "hover:bg-accent/5 transition-colors",
+            "flex items-center gap-2 px-4 py-2 border border-accent/50 rounded-lg",
+            "text-accent font-mono text-sm bg-background/35",
+            "hover:bg-accent/8 transition-colors",
           )}
         >
           <Filter size={16} />
           {currentLabel}
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-48">
+      <DropdownMenuContent align="end" className="w-52">
         {FILTER_OPTIONS.map((option) => (
           <DropdownMenuItem
             key={option.value}
