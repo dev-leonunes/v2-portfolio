@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { NavItem } from "./nav-items";
 import { ThemeToggle } from "./theme-toggle";
+import { MountStagger, SlideInSide } from "@/components/animations";
 import {
   Sheet,
   SheetContent,
@@ -100,7 +101,22 @@ export const Header = () => {
       ].join(" ")}
     >
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl flex items-center justify-between">
-        <Link href="/">
+        <MountStagger className="hidden lg:block">
+          <SlideInSide distance={-24} duration={0.58}>
+            <Link href="/">
+              <Image
+                width={96}
+                height={42}
+                src={isDarkTheme ? "/Logo-dark.png" : "/Logo-light.png"}
+                alt="Logo"
+                className="h-7 w-auto lg:h-8"
+                priority
+              />
+            </Link>
+          </SlideInSide>
+        </MountStagger>
+
+        <Link href="/" className="lg:hidden">
           <Image
             width={96}
             height={42}
@@ -112,17 +128,24 @@ export const Header = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-10">
+        <MountStagger
+          className="hidden lg:flex items-center gap-10"
+          staggerDelay={0.09}
+          delayChildren={0.05}
+        >
           {NAV_ITEMS.map((item, index) => (
-            <NavItem
-              {...item}
-              index={index}
-              key={item.label}
-              active={activeSection === item.href.slice(1)}
-            />
+            <SlideInSide key={item.label}>
+              <NavItem
+                {...item}
+                index={index}
+                active={activeSection === item.href.slice(1)}
+              />
+            </SlideInSide>
           ))}
-          <ThemeToggle />
-        </nav>
+          <SlideInSide duration={0.56} distance={26}>
+            <ThemeToggle />
+          </SlideInSide>
+        </MountStagger>
 
         {/* Mobile Navigation */}
         <div className="flex lg:hidden">

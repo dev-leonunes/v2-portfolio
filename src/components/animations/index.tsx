@@ -172,3 +172,89 @@ export const FadeIn = ({
     </motion.div>
   );
 };
+
+interface MountStaggerProps {
+  children: ReactNode;
+  staggerDelay?: number;
+  delayChildren?: number;
+  className?: string;
+}
+
+const mountStaggerVariants: Variants = {
+  hidden: {},
+  visible: (custom: { staggerDelay: number; delayChildren: number }) => ({
+    transition: {
+      staggerChildren: custom.staggerDelay,
+      delayChildren: custom.delayChildren,
+    },
+  }),
+};
+
+export const MountStagger = ({
+  children,
+  staggerDelay = 0.08,
+  delayChildren = 0,
+  className,
+}: MountStaggerProps) => {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={mountStaggerVariants}
+      custom={{
+        staggerDelay: shouldReduceMotion ? 0 : staggerDelay,
+        delayChildren: shouldReduceMotion ? 0 : delayChildren,
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+interface SlideInSideProps {
+  children: ReactNode;
+  className?: string;
+  duration?: number;
+  distance?: number;
+}
+
+const slideInSideVariants: Variants = {
+  hidden: (custom: { reduceMotion: boolean; distance: number }) => ({
+    opacity: 0,
+    x: custom.reduceMotion ? 0 : custom.distance,
+  }),
+  visible: (custom: { reduceMotion: boolean; duration: number }) => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: custom.reduceMotion ? 0 : custom.duration,
+      ease: EASE_OUT_EXPO,
+    },
+  }),
+};
+
+export const SlideInSide = ({
+  children,
+  className,
+  duration = 0.5,
+  distance = 22,
+}: SlideInSideProps) => {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      variants={slideInSideVariants}
+      custom={{
+        reduceMotion: shouldReduceMotion,
+        duration,
+        distance,
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
