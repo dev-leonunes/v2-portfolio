@@ -18,25 +18,25 @@ export const HeroSection = () => {
 
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
         <div className="w-full max-w-4xl px-0 py-10 sm:py-12 lg:py-14">
-          <FadeUp delay={0.1}>
+          <FadeUp delay={0.1} disableOnMobile>
             <p className="font-mono text-xs sm:text-sm tracking-[0.2em] uppercase mb-4 text-accent">
               Olá, meu nome é
             </p>
           </FadeUp>
 
-          <FadeUp delay={0.2}>
+          <FadeUp delay={0.2} disableOnMobile>
             <h1 className="font-display text-[2.55rem] leading-[0.98] sm:text-6xl lg:text-8xl font-semibold mb-3 text-balance text-foreground">
               Leonardo Nunes.
             </h1>
           </FadeUp>
 
-          <FadeUp delay={0.3}>
+          <FadeUp delay={0.3} disableOnMobile>
             <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-medium mb-7 text-balance text-secondary">
               Desenvolvedor de software.
             </h2>
           </FadeUp>
 
-          <FadeUp delay={0.4}>
+          <FadeUp delay={0.4} disableOnMobile>
             <p className="text-base sm:text-lg leading-relaxed mb-7 max-w-2xl text-secondary">
               Sou um Desenvolvedor de Software apaixonado por tecnologia e
               inovação e especializado em construir experiências digitais.
@@ -44,7 +44,7 @@ export const HeroSection = () => {
             </p>
           </FadeUp>
 
-          <FadeUp delay={0.5}>
+          <FadeUp delay={0.5} disableOnMobile>
             <div className="flex flex-wrap gap-3 mb-9">
               {TECHS.map((tech, i) => (
                 <Badge key={`tech-${i}`}>{tech}</Badge>
@@ -52,7 +52,7 @@ export const HeroSection = () => {
             </div>
           </FadeUp>
 
-          <FadeUp delay={0.6}>
+          <FadeUp delay={0.6} disableOnMobile>
             <div className="flex flex-wrap items-center gap-6">
               <Button
                 className={cn(
@@ -70,6 +70,7 @@ export const HeroSection = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent transition-colors duration-200"
+                  aria-label="Abrir perfil de Leonardo Nunes no GitHub"
                 >
                   <CONTACT.Github.icon size={24} />
                 </a>
@@ -79,6 +80,7 @@ export const HeroSection = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent transition-colors duration-200"
+                  aria-label="Abrir perfil de Leonardo Nunes no LinkedIn"
                 >
                   <CONTACT.Linkedin.icon size={24} />
                 </a>
@@ -88,6 +90,7 @@ export const HeroSection = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent transition-colors duration-200"
+                  aria-label="Conversar com Leonardo Nunes no WhatsApp"
                 >
                   <CONTACT.Whatsapp.icon size={24} />
                 </a>

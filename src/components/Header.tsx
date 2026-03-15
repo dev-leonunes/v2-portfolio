@@ -133,6 +133,7 @@ export const Header = () => {
                   variant="ghost"
                   size="icon"
                   className="text-accent hover:bg-accent/10 h-12 w-12 rounded-lg"
+                  aria-label="Abrir menu de navegacao"
                 >
                   <Menu className="h-5! w-5!" />
                 </Button>
