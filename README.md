@@ -28,25 +28,35 @@ Regra prática: **comece por `src/constants/index.ts`**.
 - `EXPERIENCES`: histórico profissional
 - `PROJECTS`: projetos (com `type` e `featured`)
 
-Imagens de projetos ficam em `public/` e são referenciadas no campo `image` (ex.: `/drjulio.png`).
+Imagens de projetos ficam em `public/` e são referenciadas no campo `image` (ex.: `/dr-julio-cezar-site.png`).
 
 ## Como rodar localmente
 
-Pré-requisitos: Node.js + npm.
+Pré-requisitos: Node.js + Yarn.
 
 ```bash
-npm install
-npm run dev
+yarn install
+yarn dev
 ```
 
 Abra `http://localhost:3000`.
 
 ## Scripts
 
-- `npm run dev`: desenvolvimento
-- `npm run build`: build de produção
-- `npm run start`: servidor de produção local
-- `npm run lint`: lint
+- `yarn dev`: desenvolvimento
+- `yarn build`: build de produção
+- `yarn start`: servidor de produção local
+- `yarn lint`: lint
+
+## Git hooks
+
+O projeto possui um hook versionado em `.githooks/pre-push` que executa `yarn lint` e `yarn build` antes de cada `git push`.
+
+Após clonar o repositório, ative os hooks locais com:
+
+```bash
+git config core.hooksPath .githooks
+```
 
 ## Notas
 

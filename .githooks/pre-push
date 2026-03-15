@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo "Running yarn lint..."
+yarn lint || exit 1
+
+echo "Running yarn build..."
+yarn build || exit 1
