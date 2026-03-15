@@ -3,6 +3,24 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CONTACT, TECHS } from "@/constants";
 import { FadeUp } from "@/components/animations";
+import type { ReactNode } from "react";
+
+const HeroFadeUp = ({
+  children,
+  delay = 0,
+}: {
+  children: ReactNode;
+  delay?: number;
+}) => {
+  return (
+    <>
+      <div className="sm:hidden">{children}</div>
+      <FadeUp delay={delay} className="hidden sm:block">
+        {children}
+      </FadeUp>
+    </>
+  );
+};
 
 export const HeroSection = () => {
   return (
@@ -18,41 +36,41 @@ export const HeroSection = () => {
 
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
         <div className="w-full max-w-4xl px-0 py-10 sm:py-12 lg:py-14">
-          <FadeUp delay={0.1} disableOnMobile>
+          <HeroFadeUp delay={0.1}>
             <p className="font-mono text-xs sm:text-sm tracking-[0.2em] uppercase mb-4 text-accent">
               Olá, meu nome é
             </p>
-          </FadeUp>
+          </HeroFadeUp>
 
-          <FadeUp delay={0.2} disableOnMobile>
+          <HeroFadeUp delay={0.2}>
             <h1 className="font-display text-[2.55rem] leading-[0.98] sm:text-6xl lg:text-8xl font-semibold mb-3 text-balance text-foreground">
               Leonardo Nunes.
             </h1>
-          </FadeUp>
+          </HeroFadeUp>
 
-          <FadeUp delay={0.3} disableOnMobile>
+          <HeroFadeUp delay={0.3}>
             <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-medium mb-7 text-balance text-secondary">
               Desenvolvedor de software.
             </h2>
-          </FadeUp>
+          </HeroFadeUp>
 
-          <FadeUp delay={0.4} disableOnMobile>
+          <HeroFadeUp delay={0.4}>
             <p className="text-base sm:text-lg leading-relaxed mb-7 max-w-2xl text-secondary">
               Sou um Desenvolvedor de Software apaixonado por tecnologia e
               inovação e especializado em construir experiências digitais.
               Atualmente trabalho com tecnologias como:
             </p>
-          </FadeUp>
+          </HeroFadeUp>
 
-          <FadeUp delay={0.5} disableOnMobile>
+          <HeroFadeUp delay={0.5}>
             <div className="flex flex-wrap gap-3 mb-9">
               {TECHS.map((tech, i) => (
                 <Badge key={`tech-${i}`}>{tech}</Badge>
               ))}
             </div>
-          </FadeUp>
+          </HeroFadeUp>
 
-          <FadeUp delay={0.6} disableOnMobile>
+          <HeroFadeUp delay={0.6}>
             <div className="flex flex-wrap items-center gap-6">
               <Button
                 className={cn(
@@ -96,7 +114,7 @@ export const HeroSection = () => {
                 </a>
               </div>
             </div>
-          </FadeUp>
+          </HeroFadeUp>
         </div>
       </div>
     </section>
