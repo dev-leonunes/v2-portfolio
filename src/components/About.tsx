@@ -159,12 +159,12 @@ export const AboutSection = () => {
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <div className="block lg:hidden">
+                    <div className="relative block h-full w-full lg:hidden">
                       <Image
                         src="/devleo-about-mobile.jpg"
                         alt="Leonardo Nunes trabalhando em seu setup"
-                        width={800}
-                        height={800}
+                        fill
+                        sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) 32rem, 0px"
                         className="h-full w-full object-cover"
                       />
                     </div>

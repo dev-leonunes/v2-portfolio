@@ -105,8 +105,8 @@ export const Header = () => {
           <SlideInSide distance={-24} duration={0.58}>
             <Link href="/">
               <Image
-                width={96}
-                height={42}
+                width={131}
+                height={114}
                 src={isDarkTheme ? "/Logo-dark.png" : "/Logo-light.png"}
                 alt="Logo"
                 className="h-7 w-auto lg:h-8"
@@ -118,8 +118,8 @@ export const Header = () => {
 
         <Link href="/" className="lg:hidden">
           <Image
-            width={96}
-            height={42}
+            width={131}
+            height={114}
             src={isDarkTheme ? "/Logo-dark.png" : "/Logo-light.png"}
             alt="Logo"
             className="h-7 w-auto lg:h-8"

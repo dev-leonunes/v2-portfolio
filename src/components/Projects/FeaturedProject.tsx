@@ -28,10 +28,10 @@ export const FeaturedProject = ({
           {project.image ? (
             <Image
               src={project.image}
-              alt={project.title}
+              alt={project.imageAlt ?? project.title}
               fill
               className="object-cover transition-all duration-500 group-hover:scale-103"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              sizes="(max-width: 1024px) calc(100vw - 3rem), (max-width: 1280px) 41vw, 34rem"
             />
           ) : (
             <div className="w-full h-full bg-linear-to-br from-muted to-muted/50 flex items-center justify-center transition-all duration-500 group-hover:scale-103">

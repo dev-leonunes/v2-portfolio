@@ -152,6 +152,7 @@ export interface Project {
   title: string;
   description: string;
   image?: string;
+  imageAlt?: string;
   technologies: string[];
   type: ProjectType;
   featured: boolean;
@@ -165,7 +166,9 @@ export const PROJECTS: Project[] = [
     title: "Dr. Júlio Cézar",
     description:
       "Site profissional com seção 'Sobre Mim', especialidades, agendamento direto via WhatsApp e integração com redes sociais. Estrutura otimizada para SEO e performance.",
-    image: "/drjulio.png",
+    image: "/dr-julio-cezar-site.png",
+    imageAlt:
+      "Página inicial do site profissional do Dr. Júlio Cézar com seções de apresentação e especialidades",
     technologies: [
       "React",
       "TypeScript",
@@ -183,7 +186,9 @@ export const PROJECTS: Project[] = [
     title: "Foco em Notícias",
     description:
       "Portal Foco em Notícias, um projeto que se destaca pelo uso estratégico de técnicas de SEO.",
-    image: "/news-portal-2.png",
+    image: "/foco-em-noticias-homepage.png",
+    imageAlt:
+      "Página inicial do portal Foco em Notícias com destaques editoriais e estrutura otimizada para SEO",
     technologies: ["WordPress", "Elementor", "SEO"],
     type: "freelance",
     featured: true,
@@ -194,7 +199,9 @@ export const PROJECTS: Project[] = [
     title: "Sistema de Gestão de Estoque",
     description:
       "Aplicação full stack para gerenciamento de produtos e movimentações de estoque (entradas e saídas), com controle de estoque mínimo, filtros e foco em experiência de uso.",
-    image: "/stock-management.png",
+    image: "/sistema-gestao-estoque-dashboard.png",
+    imageAlt:
+      "Dashboard do sistema de gestão de estoque com listagem de produtos e controles de movimentação",
     technologies: [
       "React",
       "TypeScript",
@@ -217,7 +224,9 @@ export const PROJECTS: Project[] = [
     title: "Fibras Maravigirl",
     description:
       "E-commerce desenvolvido na plataforma Nuvemshop, com personalização de layout via CSS e HTML para adaptar às necessidades do cliente.",
-    image: "/e-commerce.png",
+    image: "/fibras-maravigirl-loja.png",
+    imageAlt:
+      "Página da loja virtual Fibras Maravigirl com vitrine de produtos e identidade personalizada",
     technologies: ["Nuvemshop", "HTML", "CSS"],
     type: "freelance",
     featured: false,
@@ -228,7 +237,9 @@ export const PROJECTS: Project[] = [
     title: "Vem Ver Notícias",
     description:
       "Portal desenvolvido como projeto freelancer em WordPress, usando Elementor e estratégias de SEO.",
-    image: "/news-portal.png",
+    image: "/vem-ver-noticias-homepage.png",
+    imageAlt:
+      "Página inicial do portal Vem Ver Notícias com matérias em destaque e layout de portal de conteúdo",
     technologies: ["WordPress", "Elementor", "SEO"],
     type: "freelance",
     featured: false,
@@ -239,7 +250,9 @@ export const PROJECTS: Project[] = [
     title: "The Legend of Zelda",
     description:
       "Mini-game tributo ao jogo original onde o objetivo é coletar 3 itens e abrir uma porta para enfrentar o chefão.",
-    image: "/legend-of-zelda.png",
+    image: "/the-legend-of-zelda-game.png",
+    imageAlt:
+      "Tela do mini-game The Legend of Zelda com cenário retrô e personagem em exploração",
     technologies: ["JavaScript", "p5.js"],
     type: "personal",
     featured: false,
@@ -251,7 +264,9 @@ export const PROJECTS: Project[] = [
     title: "Amigo Secreto",
     description:
       "Gerador de amigo secreto que sorteia os participantes e informa quem é o amigo secreto de cada um.",
-    image: "/secret-friend.png",
+    image: "/amigo-secreto-app.png",
+    imageAlt:
+      "Interface do gerador de amigo secreto com lista de participantes e ação de sorteio",
     technologies: ["HTML", "CSS", "JavaScript"],
     type: "personal",
     featured: false,
@@ -263,7 +278,9 @@ export const PROJECTS: Project[] = [
     title: "Encrypt Text",
     description:
       "Encriptador de texto simples que utiliza um algoritmo de substituição para criptografar e descriptografar mensagens.",
-    image: "/encrypt-text.png",
+    image: "/encrypt-text-app.png",
+    imageAlt:
+      "Aplicação Encrypt Text com campos para criptografar e descriptografar mensagens de texto",
     technologies: ["HTML", "CSS", "JavaScript"],
     type: "personal",
     featured: false,

@@ -9,18 +9,21 @@ const displayFont = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display-family",
   weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 const bodyFont = Source_Sans_3({
   subsets: ["latin"],
   variable: "--font-body-family",
   weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 const monoFont = IBM_Plex_Mono({
   subsets: ["latin"],
   variable: "--font-mono-family",
   weight: ["400", "500", "600"],
+  display: "swap",
 });
 import { getSiteUrl } from "@/lib/site-url";
 
