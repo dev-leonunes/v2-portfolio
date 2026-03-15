@@ -62,8 +62,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og-image.png",
-        width: 1845,
-        height: 1079,
+        width: 1200,
+        height: 630,
         alt: "Prévia do portfólio de Leonardo Nunes",
       },
     ],
