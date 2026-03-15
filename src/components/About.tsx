@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ABOUT_TECHS } from "@/constants";
@@ -152,29 +153,41 @@ export const AboutSection = () => {
                   <div
                     className={cn(
                       "relative w-full aspect-square rounded-2xl overflow-hidden z-10 border border-border/70",
-                      "transition-transform duration-300 ease-out",
-                      "group-hover:-translate-x-1 group-hover:-translate-y-1",
+                      "lg:transition-transform lg:duration-300 lg:ease-out",
+                      "lg:group-hover:-translate-x-1 lg:group-hover:-translate-y-1",
                     )}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <div
-                      className={cn(
-                        "absolute inset-0 bg-accent/35 mix-blend-multiply z-20",
-                        "transition-opacity duration-300",
-                        "group-hover:opacity-0",
-                      )}
-                    ></div>
+                    <div className="block lg:hidden">
+                      <Image
+                        src="/devleo-about-mobile.jpg"
+                        alt="Leonardo Nunes trabalhando em seu setup"
+                        width={800}
+                        height={800}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
 
-                    <video
-                      ref={videoRef}
-                      className="w-full h-full object-cover"
-                      src="/devleo-about.mp4"
-                      muted
-                      playsInline
-                      onEnded={handleEnded}
-                      preload="auto"
-                    />
+                    <div className="hidden h-full w-full lg:block">
+                      <div
+                        className={cn(
+                          "absolute inset-0 bg-accent/35 mix-blend-multiply z-20",
+                          "transition-opacity duration-300",
+                          "group-hover:opacity-0",
+                        )}
+                      ></div>
+
+                      <video
+                        ref={videoRef}
+                        className="w-full h-full object-cover"
+                        src="/devleo-about.mp4"
+                        muted
+                        playsInline
+                        onEnded={handleEnded}
+                        preload="auto"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
