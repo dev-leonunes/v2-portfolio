@@ -152,20 +152,22 @@ export const AboutSection = () => {
 
                   <div
                     className={cn(
-                      "relative w-full aspect-square rounded-2xl overflow-hidden z-10 border border-border/70",
+                      "relative w-full aspect-square min-h-72 rounded-2xl overflow-hidden z-10 border border-border/70",
                       "lg:transition-transform lg:duration-300 lg:ease-out",
                       "lg:group-hover:-translate-x-1 lg:group-hover:-translate-y-1",
                     )}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <div className="relative block h-full w-full lg:hidden">
+                    <div className="block h-full w-full lg:hidden">
                       <Image
-                        src="/devleo-about-mobile.jpg"
+                        src="/devleo-about-mobile.png"
                         alt="Leonardo Nunes trabalhando em seu setup"
-                        fill
-                        sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) 32rem, 0px"
+                        width={800}
+                        height={800}
+                        sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) min(100vw - 3rem, 21.875rem), 0px"
                         className="h-full w-full object-cover"
+                        priority
                       />
                     </div>
 
