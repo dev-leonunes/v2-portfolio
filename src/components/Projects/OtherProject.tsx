@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { TbBrandGithub } from "react-icons/tb";
 import { type Project } from "@/constants";
 import { ImagePlaceholder } from "./ImagePlaceholder";
+import { ProjectLinks } from "./ProjectLinks";
 import { ProjectTypeBadge } from "./ProjectTypeBadge";
 
 export const OtherProject = ({ project }: { project: Project }) => {
@@ -70,30 +70,12 @@ export const OtherProject = ({ project }: { project: Project }) => {
         </div>
 
         <div className="mt-4 pt-4 border-t border-border/60 min-h-9 flex items-end">
-          <div className="relative z-10 flex items-center gap-4 flex-wrap">
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-sm font-mono text-sm font-semibold text-accent underline decoration-accent/35 underline-offset-4 transition-all duration-250 hover:-translate-y-0.5 hover:opacity-85 hover:decoration-accent/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70"
-                aria-label="Abrir repositório no GitHub"
-              >
-                <TbBrandGithub size={16} />
-                GitHub
-              </a>
-            )}
-
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono text-sm font-semibold text-accent underline decoration-accent/35 underline-offset-4 transition-all duration-250 hover:-translate-y-0.5 hover:opacity-85 hover:decoration-accent/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 rounded-sm"
-              >
-                {"Ver ->"}
-              </a>
-            )}
+          <div className="relative z-10">
+            <ProjectLinks
+              githubUrl={project.githubUrl}
+              liveUrl={project.liveUrl}
+              size="sm"
+            />
           </div>
         </div>
       </div>

@@ -14,7 +14,10 @@ export const Footer = () => {
   ] as const;
 
   return (
-    <footer className="relative w-full overflow-hidden border-t border-border/75 py-10 lg:py-12">
+    <footer
+      id="site-footer"
+      className="relative w-full overflow-hidden border-t border-border/75 py-10 lg:py-12"
+    >
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-accent/40 to-transparent" />
         <div className="absolute -top-28 left-1/2 h-56 w-96 -translate-x-1/2 rounded-full bg-accent/14 blur-3xl" />
