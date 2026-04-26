@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { HeroSection } from "@/components/Hero";
 import { AboutSection } from "@/components/About";
 import { ExperienceSection } from "@/components/Experience";
@@ -7,12 +6,6 @@ import { CONTACT } from "@/constants";
 import { getSiteUrl } from "@/lib/site-url";
 
 const siteUrl = getSiteUrl();
-
-export const metadata: Metadata = {
-  title: "Portfólio",
-  description:
-    "Portfólio de Leonardo Nunes com projetos, experiências e tecnologias em desenvolvimento web moderno.",
-};
 
 export default function Home() {
   const personJsonLd = {
