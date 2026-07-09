@@ -91,7 +91,7 @@ export const AboutSection = () => {
                   </span>
                   , com experiência em{" "}
                   <span className="text-accent font-semibold">
-                    aplicações web e microsserviços
+                    aplicações web, APIs e microsserviços
                   </span>
                   , passando por{" "}
                   <span className="text-accent font-semibold">
@@ -105,17 +105,21 @@ export const AboutSection = () => {
                   <span className="text-accent font-semibold">
                     trabalhos freelancers
                   </span>
-                  . Já atuei no desenvolvimento de sistemas para monitoramento
-                  industrial, plataformas web e APIs, sempre buscando código
+                  . Tenho atuado em sistemas para monitoramento industrial em
+                  tempo real, integrações com dados de equipamentos, dashboards
+                  analíticos e visualizações interativas, sempre buscando código
                   limpo, performance e boa experiência de uso.
                 </p>
 
                 <p>
-                  Além disso, trabalho como{" "}
+                  Também venho aprofundando minha atuação com{" "}
                   <span className="text-accent font-semibold">
-                    desenvolvedor freelancer
+                    agentes de IA e desenvolvimento assistido por IA
                   </span>
-                  , criando sites e aplicações com foco em performance,
+                  , aplicando esse conhecimento para apoiar diagnóstico técnico,
+                  produtividade no desenvolvimento e construção de soluções mais
+                  inteligentes. Em paralelo, trabalho como desenvolvedor
+                  freelancer, criando sites e aplicações com foco em performance,
                   responsividade e SEO.
                 </p>
 

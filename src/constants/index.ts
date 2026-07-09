@@ -32,24 +32,27 @@ export const CONTACT = {
 export const TECHS = [
   "Node.js",
   "React",
+  "Next.js",
   "JavaScript",
   "TypeScript",
-  "HTML",
-  "CSS",
+  "NestJS",
   "PostgreSQL",
   "MongoDB",
-  "WordPress",
+  "WebSockets",
+  "IA",
 ];
 
 export const ABOUT_TECHS = [
   "JavaScript (ES6+) / TypeScript",
-  "React",
+  "React / Next.js",
   "Node.js",
-  "AdonisJS / Express",
+  "NestJS / AdonisJS / Express",
   "PostgreSQL / MySQL",
   "MongoDB",
+  "WebSockets / Modbus",
+  "React Flow / ECharts / Recharts",
   "Tailwind CSS",
-  "WordPress",
+  "Jest / Vitest",
 ];
 
 export const EXPERIENCES = [
@@ -59,13 +62,14 @@ export const EXPERIENCES = [
     role: "Desenvolvedor Full Stack Jr",
     period: "Abr 2025 - Atualmente",
     description:
-      "Atuação no desenvolvimento e manutenção de uma plataforma de monitoramento industrial baseada em microsserviços, com foco em performance, escalabilidade e confiabilidade.",
+      "Atuação no desenvolvimento, manutenção e evolução de uma plataforma de monitoramento industrial em tempo real baseada em microsserviços, com foco em integrações, visualização de dados, performance e confiabilidade.",
     responsibilities: [
-      "Desenvolvimento de interfaces com React, TypeScript, Tailwind CSS e Vite",
-      "Implementação de funcionalidades no back-end com Node.js e AdonisJS",
-      "Integração com equipamentos industriais via protocolo Modbus",
-      "Modelagem e manipulação de dados com MySQL e MongoDB",
-      "Correção de bugs, melhorias contínuas e colaboração em ambiente ágil (Scrum)",
+      "Desenvolvimento end-to-end de funcionalidades com React, TypeScript, Tailwind CSS, Node.js e AdonisJS",
+      "Integração com dados industriais em tempo real via WebSockets e protocolo Modbus",
+      "Criação de dashboards analíticos, diagramas de equipamentos e visualizações interativas com React Flow, ECharts e Recharts",
+      "Otimização de consultas e modelagem de dados em MySQL e MongoDB para análise de grandes volumes de registros",
+      "Desenvolvimento de agente de IA aplicado ao domínio industrial para apoiar diagnóstico técnico e geração de ocorrências",
+      "Implementação e melhoria de notificações via Email, WhatsApp e Telegram, além de sustentação de aplicação legada em .NET/ASP.NET",
     ],
     technologies: [
       "React",
@@ -74,6 +78,11 @@ export const EXPERIENCES = [
       "AdonisJS",
       "MySQL",
       "MongoDB",
+      "WebSockets",
+      "Modbus",
+      "React Flow",
+      "ECharts",
+      "Recharts",
       "Tailwind CSS",
       "Docker",
     ],
@@ -286,6 +295,25 @@ export const PROJECTS: Project[] = [
     featured: false,
     githubUrl: "https://github.com/dev-leonunes/encrypt-text-alura",
     liveUrl: "https://dev-leonunes.github.io/encrypt-text-alura/",
+  },
+  {
+    id: "raizes-do-nordeste-api",
+    title: "Raízes do Nordeste API",
+    description:
+      "API REST para uma rede fictícia de restaurantes nordestinos, com autenticação JWT, autorização por perfis, cardápio, estoque por unidade, pedidos multicanal, pagamento mock e auditoria.",
+    technologies: [
+      "NestJS",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "JWT",
+      "Swagger/OpenAPI",
+      "Vitest",
+      "Docker",
+    ],
+    type: "personal",
+    featured: false,
+    githubUrl: "https://github.com/dev-leonunes/raizes-do-nordeste-api",
   },
   {
     id: "sistema-dindin",
