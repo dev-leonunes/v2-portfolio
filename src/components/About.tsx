@@ -221,7 +221,6 @@ export const AboutSection = () => {
                           height={800}
                           sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) min(100vw - 3rem, 21.875rem), 0px"
                           className="h-full w-full object-cover"
-                          priority
                         />
                       </div>
                     )}
