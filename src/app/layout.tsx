@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.webp",
         width: 1200,
         height: 630,
         alt: "Prévia do portfólio de Leonardo Nunes",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     title: "Leonardo Nunes | Desenvolvedor de Software",
     description:
       "Portfólio com projetos, experiência profissional e tecnologias de Leonardo Nunes.",
-    images: ["/og-image.png"],
+    images: ["/og-image.webp"],
   },
 };
 

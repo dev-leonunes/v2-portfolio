@@ -107,7 +107,7 @@ export const Header = () => {
               <Image
                 width={131}
                 height={114}
-                src={isDarkTheme ? "/Logo-dark.png" : "/Logo-light.png"}
+                src={isDarkTheme ? "/Logo-dark.webp" : "/Logo-light.webp"}
                 alt="Logo"
                 className="h-7 w-auto lg:h-8"
                 priority
@@ -120,7 +120,7 @@ export const Header = () => {
           <Image
             width={131}
             height={114}
-            src={isDarkTheme ? "/Logo-dark.png" : "/Logo-light.png"}
+            src={isDarkTheme ? "/Logo-dark.webp" : "/Logo-light.webp"}
             alt="Logo"
             className="h-7 w-auto lg:h-8"
             priority

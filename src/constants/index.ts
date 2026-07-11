@@ -175,7 +175,7 @@ export const PROJECTS: Project[] = [
     title: "Dr. Júlio Cézar",
     description:
       "Site profissional com seção 'Sobre Mim', especialidades, agendamento direto via WhatsApp e integração com redes sociais. Estrutura otimizada para SEO e performance.",
-    image: "/dr-julio-cezar-site.png",
+    image: "/dr-julio-cezar-site.webp",
     imageAlt:
       "Página inicial do site profissional do Dr. Júlio Cézar com seções de apresentação e especialidades",
     technologies: [
@@ -195,7 +195,7 @@ export const PROJECTS: Project[] = [
     title: "Foco em Notícias",
     description:
       "Portal Foco em Notícias, um projeto que se destaca pelo uso estratégico de técnicas de SEO.",
-    image: "/foco-em-noticias-homepage.png",
+    image: "/foco-em-noticias-homepage.webp",
     imageAlt:
       "Página inicial do portal Foco em Notícias com destaques editoriais e estrutura otimizada para SEO",
     technologies: ["WordPress", "Elementor", "SEO"],
@@ -208,7 +208,7 @@ export const PROJECTS: Project[] = [
     title: "Sistema de Gestão de Estoque",
     description:
       "Aplicação full stack para gerenciamento de produtos e movimentações de estoque (entradas e saídas), com controle de estoque mínimo, filtros e foco em experiência de uso.",
-    image: "/sistema-gestao-estoque-dashboard.png",
+    image: "/sistema-gestao-estoque-dashboard.webp",
     imageAlt:
       "Dashboard do sistema de gestão de estoque com listagem de produtos e controles de movimentação",
     technologies: [
@@ -233,7 +233,7 @@ export const PROJECTS: Project[] = [
     title: "Fibras Maravigirl",
     description:
       "E-commerce desenvolvido na plataforma Nuvemshop, com personalização de layout via CSS e HTML para adaptar às necessidades do cliente.",
-    image: "/fibras-maravigirl-loja.png",
+    image: "/fibras-maravigirl-loja.webp",
     imageAlt:
       "Página da loja virtual Fibras Maravigirl com vitrine de produtos e identidade personalizada",
     technologies: ["Nuvemshop", "HTML", "CSS"],
@@ -246,7 +246,7 @@ export const PROJECTS: Project[] = [
     title: "Vem Ver Notícias",
     description:
       "Portal desenvolvido como projeto freelancer em WordPress, usando Elementor e estratégias de SEO.",
-    image: "/vem-ver-noticias-homepage.png",
+    image: "/vem-ver-noticias-homepage.webp",
     imageAlt:
       "Página inicial do portal Vem Ver Notícias com matérias em destaque e layout de portal de conteúdo",
     technologies: ["WordPress", "Elementor", "SEO"],
@@ -259,7 +259,7 @@ export const PROJECTS: Project[] = [
     title: "The Legend of Zelda",
     description:
       "Mini-game tributo ao jogo original onde o objetivo é coletar 3 itens e abrir uma porta para enfrentar o chefão.",
-    image: "/the-legend-of-zelda-game.png",
+    image: "/the-legend-of-zelda-game.webp",
     imageAlt:
       "Tela do mini-game The Legend of Zelda com cenário retrô e personagem em exploração",
     technologies: ["JavaScript", "p5.js"],
@@ -273,7 +273,7 @@ export const PROJECTS: Project[] = [
     title: "Amigo Secreto",
     description:
       "Gerador de amigo secreto que sorteia os participantes e informa quem é o amigo secreto de cada um.",
-    image: "/amigo-secreto-app.png",
+    image: "/amigo-secreto-app.webp",
     imageAlt:
       "Interface do gerador de amigo secreto com lista de participantes e ação de sorteio",
     technologies: ["HTML", "CSS", "JavaScript"],
@@ -287,7 +287,7 @@ export const PROJECTS: Project[] = [
     title: "Encrypt Text",
     description:
       "Encriptador de texto simples que utiliza um algoritmo de substituição para criptografar e descriptografar mensagens.",
-    image: "/encrypt-text-app.png",
+    image: "/encrypt-text-app.webp",
     imageAlt:
       "Aplicação Encrypt Text com campos para criptografar e descriptografar mensagens de texto",
     technologies: ["HTML", "CSS", "JavaScript"],

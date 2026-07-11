@@ -165,7 +165,7 @@ export const AboutSection = () => {
                   >
                     <div className="block h-full w-full lg:hidden">
                       <Image
-                        src="/devleo-about-mobile.png"
+                        src="/devleo-about-mobile.webp"
                         alt="Leonardo Nunes trabalhando em seu setup"
                         width={800}
                         height={800}
