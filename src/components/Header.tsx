@@ -23,14 +23,9 @@ const NAV_ITEMS = [
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -149,64 +144,52 @@ export const Header = () => {
 
         {/* Mobile Navigation */}
         <div className="flex lg:hidden">
-          {mounted ? (
-            <Sheet open={open} onOpenChange={setOpen}>
-              <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-accent hover:bg-accent/10 h-12 w-12 rounded-lg"
-                  aria-label="Abrir menu de navegacao"
-                >
-                  <Menu className="h-5! w-5!" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent
-                side="right"
-                className="w-70 border-l border-border/80 bg-background/95 backdrop-blur-xl"
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-accent hover:bg-accent/10 h-12 w-12 rounded-lg"
+                aria-label="Abrir menu de navegacao"
               >
-                <SheetTitle className="sr-only">Menu</SheetTitle>
-                <nav className="flex flex-col gap-6 mt-8">
-                  {NAV_ITEMS.map((item, index) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      className={[
-                        "font-mono text-base transition-all py-2 px-3 rounded-md",
-                        activeSection === item.href.slice(1)
-                          ? "bg-accent/15 text-accent"
-                          : "text-secondary hover:text-accent hover:bg-accent/10",
-                      ].join(" ")}
-                      aria-current={
-                        activeSection === item.href.slice(1)
-                          ? "location"
-                          : undefined
-                      }
-                    >
-                      <span className="text-accent">
-                        {String(index + 1).padStart(2, "0")}.
-                      </span>{" "}
-                      {item.label}
-                    </Link>
-                  ))}
-                  <div className="pt-4 border-t border-border">
-                    <ThemeToggle />
-                  </div>
-                </nav>
-              </SheetContent>
-            </Sheet>
-          ) : (
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-accent h-12 w-12 rounded-lg opacity-0 pointer-events-none"
-              aria-hidden="true"
-              tabIndex={-1}
+                <Menu className="h-5! w-5!" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent
+              side="right"
+              className="w-70 border-l border-border/80 bg-background/95 backdrop-blur-xl"
             >
-              <Menu className="h-5! w-5!" />
-            </Button>
-          )}
+              <SheetTitle className="sr-only">Menu</SheetTitle>
+              <nav className="flex flex-col gap-6 mt-8">
+                {NAV_ITEMS.map((item, index) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className={[
+                      "font-mono text-base transition-all py-2 px-3 rounded-md",
+                      activeSection === item.href.slice(1)
+                        ? "bg-accent/15 text-accent"
+                        : "text-secondary hover:text-accent hover:bg-accent/10",
+                    ].join(" ")}
+                    aria-current={
+                      activeSection === item.href.slice(1)
+                        ? "location"
+                        : undefined
+                    }
+                  >
+                    <span className="text-accent">
+                      {String(index + 1).padStart(2, "0")}.
+                    </span>{" "}
+                    {item.label}
+                  </Link>
+                ))}
+                <div className="pt-4 border-t border-border">
+                  <ThemeToggle />
+                </div>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>

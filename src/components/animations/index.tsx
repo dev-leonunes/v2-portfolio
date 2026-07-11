@@ -1,9 +1,26 @@
 "use client";
 
 import { motion, type Variants, useReducedMotion } from "framer-motion";
-import { type ReactNode } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 
 const EASE_OUT_EXPO: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const useProgressiveInView = (enabled: boolean) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isPrepared, setIsPrepared] = useState(false);
+
+  useEffect(() => {
+    if (!enabled) return;
+
+    const element = ref.current;
+
+    if (element && element.getBoundingClientRect().top >= window.innerHeight) {
+      setIsPrepared(true);
+    }
+  }, [enabled]);
+
+  return { ref, isPrepared };
+};
 
 interface FadeUpProps {
   children: ReactNode;
@@ -37,11 +54,15 @@ export const FadeUp = ({
   once = true,
 }: FadeUpProps) => {
   const shouldReduceMotion = useReducedMotion();
+  const { ref, isPrepared } = useProgressiveInView(!shouldReduceMotion);
+  const shouldAnimate = isPrepared && !shouldReduceMotion;
 
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
+      ref={ref}
+      key={shouldAnimate ? "prepared" : "fallback"}
+      initial={shouldAnimate ? "hidden" : false}
+      whileInView={shouldAnimate ? "visible" : undefined}
       viewport={{ once, amount: 0.1 }}
       variants={fadeUpVariants}
       custom={{
@@ -95,11 +116,15 @@ export const StaggerContainer = ({
   once = true,
 }: StaggerContainerProps) => {
   const shouldReduceMotion = useReducedMotion();
+  const { ref, isPrepared } = useProgressiveInView(!shouldReduceMotion);
+  const shouldAnimate = isPrepared && !shouldReduceMotion;
 
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
+      ref={ref}
+      key={shouldAnimate ? "prepared" : "fallback"}
+      initial={shouldAnimate ? "hidden" : false}
+      whileInView={shouldAnimate ? "visible" : undefined}
       viewport={{ once, amount: 0.1 }}
       variants={staggerContainerVariants}
       custom={shouldReduceMotion ? 0 : staggerDelay}
@@ -155,11 +180,15 @@ export const FadeIn = ({
   once = true,
 }: FadeInProps) => {
   const shouldReduceMotion = useReducedMotion();
+  const { ref, isPrepared } = useProgressiveInView(!shouldReduceMotion);
+  const shouldAnimate = isPrepared && !shouldReduceMotion;
 
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
+      ref={ref}
+      key={shouldAnimate ? "prepared" : "fallback"}
+      initial={shouldAnimate ? "hidden" : false}
+      whileInView={shouldAnimate ? "visible" : undefined}
       viewport={{ once, amount: 0.1 }}
       variants={fadeInVariants}
       custom={{
