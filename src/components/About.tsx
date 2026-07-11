@@ -9,16 +9,45 @@ import { FadeUp, FadeIn } from "@/components/animations";
 export const AboutSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
   const [hasPlayed, setHasPlayed] = useState(false);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+
+    const handleBreakpointChange = () => {
+      if (!mediaQuery.matches) {
+        const video = videoRef.current;
+
+        if (video) {
+          video.loop = false;
+          video.pause();
+          video.currentTime = 0;
+        }
+
+        setHasPlayed(false);
+      }
+
+      setIsDesktop(mediaQuery.matches);
+    };
+
+    handleBreakpointChange();
+    mediaQuery.addEventListener("change", handleBreakpointChange);
+
+    return () => mediaQuery.removeEventListener("change", handleBreakpointChange);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) return;
+
     const section = sectionRef.current;
-    if (!section) return;
+    const video = videoRef.current;
+    if (!section || !video) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !hasPlayed) {
-          videoRef.current?.play();
+          void video.play();
           setHasPlayed(true);
         }
       },
@@ -28,7 +57,7 @@ export const AboutSection = () => {
     observer.observe(section);
 
     return () => observer.disconnect();
-  }, [hasPlayed]);
+  }, [hasPlayed, isDesktop]);
 
   const handleEnded = () => {
     if (videoRef.current && !videoRef.current.loop) {
@@ -160,40 +189,42 @@ export const AboutSection = () => {
                       "lg:transition-transform lg:duration-300 lg:ease-out",
                       "lg:group-hover:-translate-x-1 lg:group-hover:-translate-y-1",
                     )}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
+                    onMouseEnter={isDesktop ? handleMouseEnter : undefined}
+                    onMouseLeave={isDesktop ? handleMouseLeave : undefined}
                   >
-                    <div className="block h-full w-full lg:hidden">
-                      <Image
-                        src="/devleo-about-mobile.webp"
-                        alt="Leonardo Nunes trabalhando em seu setup"
-                        width={800}
-                        height={800}
-                        sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) min(100vw - 3rem, 21.875rem), 0px"
-                        className="h-full w-full object-cover"
-                        priority
-                      />
-                    </div>
+                    {isDesktop ? (
+                      <div className="h-full w-full">
+                        <div
+                          className={cn(
+                            "absolute inset-0 bg-accent/35 mix-blend-multiply z-20",
+                            "transition-opacity duration-300",
+                            "group-hover:opacity-0",
+                          )}
+                        ></div>
 
-                    <div className="hidden h-full w-full lg:block">
-                      <div
-                        className={cn(
-                          "absolute inset-0 bg-accent/35 mix-blend-multiply z-20",
-                          "transition-opacity duration-300",
-                          "group-hover:opacity-0",
-                        )}
-                      ></div>
-
-                      <video
-                        ref={videoRef}
-                        className="w-full h-full object-cover"
-                        src="/devleo-about.mp4"
-                        muted
-                        playsInline
-                        onEnded={handleEnded}
-                        preload="auto"
-                      />
-                    </div>
+                        <video
+                          ref={videoRef}
+                          className="w-full h-full object-cover"
+                          src="/devleo-about.mp4"
+                          muted
+                          playsInline
+                          onEnded={handleEnded}
+                          preload="auto"
+                        />
+                      </div>
+                    ) : (
+                      <div className="h-full w-full">
+                        <Image
+                          src="/devleo-about-mobile.webp"
+                          alt="Leonardo Nunes trabalhando em seu setup"
+                          width={800}
+                          height={800}
+                          sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) min(100vw - 3rem, 21.875rem), 0px"
+                          className="h-full w-full object-cover"
+                          priority
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
