@@ -2,8 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CONTACT, TECHS } from "@/constants";
-import { FadeUp } from "@/components/animations";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 const HeroFadeUp = ({
   children,
@@ -13,12 +12,12 @@ const HeroFadeUp = ({
   delay?: number;
 }) => {
   return (
-    <>
-      <div className="sm:hidden">{children}</div>
-      <FadeUp delay={delay} className="hidden sm:block">
-        {children}
-      </FadeUp>
-    </>
+    <div
+      className="hero-fade-up"
+      style={{ "--hero-animation-delay": `${delay}s` } as CSSProperties}
+    >
+      {children}
+    </div>
   );
 };
 

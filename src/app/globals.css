@@ -113,6 +113,24 @@
     padding-top: var(--hero-top-space);
     padding-bottom: var(--hero-bottom-space);
   }
+
+  @media (min-width: 40rem) and (prefers-reduced-motion: no-preference) {
+    .hero-fade-up {
+      animation: hero-settle 0.68s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-delay: var(--hero-animation-delay);
+    }
+  }
+}
+
+@keyframes hero-settle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(8px);
+  }
 }
 
 @layer base {
