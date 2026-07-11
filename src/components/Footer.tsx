@@ -30,7 +30,7 @@ export const Footer = () => {
               Encerrando por aqui, mas a conversa continua
             </p>
 
-            <StaggerContainer staggerDelay={0.11}>
+            <StaggerContainer staggerDelay={0.11} animateOnMobile>
               <div className="flex flex-wrap items-center justify-center gap-3 text-secondary">
                 {socialLinks.map(({ key, label }) => {
                   const social = CONTACT[key];

@@ -4,6 +4,23 @@ import { motion, type Variants, useReducedMotion } from "framer-motion";
 import { type ReactNode, useEffect, useRef, useState } from "react";
 
 const EASE_OUT_EXPO: [number, number, number, number] = [0.22, 1, 0.36, 1];
+const MOBILE_MEDIA_QUERY = "(max-width: 767px)";
+
+export const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(MOBILE_MEDIA_QUERY);
+    const updateIsMobile = () => setIsMobile(mediaQuery.matches);
+
+    updateIsMobile();
+    mediaQuery.addEventListener("change", updateIsMobile);
+
+    return () => mediaQuery.removeEventListener("change", updateIsMobile);
+  }, []);
+
+  return isMobile;
+};
 
 const useProgressiveInView = (enabled: boolean) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -28,6 +45,7 @@ interface FadeUpProps {
   duration?: number;
   className?: string;
   once?: boolean;
+  animateOnMobile?: boolean;
 }
 
 const fadeUpVariants: Variants = {
@@ -52,10 +70,13 @@ export const FadeUp = ({
   duration = 0.68,
   className,
   once = true,
+  animateOnMobile = false,
 }: FadeUpProps) => {
   const shouldReduceMotion = useReducedMotion();
-  const { ref, isPrepared } = useProgressiveInView(!shouldReduceMotion);
-  const shouldAnimate = isPrepared && !shouldReduceMotion;
+  const isMobile = useIsMobile();
+  const canAnimate = !shouldReduceMotion && (!isMobile || animateOnMobile);
+  const { ref, isPrepared } = useProgressiveInView(canAnimate);
+  const shouldAnimate = isPrepared && canAnimate;
 
   return (
     <motion.div
@@ -83,6 +104,7 @@ interface StaggerContainerProps {
   staggerDelay?: number;
   className?: string;
   once?: boolean;
+  animateOnMobile?: boolean;
 }
 
 const staggerContainerVariants: Variants = {
@@ -114,10 +136,13 @@ export const StaggerContainer = ({
   staggerDelay = 0.14,
   className,
   once = true,
+  animateOnMobile = false,
 }: StaggerContainerProps) => {
   const shouldReduceMotion = useReducedMotion();
-  const { ref, isPrepared } = useProgressiveInView(!shouldReduceMotion);
-  const shouldAnimate = isPrepared && !shouldReduceMotion;
+  const isMobile = useIsMobile();
+  const canAnimate = !shouldReduceMotion && (!isMobile || animateOnMobile);
+  const { ref, isPrepared } = useProgressiveInView(canAnimate);
+  const shouldAnimate = isPrepared && canAnimate;
 
   return (
     <motion.div
@@ -180,8 +205,9 @@ export const FadeIn = ({
   once = true,
 }: FadeInProps) => {
   const shouldReduceMotion = useReducedMotion();
-  const { ref, isPrepared } = useProgressiveInView(!shouldReduceMotion);
-  const shouldAnimate = isPrepared && !shouldReduceMotion;
+  const isMobile = useIsMobile();
+  const { ref, isPrepared } = useProgressiveInView(!shouldReduceMotion && !isMobile);
+  const shouldAnimate = isPrepared && !shouldReduceMotion && !isMobile;
 
   return (
     <motion.div

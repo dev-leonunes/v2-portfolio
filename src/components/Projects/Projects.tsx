@@ -41,7 +41,12 @@ export const ProjectsSection = () => {
         {/* Projetos em Destaque */}
         <div className="space-y-16 lg:space-y-20 mb-16 lg:mb-20">
           {featuredProjects.map((project, index) => (
-            <FadeUp key={project.id} delay={index * 0.12} duration={0.78}>
+            <FadeUp
+              key={project.id}
+              delay={index * 0.12}
+              duration={0.78}
+              animateOnMobile
+            >
               <FeaturedProject project={project} index={index} />
             </FadeUp>
           ))}
@@ -57,7 +62,12 @@ export const ProjectsSection = () => {
             </FadeUp>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:auto-rows-[1fr]">
               {otherProjects.map((project, index) => (
-                <FadeUp key={project.id} delay={index * 0.08} duration={0.66}>
+                <FadeUp
+                  key={project.id}
+                  delay={index * 0.08}
+                  duration={0.66}
+                  animateOnMobile
+                >
                   <OtherProject project={project} />
                 </FadeUp>
               ))}

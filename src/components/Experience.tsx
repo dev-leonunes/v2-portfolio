@@ -4,12 +4,13 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { EXPERIENCES } from "@/constants";
 import { Button } from "@/components/ui/button";
-import { FadeUp } from "@/components/animations";
+import { FadeUp, useIsMobile } from "@/components/animations";
 import { AnimatePresence, motion } from "framer-motion";
 import { Download } from "lucide-react";
 
 export const ExperienceSection = () => {
   const [selectedExperience, setSelectedExperience] = useState(EXPERIENCES[0]);
+  const isMobile = useIsMobile();
 
   return (
     <section
@@ -61,12 +62,12 @@ export const ExperienceSection = () => {
             </div>
 
             <div className="space-y-6 rounded-2xl border border-border/70 bg-muted/10 p-6 lg:p-8 shadow-[0_26px_60px_-52px_color-mix(in_oklab,var(--accent)_60%,transparent)]">
-              <AnimatePresence mode="wait">
+              <AnimatePresence mode={isMobile ? undefined : "wait"}>
                 <motion.div
                   key={selectedExperience.id}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -4 }}
+                  initial={isMobile ? false : { opacity: 0, y: 8 }}
+                  animate={isMobile ? undefined : { opacity: 1, y: 0 }}
+                  exit={isMobile ? undefined : { opacity: 0, y: -4 }}
                   transition={{ duration: 0.46, ease: [0.22, 1, 0.36, 1] }}
                   className="space-y-6"
                 >
