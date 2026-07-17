@@ -74,7 +74,7 @@ export const HeroSection = () => {
               <Button
                 className={cn(
                   "font-mono px-6 sm:px-8 border-2 border-accent text-accent bg-transparent hover:bg-transparent",
-                  "transition-all duration-250 ease-[cubic-bezier(0.645,0.045,0.355,1)] focus-visible:ring-2 focus-visible:ring-accent/50",
+                  "transition-[transform,box-shadow] duration-250 ease-[cubic-bezier(0.645,0.045,0.355,1)] focus-visible:ring-2 focus-visible:ring-accent/50",
                   "hover:shadow-[4px_4px_0_0] hover:shadow-accent hover:-translate-x-1.25 hover:-translate-y-1.25",
                 )}
               >

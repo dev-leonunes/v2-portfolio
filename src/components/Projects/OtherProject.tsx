@@ -13,7 +13,7 @@ export const OtherProject = ({ project }: { project: Project }) => {
   );
 
   return (
-    <div className="h-full group flex flex-col rounded-xl border border-border/70 overflow-hidden bg-muted/10 hover:border-accent/55 hover:-translate-y-1.5 transition-all duration-300 hover:shadow-[0_24px_45px_-36px_color-mix(in_oklab,var(--accent)_65%,transparent)]">
+    <div className="h-full group flex flex-col rounded-xl border border-border/70 overflow-hidden bg-muted/10 hover:border-accent/55 hover:-translate-y-1.5 transition-[transform,border-color,box-shadow] duration-300 hover:shadow-[0_24px_45px_-36px_color-mix(in_oklab,var(--accent)_65%,transparent)]">
       {/* Imagem */}
       <div className="relative w-full h-48 overflow-hidden bg-muted">
         <div className="absolute inset-0 z-10 bg-linear-to-t from-background/55 via-transparent to-transparent pointer-events-none" />
@@ -22,11 +22,11 @@ export const OtherProject = ({ project }: { project: Project }) => {
             src={project.image}
             alt={project.imageAlt ?? project.title}
             fill
-            className="object-cover transition-all duration-500 group-hover:scale-108"
+            className="object-cover transition-transform duration-500 group-hover:scale-108"
             sizes="(max-width: 768px) calc(100vw - 3rem), (max-width: 1200px) calc(50vw - 2rem), 24rem"
           />
         ) : (
-          <div className="w-full h-full bg-linear-to-br from-muted to-muted/50 flex items-center justify-center transition-all duration-500 group-hover:scale-108">
+          <div className="w-full h-full bg-linear-to-br from-muted to-muted/50 flex items-center justify-center transition-transform duration-500 group-hover:scale-108">
             <ImagePlaceholder
               title={project.title}
               technologies={project.technologies}

@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { NavItem } from "./nav-items";
 import { ThemeToggle } from "./theme-toggle";
-import { MountStagger, SlideInSide } from "@/components/animations";
 import {
   Sheet,
   SheetContent,
@@ -12,7 +11,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { type CSSProperties, type ReactNode, useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -20,6 +19,31 @@ const NAV_ITEMS = [
   { href: "#experience", label: "Experiências" },
   { href: "#projects", label: "Projetos" },
 ];
+
+const HeaderSlideIn = ({
+  children,
+  delay = 0,
+  duration = 0.5,
+  distance = 22,
+}: {
+  children: ReactNode;
+  delay?: number;
+  duration?: number;
+  distance?: number;
+}) => (
+  <div
+    className="header-slide-in"
+    style={
+      {
+        "--header-animation-delay": `${delay}s`,
+        "--header-animation-duration": `${duration}s`,
+        "--header-animation-distance": `${distance}px`,
+      } as CSSProperties
+    }
+  >
+    {children}
+  </div>
+);
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
@@ -47,7 +71,12 @@ export const Header = () => {
   }, []);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 16);
+    const onScroll = () => {
+      const nextIsScrolled = window.scrollY > 16;
+      setIsScrolled((previous) =>
+        previous === nextIsScrolled ? previous : nextIsScrolled,
+      );
+    };
 
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -72,7 +101,9 @@ export const Header = () => {
         }
       }
 
-      setActiveSection(current);
+      setActiveSection((previous) =>
+        previous === current ? previous : current,
+      );
     };
 
     const rafId = requestAnimationFrame(updateActiveSection);
@@ -89,15 +120,15 @@ export const Header = () => {
   return (
     <header
       className={[
-        "fixed top-0 w-full z-40 h-16 lg:h-24 flex items-center transition-all duration-300",
+        "fixed top-0 w-full z-40 h-16 lg:h-24 flex items-center transition-[background-color,box-shadow] duration-300",
         isScrolled
           ? "bg-background/82 backdrop-blur-md shadow-[0_8px_30px_-24px_rgba(0,0,0,0.85)]"
           : "bg-transparent",
       ].join(" ")}
     >
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl flex items-center justify-between">
-        <MountStagger className="hidden lg:block">
-          <SlideInSide distance={-24} duration={0.58}>
+        <div className="hidden lg:block">
+          <HeaderSlideIn distance={-24} duration={0.58}>
             <Link href="/">
               <Image
                 width={131}
@@ -108,8 +139,8 @@ export const Header = () => {
                 priority
               />
             </Link>
-          </SlideInSide>
-        </MountStagger>
+          </HeaderSlideIn>
+        </div>
 
         <Link href="/" className="lg:hidden">
           <Image
@@ -123,24 +154,20 @@ export const Header = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <MountStagger
-          className="hidden lg:flex items-center gap-10"
-          staggerDelay={0.09}
-          delayChildren={0.05}
-        >
+        <div className="hidden lg:flex items-center gap-10">
           {NAV_ITEMS.map((item, index) => (
-            <SlideInSide key={item.label}>
+            <HeaderSlideIn key={item.label} delay={0.05 + index * 0.09}>
               <NavItem
                 {...item}
                 index={index}
                 active={activeSection === item.href.slice(1)}
               />
-            </SlideInSide>
+            </HeaderSlideIn>
           ))}
-          <SlideInSide duration={0.56} distance={26}>
+          <HeaderSlideIn delay={0.32} duration={0.56} distance={26}>
             <ThemeToggle />
-          </SlideInSide>
-        </MountStagger>
+          </HeaderSlideIn>
+        </div>
 
         {/* Mobile Navigation */}
         <div className="flex lg:hidden">
@@ -167,7 +194,7 @@ export const Header = () => {
                     href={item.href}
                     onClick={() => setOpen(false)}
                     className={[
-                      "font-mono text-base transition-all py-2 px-3 rounded-md",
+                      "font-mono text-base transition-[color,background-color] py-2 px-3 rounded-md",
                       activeSection === item.href.slice(1)
                         ? "bg-accent/15 text-accent"
                         : "text-secondary hover:text-accent hover:bg-accent/10",

@@ -4,13 +4,27 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { EXPERIENCES } from "@/constants";
 import { Button } from "@/components/ui/button";
-import { FadeUp, useIsMobile } from "@/components/animations";
-import { AnimatePresence, motion } from "framer-motion";
+import { Reveal } from "@/components/animations";
 import { Download } from "lucide-react";
 
 export const ExperienceSection = () => {
   const [selectedExperience, setSelectedExperience] = useState(EXPERIENCES[0]);
-  const isMobile = useIsMobile();
+  const [hasChangedExperience, setHasChangedExperience] = useState(false);
+
+  const selectExperience = (experienceId: string) => {
+    if (selectedExperience.id === experienceId) {
+      return;
+    }
+
+    const nextExperience = EXPERIENCES.find((exp) => exp.id === experienceId);
+
+    if (!nextExperience) {
+      return;
+    }
+
+    setHasChangedExperience(true);
+    setSelectedExperience(nextExperience);
+  };
 
   return (
     <section
@@ -18,7 +32,7 @@ export const ExperienceSection = () => {
       className="w-full section-shell section-anchor relative"
     >
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
-        <FadeUp>
+        <Reveal>
           <div className="flex items-center justify-between mb-12 flex-wrap gap-4">
             <h2 className="text-3xl lg:text-4xl font-bold flex items-center gap-4">
               <span className="font-mono text-xl text-accent">02.</span>
@@ -30,7 +44,7 @@ export const ExperienceSection = () => {
               <Button
                 className={cn(
                   "font-mono px-6 border-2 border-accent text-accent bg-transparent hover:bg-transparent cursor-pointer",
-                  "transition-all duration-250 ease-[cubic-bezier(0.645,0.045,0.355,1)]",
+                  "transition-[transform,box-shadow] duration-250 ease-[cubic-bezier(0.645,0.045,0.355,1)]",
                   "hover:shadow-[4px_4px_0_0] hover:shadow-accent hover:-translate-x-1.25 hover:-translate-y-1.25",
                 )}
               >
@@ -39,18 +53,18 @@ export const ExperienceSection = () => {
               </Button>
             </a>
           </div>
-        </FadeUp>
+        </Reveal>
 
-        <FadeUp delay={0.1}>
+        <Reveal delay={0.1}>
           <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-8 lg:gap-10">
             <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible">
               {EXPERIENCES.map((exp) => (
                 <button
                   key={exp.id}
-                  onClick={() => setSelectedExperience(exp)}
+                  onClick={() => selectExperience(exp.id)}
                   className={cn(
                     "relative px-6 py-3 text-left font-mono text-sm whitespace-nowrap lg:whitespace-normal cursor-pointer",
-                    "transition-all duration-200 border-l-2 lg:border-l-2 border-b-2 lg:border-b-0",
+                    "transition-[color,background-color,border-color] duration-200 border-l-2 lg:border-l-2 border-b-2 lg:border-b-0",
                     selectedExperience.id === exp.id
                       ? "border-accent text-accent bg-accent/5"
                       : "border-border text-muted-foreground hover:bg-accent/5 hover:text-accent",
@@ -62,14 +76,10 @@ export const ExperienceSection = () => {
             </div>
 
             <div className="space-y-6 rounded-2xl border border-border/70 bg-muted/10 p-6 lg:p-8 shadow-[0_26px_60px_-52px_color-mix(in_oklab,var(--accent)_60%,transparent)]">
-              <AnimatePresence mode={isMobile ? undefined : "wait"}>
-                <motion.div
+              <div
                   key={selectedExperience.id}
-                  initial={isMobile ? false : { opacity: 0, y: 8 }}
-                  animate={isMobile ? undefined : { opacity: 1, y: 0 }}
-                  exit={isMobile ? undefined : { opacity: 0, y: -4 }}
-                  transition={{ duration: 0.46, ease: [0.22, 1, 0.36, 1] }}
-                  className="space-y-6"
+                  className="experience-content space-y-6"
+                  data-experience-transition={hasChangedExperience || undefined}
                 >
                   <div>
                     <h3 className="text-2xl font-bold text-foreground mb-1">
@@ -123,11 +133,10 @@ export const ExperienceSection = () => {
                       ))}
                     </div>
                   </div>
-                </motion.div>
-              </AnimatePresence>
+              </div>
             </div>
           </div>
-        </FadeUp>
+        </Reveal>
       </div>
     </section>
   );
