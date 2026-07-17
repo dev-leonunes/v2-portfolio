@@ -5,7 +5,7 @@ import { type ProjectType, PROJECTS } from "@/constants";
 import { ProjectFilter } from "./ProjectFilter";
 import { FeaturedProject } from "./FeaturedProject";
 import { OtherProject } from "./OtherProject";
-import { FadeUp } from "@/components/animations";
+import { Reveal } from "@/components/animations";
 
 export const ProjectsSection = () => {
   const [filterType, setFilterType] = useState<ProjectType | "all">("all");
@@ -23,7 +23,7 @@ export const ProjectsSection = () => {
       className="w-full section-shell section-anchor relative"
     >
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
-        <FadeUp>
+        <Reveal>
           <div className="flex items-center justify-between mb-12 flex-wrap gap-4">
             <h2 className="text-3xl lg:text-4xl font-bold flex items-center gap-4">
               <span className="font-mono text-xl text-accent">03.</span>
@@ -36,40 +36,38 @@ export const ProjectsSection = () => {
               onFilterChange={setFilterType}
             />
           </div>
-        </FadeUp>
+        </Reveal>
 
         {/* Projetos em Destaque */}
         <div className="space-y-16 lg:space-y-20 mb-16 lg:mb-20">
           {featuredProjects.map((project, index) => (
-            <FadeUp
+            <Reveal
               key={project.id}
               delay={index * 0.12}
               duration={0.78}
-              animateOnMobile
             >
               <FeaturedProject project={project} index={index} />
-            </FadeUp>
+            </Reveal>
           ))}
         </div>
 
         {/* Outros Projetos */}
         {otherProjects.length > 0 && (
           <div>
-            <FadeUp>
+            <Reveal>
               <h3 className="text-2xl font-bold text-foreground mb-8">
                 Outros Projetos
               </h3>
-            </FadeUp>
+            </Reveal>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:auto-rows-[1fr]">
               {otherProjects.map((project, index) => (
-                <FadeUp
+                <Reveal
                   key={project.id}
                   delay={index * 0.08}
                   duration={0.66}
-                  animateOnMobile
                 >
                   <OtherProject project={project} />
-                </FadeUp>
+                </Reveal>
               ))}
             </div>
           </div>

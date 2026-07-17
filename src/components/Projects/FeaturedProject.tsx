@@ -30,11 +30,11 @@ export const FeaturedProject = ({
               src={project.image}
               alt={project.imageAlt ?? project.title}
               fill
-              className="object-cover transition-all duration-500 group-hover:scale-103"
+              className="object-cover transition-transform duration-500 group-hover:scale-103"
               sizes="(max-width: 1024px) calc(100vw - 3rem), (max-width: 1280px) 41vw, 34rem"
             />
           ) : (
-            <div className="w-full h-full bg-linear-to-br from-muted to-muted/50 flex items-center justify-center transition-all duration-500 group-hover:scale-103">
+            <div className="w-full h-full bg-linear-to-br from-muted to-muted/50 flex items-center justify-center transition-transform duration-500 group-hover:scale-103">
               <ImagePlaceholder
                 title={project.title}
                 technologies={project.technologies}

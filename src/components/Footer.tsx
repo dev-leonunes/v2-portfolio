@@ -1,6 +1,6 @@
 "use client";
 
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/animations";
+import { Reveal } from "@/components/animations";
 import { CONTACT } from "@/constants";
 
 export const Footer = () => {
@@ -24,24 +24,23 @@ export const Footer = () => {
       </div>
 
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
-        <FadeIn>
+        <Reveal variant="fade">
           <div className="flex flex-col items-center gap-7 text-center">
             <p className="text-[0.7rem] sm:text-xs tracking-[0.2em] uppercase text-accent/90 font-mono">
               Encerrando por aqui, mas a conversa continua
             </p>
 
-            <StaggerContainer staggerDelay={0.11} animateOnMobile>
-              <div className="flex flex-wrap items-center justify-center gap-3 text-secondary">
-                {socialLinks.map(({ key, label }) => {
+            <div className="flex flex-wrap items-center justify-center gap-3 text-secondary">
+              {socialLinks.map(({ key, label }, index) => {
                   const social = CONTACT[key];
 
                   return (
-                    <StaggerItem key={key}>
+                    <Reveal key={key} delay={index * 0.11} duration={0.56} distance={20}>
                       <a
                         href={social.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/70 bg-background/45 text-secondary transition-all duration-250 hover:-translate-y-0.5 hover:border-accent/55 hover:text-accent hover:shadow-[0_10px_24px_-16px_color-mix(in_oklab,var(--accent)_70%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                        className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/70 bg-background/45 text-secondary transition-[transform,color,border-color,box-shadow] duration-250 hover:-translate-y-0.5 hover:border-accent/55 hover:text-accent hover:shadow-[0_10px_24px_-16px_color-mix(in_oklab,var(--accent)_70%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
                         aria-label={label}
                       >
                         <social.icon
@@ -49,17 +48,16 @@ export const Footer = () => {
                           className="transition-transform duration-250 group-hover:scale-110"
                         />
                       </a>
-                    </StaggerItem>
+                    </Reveal>
                   );
-                })}
-              </div>
-            </StaggerContainer>
+              })}
+            </div>
 
             <p className="text-secondary text-sm font-mono">
               © {currentYear} Leonardo Nunes. Todos os direitos reservados.
             </p>
           </div>
-        </FadeIn>
+        </Reveal>
       </div>
     </footer>
   );

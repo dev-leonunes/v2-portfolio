@@ -12,8 +12,8 @@ export const NavItem = ({ label, href, index, active = false }: NavItemProps) =>
     <Link
       href={href}
       className={[
-        "relative font-mono text-sm transition-all duration-250",
-        "after:absolute after:-bottom-1.5 after:left-0 after:h-px after:bg-accent after:transition-all after:duration-300",
+        "relative font-mono text-sm transition-[color,transform] duration-250",
+        "after:absolute after:-bottom-1.5 after:left-0 after:h-px after:bg-accent after:transition-[width] after:duration-300",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 rounded-sm",
         active
           ? "text-accent after:w-full"

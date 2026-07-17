@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Header } from "../components/Header";
 import { ScrollToTop } from "../components/ScrollToTop";
 import { Footer } from "../components/Footer";
+import { AnimationReady } from "../components/animations";
 import { Space_Grotesk, Source_Sans_3, IBM_Plex_Mono } from "next/font/google";
 
 const displayFont = Space_Grotesk({
@@ -90,6 +91,7 @@ export default function RootLayout({
       <body
         className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable}`}
       >
+        <AnimationReady />
         <Header />
         {children}
         <Footer />

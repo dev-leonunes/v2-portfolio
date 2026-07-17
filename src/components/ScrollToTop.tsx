@@ -96,7 +96,7 @@ export const ScrollToTop = () => {
           className={cn(
             "absolute inset-0 w-full h-full border-2 border-accent rounded-lg",
             "translate-x-2 translate-y-2 z-0",
-            "transition-all duration-300 ease-out",
+            "transition-[transform,opacity] duration-300 ease-out",
             "opacity-0 group-hover:opacity-100",
             "group-hover:translate-x-3 group-hover:translate-y-3",
           )}
