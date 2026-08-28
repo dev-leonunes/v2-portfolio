@@ -29,15 +29,14 @@ export const CONTACT = {
   },
 };
 
-export const TECHS = [
-  "Node.js",
+export const WHATSAPP_CTA_MESSAGE =
+  "Olá, Leonardo! Vi seu portfólio e gostaria de conversar sobre uma oportunidade ou projeto.";
+
+export const HERO_TECHS = [
   "React",
-  "Next.js",
-  "JavaScript",
   "TypeScript",
-  "NestJS",
+  "Node.js",
   "PostgreSQL",
-  "MongoDB",
   "WebSockets",
   "IA",
 ];

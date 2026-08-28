@@ -1,8 +1,12 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { CONTACT, TECHS } from "@/constants";
+import { CONTACT, HERO_TECHS, WHATSAPP_CTA_MESSAGE } from "@/constants";
 import type { CSSProperties, ReactNode } from "react";
+
+const whatsappCtaUrl = `${CONTACT.Whatsapp.url}?text=${encodeURIComponent(
+  WHATSAPP_CTA_MESSAGE,
+)}`;
 
 const HeroFadeUp = ({
   children,
@@ -55,63 +59,47 @@ export const HeroSection = () => {
 
           <HeroFadeUp delay={0.4}>
             <p className="text-base sm:text-lg leading-relaxed mb-7 max-w-2xl text-secondary">
-              Sou um Desenvolvedor de Software apaixonado por tecnologia e
-              inovação e especializado em construir experiências digitais.
-              Atualmente trabalho com tecnologias como:
+              Desenvolvo aplicações web orientadas a dados, de plataformas
+              industriais em tempo real a sites e produtos digitais com foco em
+              performance e experiência de uso.
             </p>
           </HeroFadeUp>
 
           <HeroFadeUp delay={0.5}>
             <div className="flex flex-wrap gap-3 mb-9">
-              {TECHS.map((tech, i) => (
-                <Badge key={`tech-${i}`}>{tech}</Badge>
+              {HERO_TECHS.map((tech) => (
+                <Badge key={tech}>{tech}</Badge>
               ))}
             </div>
           </HeroFadeUp>
 
           <HeroFadeUp delay={0.6}>
-            <div className="flex flex-wrap items-center gap-6">
+            <div className="flex flex-wrap items-center gap-5 sm:gap-6">
               <Button
+                asChild
                 className={cn(
                   "font-mono px-6 sm:px-8 border-2 border-accent text-accent bg-transparent hover:bg-transparent",
                   "transition-[transform,box-shadow] duration-250 ease-[cubic-bezier(0.645,0.045,0.355,1)] focus-visible:ring-2 focus-visible:ring-accent/50",
                   "hover:shadow-[4px_4px_0_0] hover:shadow-accent hover:-translate-x-1.25 hover:-translate-y-1.25",
                 )}
               >
-                Vamos conversar? →
+                <a
+                  href={whatsappCtaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Conversar com Leonardo Nunes pelo WhatsApp"
+                >
+                  <CONTACT.Whatsapp.icon size={20} aria-hidden="true" />
+                  Falar no WhatsApp
+                </a>
               </Button>
 
-              <div className="flex items-center gap-4 text-secondary">
-                <a
-                  href={CONTACT.Github.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent transition-colors duration-200"
-                  aria-label="Abrir perfil de Leonardo Nunes no GitHub"
-                >
-                  <CONTACT.Github.icon size={24} />
-                </a>
-
-                <a
-                  href={CONTACT.Linkedin.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent transition-colors duration-200"
-                  aria-label="Abrir perfil de Leonardo Nunes no LinkedIn"
-                >
-                  <CONTACT.Linkedin.icon size={24} />
-                </a>
-
-                <a
-                  href={CONTACT.Whatsapp.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent transition-colors duration-200"
-                  aria-label="Conversar com Leonardo Nunes no WhatsApp"
-                >
-                  <CONTACT.Whatsapp.icon size={24} />
-                </a>
-              </div>
+              <a
+                href="#projects"
+                className="font-mono text-sm text-secondary underline decoration-accent/35 underline-offset-4 transition-[transform,color,text-decoration-color] duration-200 hover:-translate-y-0.5 hover:text-accent hover:decoration-accent/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                Ver projetos
+              </a>
             </div>
           </HeroFadeUp>
         </div>
