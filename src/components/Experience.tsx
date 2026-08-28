@@ -40,31 +40,42 @@ export const ExperienceSection = () => {
               <div className="flex-1 h-px bg-border ml-4 max-w-xs"></div>
             </h2>
 
-            <a href="/Resume.pdf" download="Leonardo-Nunes-CV.pdf">
-              <Button
-                className={cn(
-                  "font-mono px-6 border-2 border-accent text-accent bg-transparent hover:bg-transparent cursor-pointer",
-                  "transition-[transform,box-shadow] duration-250 ease-[cubic-bezier(0.645,0.045,0.355,1)]",
-                  "hover:shadow-[4px_4px_0_0] hover:shadow-accent hover:-translate-x-1.25 hover:-translate-y-1.25",
-                )}
-              >
+            <Button
+              asChild
+              className={cn(
+                "font-mono px-6 border-2 border-accent text-accent bg-transparent hover:bg-transparent cursor-pointer",
+                "transition-[transform,box-shadow] duration-250 ease-[cubic-bezier(0.645,0.045,0.355,1)]",
+                "hover:shadow-[4px_4px_0_0] hover:shadow-accent hover:-translate-x-1.25 hover:-translate-y-1.25",
+              )}
+            >
+              <a href="/Resume.pdf" download="Leonardo-Nunes-CV.pdf">
                 <Download size={18} />
                 Baixar Currículo
-              </Button>
-            </a>
+              </a>
+            </Button>
           </div>
         </Reveal>
 
         <Reveal delay={0.1}>
           <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-8 lg:gap-10">
-            <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible">
+            <div
+              className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible"
+              role="tablist"
+              aria-label="Experiências profissionais"
+            >
               {EXPERIENCES.map((exp) => (
                 <button
                   key={exp.id}
+                  type="button"
+                  id={`experience-tab-${exp.id}`}
+                  role="tab"
+                  aria-selected={selectedExperience.id === exp.id}
+                  aria-controls="experience-panel"
                   onClick={() => selectExperience(exp.id)}
                   className={cn(
                     "relative px-6 py-3 text-left font-mono text-sm whitespace-nowrap lg:whitespace-normal cursor-pointer",
                     "transition-[color,background-color,border-color] duration-200 border-l-2 lg:border-l-2 border-b-2 lg:border-b-0",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                     selectedExperience.id === exp.id
                       ? "border-accent text-accent bg-accent/5"
                       : "border-border text-muted-foreground hover:bg-accent/5 hover:text-accent",
@@ -77,10 +88,14 @@ export const ExperienceSection = () => {
 
             <div className="space-y-6 rounded-2xl border border-border/70 bg-muted/10 p-6 lg:p-8 shadow-[0_26px_60px_-52px_color-mix(in_oklab,var(--accent)_60%,transparent)]">
               <div
-                  key={selectedExperience.id}
-                  className="experience-content space-y-6"
-                  data-experience-transition={hasChangedExperience || undefined}
-                >
+                key={selectedExperience.id}
+                id="experience-panel"
+                role="tabpanel"
+                aria-labelledby={`experience-tab-${selectedExperience.id}`}
+                tabIndex={0}
+                className="experience-content space-y-6"
+                data-experience-transition={hasChangedExperience || undefined}
+              >
                   <div>
                     <h3 className="text-2xl font-bold text-foreground mb-1">
                       {selectedExperience.role}

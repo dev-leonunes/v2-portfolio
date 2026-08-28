@@ -34,6 +34,7 @@ export const ProjectsSection = () => {
             <ProjectFilter
               filterType={filterType}
               onFilterChange={setFilterType}
+              resultCount={filteredProjects.length}
             />
           </div>
         </Reveal>
