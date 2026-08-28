@@ -1,13 +1,13 @@
 # Melhorias incrementais de UX da home do portfólio
 
-**Status:** design aprovado, aguardando especificação formal e implementação
+**Status:** implementação concluída no escopo aprovado; commits atômicos pendentes
 **Data:** 2026-08-28
 **Branch de implementação:** `feat/portfolio-ux-improvements`
 **Superfície:** `src/app/page.tsx` e componentes da home
 **Base da decisão:** crítica do Impeccable com pontuação 24/40
-**Implementação nesta etapa:** nenhuma
+**Implementação nesta etapa:** concluída na branch `feat/portfolio-ux-improvements`; validações técnicas concluídas; commits atômicos aguardam autorização.
 
-Este documento registra o desenho aprovado para uma evolução incremental da home. Ele será usado como base para a especificação formal, a quebra em tarefas e a implementação posterior.
+Este documento registra o desenho aprovado que orientou a especificação, a quebra em tarefas e a implementação incremental da home.
 
 ## 1. Contexto e problema
 
@@ -272,6 +272,8 @@ O header global, o footer e os tokens globais não serão reformulados nesta eta
 
 ## 9. Divisão de implementação
 
+A implementação dos três escopos abaixo foi concluída na branch. A criação dos commits atômicos permanece pendente, aguardando autorização.
+
 ### Commit 1 — CTA/conversão
 
 **Escopo:** `src/constants/index.ts` e `src/components/Hero.tsx`.
@@ -344,12 +346,6 @@ O `TODO.md` deverá manter ou receber os seguintes itens fora do escopo atual:
 - adotar WCAG 2.2 nível AA como meta formal;
 - definir e registrar referências visuais específicas da marca.
 
-## 13. Critério de conclusão do planejamento
+## 13. Status do planejamento
 
-O planejamento será considerado pronto quando:
-
-- este documento estiver revisado e sem ambiguidades;
-- o `TODO.md` registrar claramente os itens futuros;
-- a branch `feat/portfolio-ux-improvements` existir;
-- nenhuma correção da interface tiver sido aplicada;
-- a próxima etapa puder transformar os requisitos deste documento em uma especificação formal e tarefas executáveis.
+O planejamento foi concluído e utilizado como base para a implementação do escopo aprovado. Os itens futuros permanecem registrados no `TODO.md`, a branch `feat/portfolio-ux-improvements` contém as alterações funcionais e os commits atômicos ainda aguardam autorização.

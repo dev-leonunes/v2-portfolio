@@ -87,7 +87,7 @@ Definidos em `src/constants/index.ts`:
 Coleções consumidas pelas seções:
 
 - `CONTACT` (ícone + URL)
-- `TECHS` (hero)
+- `HERO_TECHS` (hero)
 - `ABOUT_TECHS` (about)
 - `EXPERIENCES` (experience)
 - `PROJECTS` (projects)
