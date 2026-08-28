@@ -32,25 +32,25 @@ Imagens de projetos ficam em `public/` e são referenciadas no campo `image` (ex
 
 ## Como rodar localmente
 
-Pré-requisitos: Node.js + Yarn.
+Pré-requisitos: Node.js + pnpm.
 
 ```bash
-yarn install
-yarn dev
+pnpm install
+pnpm run dev
 ```
 
 Abra `http://localhost:3000`.
 
 ## Scripts
 
-- `yarn dev`: desenvolvimento
-- `yarn build`: build de produção
-- `yarn start`: servidor de produção local
-- `yarn lint`: lint
+- `pnpm run dev`: desenvolvimento
+- `pnpm run build`: build de produção
+- `pnpm run start`: servidor de produção local
+- `pnpm run lint`: lint
 
 ## Git hooks
 
-O projeto possui um hook versionado em `.githooks/pre-push` que executa `yarn lint` e `yarn build` antes de cada `git push`.
+O projeto possui um hook versionado em `.githooks/pre-push` que executa `pnpm run lint` e `pnpm run build` antes de cada `git push`.
 
 Após clonar o repositório, ative os hooks locais com:
 

@@ -23,11 +23,11 @@ Fluxo de renderização atual:
 
 ## 2) Como rodar e validar
 
-- Instalar deps: `npm install` (ou `yarn install`)
-- Desenvolvimento: `npm run dev`
-- Build produção: `npm run build`
-- Rodar produção local: `npm run start`
-- Lint: `npm run lint`
+- Instalar deps: `pnpm install`
+- Desenvolvimento: `pnpm run dev`
+- Build produção: `pnpm run build`
+- Rodar produção local: `pnpm run start`
+- Lint: `pnpm run lint`
 
 Observação: não há suíte de testes configurada no momento.
 
@@ -170,7 +170,7 @@ Regra prática: qualquer atualização de conteúdo deve começar por `constants
 
 ## 9) Checklist de qualidade antes de encerrar qualquer mudança
 
-1. Rodar `npm run lint`.
+1. Rodar `pnpm run lint`.
 2. Verificar se não quebrou tema claro/escuro.
 3. Validar responsividade básica (mobile + desktop) nas seções alteradas.
 4. Confirmar que links externos continuam com `target="_blank"` + `rel="noopener noreferrer"`.

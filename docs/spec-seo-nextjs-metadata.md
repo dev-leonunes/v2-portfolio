@@ -146,8 +146,8 @@ Implementacao sugerida:
 ## 10. Estrategia de validacao
 
 - Local:
-  - npm run lint
-  - npm run build
+  - pnpm run lint
+  - pnpm run build
   - Verificar HTML renderizado da home
 - Producao:
   - Testar preview em LinkedIn Post Inspector
