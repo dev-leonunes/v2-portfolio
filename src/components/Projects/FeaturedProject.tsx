@@ -16,7 +16,6 @@ export const FeaturedProject = ({
     <div
       className={cn(
         "relative flex flex-col gap-6 items-stretch rounded-2xl border border-border/70 bg-muted/10 p-5 lg:p-8",
-        "shadow-[0_28px_65px_-54px_color-mix(in_oklab,var(--accent)_55%,transparent)]",
         "lg:flex-row lg:gap-8 lg:items-center",
         index % 2 === 0 ? "" : "lg:flex-row-reverse",
       )}
@@ -58,11 +57,9 @@ export const FeaturedProject = ({
           {project.title}
         </h3>
 
-        <div className="p-6 rounded-xl mb-4 bg-background/45 border border-border/60">
-          <p className="leading-relaxed text-muted-foreground">
-            {project.description}
-          </p>
-        </div>
+        <p className="mb-6 leading-relaxed text-muted-foreground">
+          {project.description}
+        </p>
 
         <div className="flex flex-wrap gap-2 mb-6">
           {project.technologies.map((tech) => (
@@ -77,6 +74,7 @@ export const FeaturedProject = ({
 
         <div className="pt-4 border-t border-border/60">
           <ProjectLinks
+            projectTitle={project.title}
             githubUrl={project.githubUrl}
             liveUrl={project.liveUrl}
             size="md"

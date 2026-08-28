@@ -5,7 +5,7 @@ import { ProjectLinks } from "./ProjectLinks";
 import { ProjectTypeBadge } from "./ProjectTypeBadge";
 
 export const OtherProject = ({ project }: { project: Project }) => {
-  const MAX_VISIBLE_TECHS = 6;
+  const MAX_VISIBLE_TECHS = 4;
   const visibleTechs = project.technologies.slice(0, MAX_VISIBLE_TECHS);
   const hiddenTechCount = Math.max(
     0,
@@ -13,20 +13,20 @@ export const OtherProject = ({ project }: { project: Project }) => {
   );
 
   return (
-    <div className="h-full group flex flex-col rounded-xl border border-border/70 overflow-hidden bg-muted/10 hover:border-accent/55 hover:-translate-y-1.5 transition-[transform,border-color,box-shadow] duration-300 hover:shadow-[0_24px_45px_-36px_color-mix(in_oklab,var(--accent)_65%,transparent)]">
+    <div className="h-full group flex flex-col rounded-xl border border-border/70 overflow-hidden bg-muted/10 hover:border-accent/55 hover:-translate-y-1.5 transition-[transform,border-color] duration-300">
       {/* Imagem */}
-      <div className="relative w-full h-48 overflow-hidden bg-muted">
+      <div className="relative w-full h-36 overflow-hidden bg-muted">
         <div className="absolute inset-0 z-10 bg-linear-to-t from-background/55 via-transparent to-transparent pointer-events-none" />
         {project.image ? (
           <Image
             src={project.image}
             alt={project.imageAlt ?? project.title}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-108"
+            className="object-cover transition-transform duration-500 group-hover:scale-103"
             sizes="(max-width: 768px) calc(100vw - 3rem), (max-width: 1200px) calc(50vw - 2rem), 24rem"
           />
         ) : (
-          <div className="w-full h-full bg-linear-to-br from-muted to-muted/50 flex items-center justify-center transition-transform duration-500 group-hover:scale-108">
+          <div className="w-full h-full bg-linear-to-br from-muted to-muted/50 flex items-center justify-center transition-transform duration-500 group-hover:scale-103">
             <ImagePlaceholder
               title={project.title}
               technologies={project.technologies}
@@ -38,7 +38,7 @@ export const OtherProject = ({ project }: { project: Project }) => {
 
       {/* Conteúdo */}
       <div className="p-6 bg-background/30 flex flex-col flex-1 min-h-64">
-        <div className="flex-1 flex flex-col">
+        <div className="flex flex-col">
           <div className="flex items-center gap-3 mb-4">
             <ProjectTypeBadge type={project.type} size="sm" />
           </div>
@@ -52,7 +52,7 @@ export const OtherProject = ({ project }: { project: Project }) => {
           </p>
 
           {/* Tecnologias */}
-          <div className="flex flex-wrap gap-2 mb-5 pt-4 border-t border-border/60">
+          <div className="flex flex-wrap gap-2 mb-4 pt-3 border-t border-border/60">
             {visibleTechs.map((tech) => (
               <span
                 key={tech}
@@ -69,9 +69,10 @@ export const OtherProject = ({ project }: { project: Project }) => {
           </div>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-border/60 min-h-9 flex items-end">
+        <div className="mt-3 pt-3 border-t border-border/60 min-h-9 flex items-end">
           <div className="relative z-10">
             <ProjectLinks
+              projectTitle={project.title}
               githubUrl={project.githubUrl}
               liveUrl={project.liveUrl}
               size="sm"
