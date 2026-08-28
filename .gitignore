@@ -41,8 +41,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# others
-/docs
-
 # impeccable local session state
 .impeccable/live/sessions/

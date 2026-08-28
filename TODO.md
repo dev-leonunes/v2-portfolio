@@ -13,8 +13,11 @@ Lista de tarefas / Proximas implementações
 [x] Melhorar posição do botão de subir a tela no final da página;
 [x] Otimizar imagens do projeto, tinyfy + conversão para '.webp';
 [x] Planejamento funcional e visual documentado em docs/plan-secao-contato.md;
+[] Implementar melhorias incrementais da home: CTA para WhatsApp, acessibilidade/interações e hierarquia dos projetos;
 [] Melhorar a interação com as fotos dos projetos;
-[] Criar seção de Contato;
+[] Criar seção de Contato e migrar o CTA do hero para essa seção;
+[] Criar página "Mais Projetos" para reunir todos os projetos fora da home;
+[] Adotar WCAG 2.2 nível AA como meta formal em uma etapa posterior;
 [] Definir copy final (titulo, subtitulo, CTA principal e microcopy de contato);
 [] Definir fontes de dados (reuso de CONTACT e campos adicionais necessarios);
 [] Validar prototipo em mobile e desktop antes da implementacao;

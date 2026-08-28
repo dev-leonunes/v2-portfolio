@@ -17,7 +17,7 @@ Portfólio pessoal em página única, construído com **Next.js (App Router)**. 
 - React 19 + TypeScript
 - Tailwind CSS v4
 - Radix UI
-- Framer Motion
+- Animações CSS-first com IntersectionObserver
 
 ## Onde editar conteúdo
 
@@ -28,7 +28,7 @@ Regra prática: **comece por `src/constants/index.ts`**.
 - `EXPERIENCES`: histórico profissional
 - `PROJECTS`: projetos (com `type` e `featured`)
 
-Imagens de projetos ficam em `public/` e são referenciadas no campo `image` (ex.: `/dr-julio-cezar-site.png`).
+Imagens de projetos ficam em `public/` e são referenciadas no campo `image` (ex.: `/dr-julio-cezar-site.webp`).
 
 ## Como rodar localmente
 
