@@ -1,0 +1,430 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-28T14:45:28Z",
+  "title": "Design System: Leonardo Nunes Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "ink-slate": {
+        "role": "neutral",
+        "displayName": "Slate de Base",
+        "canonical": "oklch(20.5% 0.04 255)",
+        "tonalRamp": [
+          "oklch(15% 0.04 255)",
+          "oklch(25% 0.04 255)",
+          "oklch(35% 0.04 255)",
+          "oklch(45% 0.035 255)",
+          "oklch(55% 0.03 255)",
+          "oklch(65% 0.025 255)",
+          "oklch(80% 0.015 255)",
+          "oklch(95% 0.005 255)"
+        ]
+      },
+      "paper-slate": {
+        "role": "neutral",
+        "displayName": "Slate de Leitura",
+        "canonical": "oklch(98.2% 0.01 250)",
+        "tonalRamp": [
+          "oklch(15% 0.01 250)",
+          "oklch(25% 0.01 250)",
+          "oklch(35% 0.01 250)",
+          "oklch(45% 0.01 250)",
+          "oklch(55% 0.01 250)",
+          "oklch(68% 0.01 250)",
+          "oklch(82% 0.01 250)",
+          "oklch(98% 0.01 250)"
+        ]
+      },
+      "signal-amber": {
+        "role": "primary",
+        "displayName": "Âmbar de Sinal",
+        "canonical": "oklch(76.9% 0.188 70)",
+        "tonalRamp": [
+          "oklch(20% 0.12 70)",
+          "oklch(30% 0.14 70)",
+          "oklch(40% 0.16 70)",
+          "oklch(50% 0.18 70)",
+          "oklch(60% 0.19 70)",
+          "oklch(70% 0.19 70)",
+          "oklch(82% 0.15 70)",
+          "oklch(94% 0.07 70)"
+        ]
+      },
+      "quiet-slate": {
+        "role": "secondary",
+        "displayName": "Slate de Apoio",
+        "canonical": "oklch(70.4% 0.04 255)",
+        "tonalRamp": [
+          "oklch(20% 0.04 255)",
+          "oklch(30% 0.04 255)",
+          "oklch(40% 0.04 255)",
+          "oklch(50% 0.04 255)",
+          "oklch(60% 0.04 255)",
+          "oklch(70% 0.04 255)",
+          "oklch(82% 0.025 255)",
+          "oklch(94% 0.01 255)"
+        ]
+      },
+      "surface-slate": {
+        "role": "neutral",
+        "displayName": "Superfície Slate",
+        "canonical": "oklch(37.3% 0.05 255)",
+        "tonalRamp": [
+          "oklch(15% 0.05 255)",
+          "oklch(25% 0.05 255)",
+          "oklch(37% 0.05 255)",
+          "oklch(47% 0.045 255)",
+          "oklch(57% 0.035 255)",
+          "oklch(68% 0.025 255)",
+          "oklch(80% 0.015 255)",
+          "oklch(94% 0.005 255)"
+        ]
+      },
+      "cool-muted-dark": {
+        "role": "neutral",
+        "displayName": "Texto Muted Escuro",
+        "canonical": "oklch(80% 0.035 250)",
+        "tonalRamp": [
+          "oklch(20% 0.035 250)",
+          "oklch(30% 0.035 250)",
+          "oklch(40% 0.035 250)",
+          "oklch(50% 0.035 250)",
+          "oklch(60% 0.035 250)",
+          "oklch(70% 0.035 250)",
+          "oklch(80% 0.035 250)",
+          "oklch(94% 0.015 250)"
+        ]
+      },
+      "light-surface": {
+        "role": "neutral",
+        "displayName": "Cinza Frio de Fundo",
+        "canonical": "oklch(92.5% 0.025 250)",
+        "tonalRamp": [
+          "oklch(20% 0.025 250)",
+          "oklch(30% 0.025 250)",
+          "oklch(40% 0.025 250)",
+          "oklch(50% 0.025 250)",
+          "oklch(60% 0.025 250)",
+          "oklch(70% 0.025 250)",
+          "oklch(82% 0.025 250)",
+          "oklch(93% 0.025 250)"
+        ]
+      },
+      "signal-amber-light": {
+        "role": "primary",
+        "displayName": "Âmbar de Sinal Claro",
+        "canonical": "oklch(55% 0.17 65)",
+        "tonalRamp": [
+          "oklch(20% 0.11 65)",
+          "oklch(30% 0.13 65)",
+          "oklch(40% 0.15 65)",
+          "oklch(50% 0.17 65)",
+          "oklch(60% 0.17 65)",
+          "oklch(70% 0.15 65)",
+          "oklch(82% 0.11 65)",
+          "oklch(94% 0.05 65)"
+        ]
+      },
+      "light-on-signal": {
+        "role": "neutral",
+        "displayName": "Sobreposição Clara do Âmbar",
+        "canonical": "oklch(97.8% 0.02 75)",
+        "tonalRamp": [
+          "oklch(20% 0.02 75)",
+          "oklch(30% 0.02 75)",
+          "oklch(40% 0.02 75)",
+          "oklch(50% 0.02 75)",
+          "oklch(60% 0.02 75)",
+          "oklch(70% 0.02 75)",
+          "oklch(84% 0.02 75)",
+          "oklch(98% 0.02 75)"
+        ]
+      },
+      "cool-ink-light": {
+        "role": "neutral",
+        "displayName": "Texto Muted Claro",
+        "canonical": "oklch(27% 0.035 250)",
+        "tonalRamp": [
+          "oklch(15% 0.035 250)",
+          "oklch(27% 0.035 250)",
+          "oklch(37% 0.035 250)",
+          "oklch(47% 0.035 250)",
+          "oklch(57% 0.035 250)",
+          "oklch(68% 0.03 250)",
+          "oklch(80% 0.02 250)",
+          "oklch(94% 0.01 250)"
+        ]
+      },
+      "light-border": {
+        "role": "neutral",
+        "displayName": "Borda Azul-acinzentada",
+        "canonical": "oklch(65% 0.06 250)",
+        "tonalRamp": [
+          "oklch(20% 0.06 250)",
+          "oklch(30% 0.06 250)",
+          "oklch(40% 0.06 250)",
+          "oklch(50% 0.06 250)",
+          "oklch(60% 0.06 250)",
+          "oklch(70% 0.055 250)",
+          "oklch(82% 0.035 250)",
+          "oklch(94% 0.015 250)"
+        ]
+      },
+      "light-muted": {
+        "role": "neutral",
+        "displayName": "Cinza Frio de Superfície",
+        "canonical": "oklch(86% 0.03 250)",
+        "tonalRamp": [
+          "oklch(20% 0.03 250)",
+          "oklch(30% 0.03 250)",
+          "oklch(40% 0.03 250)",
+          "oklch(50% 0.03 250)",
+          "oklch(60% 0.03 250)",
+          "oklch(70% 0.03 250)",
+          "oklch(82% 0.03 250)",
+          "oklch(94% 0.02 250)"
+        ]
+      },
+      "signal-ring-light": {
+        "role": "primary",
+        "displayName": "Âmbar de Anel",
+        "canonical": "oklch(63% 0.17 65)",
+        "tonalRamp": [
+          "oklch(20% 0.11 65)",
+          "oklch(30% 0.13 65)",
+          "oklch(40% 0.15 65)",
+          "oklch(50% 0.17 65)",
+          "oklch(63% 0.17 65)",
+          "oklch(72% 0.15 65)",
+          "oklch(84% 0.1 65)",
+          "oklch(95% 0.05 65)"
+        ]
+      },
+      "danger": {
+        "role": "tertiary",
+        "displayName": "Vermelho de Erro",
+        "canonical": "oklch(63% 0.21 25)",
+        "tonalRamp": [
+          "oklch(20% 0.14 25)",
+          "oklch(30% 0.16 25)",
+          "oklch(40% 0.18 25)",
+          "oklch(50% 0.2 25)",
+          "oklch(63% 0.21 25)",
+          "oklch(72% 0.18 25)",
+          "oklch(84% 0.12 25)",
+          "oklch(95% 0.05 25)"
+        ]
+      },
+      "danger-light": {
+        "role": "tertiary",
+        "displayName": "Vermelho de Erro Claro",
+        "canonical": "oklch(58% 0.22 25)",
+        "tonalRamp": [
+          "oklch(20% 0.14 25)",
+          "oklch(30% 0.17 25)",
+          "oklch(40% 0.2 25)",
+          "oklch(50% 0.22 25)",
+          "oklch(58% 0.22 25)",
+          "oklch(70% 0.18 25)",
+          "oklch(84% 0.11 25)",
+          "oklch(95% 0.05 25)"
+        ]
+      },
+      "on-danger": {
+        "role": "neutral",
+        "displayName": "Texto sobre Erro",
+        "canonical": "oklch(98% 0.01 250)",
+        "tonalRamp": [
+          "oklch(15% 0.01 250)",
+          "oklch(25% 0.01 250)",
+          "oklch(35% 0.01 250)",
+          "oklch(45% 0.01 250)",
+          "oklch(55% 0.01 250)",
+          "oklch(68% 0.01 250)",
+          "oklch(82% 0.01 250)",
+          "oklch(98% 0.01 250)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Space Grotesk Display",
+        "purpose": "Nome, hero e ideias dominantes da página."
+      },
+      "body": {
+        "displayName": "Source Sans 3 Body",
+        "purpose": "Leitura contínua, descrições e contexto técnico."
+      },
+      "label": {
+        "displayName": "IBM Plex Mono Label",
+        "purpose": "Navegação, metadados e sinais curtos do sistema."
+      }
+    },
+    "shadows": [
+      {
+        "name": "header-scroll",
+        "value": "0 8px 30px -24px rgba(0,0,0,0.85)",
+        "purpose": "Separar o header fixo do conteúdo durante o scroll."
+      },
+      {
+        "name": "accent-offset",
+        "value": "4px 4px 0 0",
+        "purpose": "Dar resposta tátil ao hover de CTAs."
+      },
+      {
+        "name": "featured-ambient",
+        "value": "0 28px 65px -54px color-mix(in oklab, var(--accent) 55%, transparent)",
+        "purpose": "Elevar suavemente projetos em destaque."
+      },
+      {
+        "name": "project-hover",
+        "value": "0 24px 45px -36px color-mix(in oklab, var(--accent) 65%, transparent)",
+        "purpose": "Reforçar o hover dos projetos menores."
+      },
+      {
+        "name": "experience-ambient",
+        "value": "0 26px 60px -52px color-mix(in oklab, var(--accent) 60%, transparent)",
+        "purpose": "Separar o painel de experiência sem parecer flutuante."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-standard",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Entradas, hover e transições com saída precisa."
+      },
+      {
+        "name": "reveal-duration",
+        "value": "0.66s–0.78s",
+        "purpose": "Revelações de seções e projetos, sem bloquear o conteúdo."
+      },
+      {
+        "name": "state-duration",
+        "value": "0.2s–0.3s",
+        "purpose": "Cores, bordas, escala e deslocamentos curtos."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Hero Outline Button",
+      "kind": "button",
+      "refersTo": "button-hero-outline",
+      "description": "CTA principal com tratamento outline e resposta tátil no hover.",
+      "html": "<button class=\"ds-btn-hero\">Vamos conversar? →</button>",
+      "css": ".ds-btn-hero { background: transparent; color: var(--accent); border: 2px solid var(--accent); border-radius: 0.375rem; padding: 0.625rem 1.5rem; font-family: var(--font-mono-family), 'IBM Plex Mono', monospace; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: transform 0.25s cubic-bezier(0.645,0.045,0.355,1), box-shadow 0.25s cubic-bezier(0.645,0.045,0.355,1), background-color 0.25s; } .ds-btn-hero:hover { transform: translate(-5px, -5px); box-shadow: 4px 4px 0 var(--accent); } .ds-btn-hero:focus-visible { outline: 3px solid color-mix(in oklab, var(--accent) 55%, transparent); outline-offset: 2px; } @media (min-width: 640px) { .ds-btn-hero { padding-inline: 2rem; } } @media (prefers-reduced-motion: reduce) { .ds-btn-hero { transition: color 0.01ms, background-color 0.01ms, border-color 0.01ms; } .ds-btn-hero:hover { transform: none; box-shadow: none; } }"
+    },
+    {
+      "name": "Technology Badge",
+      "kind": "chip",
+      "refersTo": "badge-technology",
+      "description": "Chip de tecnologia do hero, com sinal âmbar e forma compacta.",
+      "html": "<span class=\"ds-chip-tech\">TypeScript</span>",
+      "css": ".ds-chip-tech { display: inline-flex; align-items: center; border-radius: 0.375rem; padding: 0.5rem 1rem; background: color-mix(in oklab, var(--accent) 20%, transparent); color: var(--accent); font-family: var(--font-mono-family), 'IBM Plex Mono', monospace; font-size: 0.875rem; line-height: 1.25rem; }"
+    },
+    {
+      "name": "Project Type Badge",
+      "kind": "chip",
+      "refersTo": "badge-project-type",
+      "description": "Pill que diferencia projeto pessoal de trabalho freelance.",
+      "html": "<span class=\"ds-chip-type\">Projeto Pessoal</span>",
+      "css": ".ds-chip-type { display: inline-flex; align-items: center; border-radius: 9999px; padding: 0.25rem 0.75rem; background: color-mix(in oklab, var(--accent) 15%, transparent); color: var(--accent); border: 1px solid color-mix(in oklab, var(--accent) 30%, transparent); font-family: var(--font-mono-family), 'IBM Plex Mono', monospace; font-size: 0.75rem; line-height: 1rem; letter-spacing: 0.025em; }"
+    },
+    {
+      "name": "Featured Project Shell",
+      "kind": "card",
+      "refersTo": "project-card",
+      "description": "Container de projeto em destaque para combinar evidência visual e contexto.",
+      "html": "<article class=\"ds-card-featured\"><div class=\"ds-card-media\"></div><div class=\"ds-card-copy\"><p class=\"ds-card-kicker\">Projeto em destaque</p><h3>Nome do projeto</h3><p>Contexto e resultado do trabalho.</p></div></article>",
+      "css": ".ds-card-featured { display: flex; flex-direction: column; gap: 1.5rem; padding: 1.25rem; background: color-mix(in oklab, var(--muted) 10%, transparent); border: 1px solid color-mix(in oklab, var(--border) 70%, transparent); border-radius: 1rem; color: var(--foreground); } .ds-card-media { min-height: 10rem; aspect-ratio: 16 / 9; background: color-mix(in oklab, var(--background) 60%, var(--muted)); border: 1px solid color-mix(in oklab, var(--accent) 40%, transparent); border-radius: 0.75rem; } .ds-card-copy { display: grid; gap: 0.75rem; } .ds-card-kicker { margin: 0; color: var(--accent); font-family: var(--font-mono-family), 'IBM Plex Mono', monospace; font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; } .ds-card-copy h3 { margin: 0; font-family: var(--font-display-family), 'Space Grotesk', sans-serif; font-size: 1.5rem; line-height: 1.25; } .ds-card-copy p:last-child { margin: 0; color: var(--muted-foreground); line-height: 1.625; } @media (min-width: 1024px) { .ds-card-featured { flex-direction: row; align-items: center; gap: 2rem; padding: 2rem; } .ds-card-media, .ds-card-copy { flex: 1; } }"
+    },
+    {
+      "name": "Project Filter Trigger",
+      "kind": "button",
+      "refersTo": "filter-trigger",
+      "description": "Trigger de filtro compacto que mantém o projeto explorável por tipo.",
+      "html": "<button class=\"ds-filter-trigger\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 6h16M7 12h10M10 18h4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\"/></svg><span>Todos</span></button>",
+      "css": ".ds-filter-trigger { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border: 1px solid color-mix(in oklab, var(--accent) 50%, transparent); border-radius: 0.5rem; background: color-mix(in oklab, var(--background) 65%, transparent); color: var(--accent); font-family: var(--font-mono-family), 'IBM Plex Mono', monospace; font-size: 0.875rem; cursor: pointer; transition: background-color 0.2s, color 0.2s; } .ds-filter-trigger svg { width: 1rem; height: 1rem; } .ds-filter-trigger:hover { background: color-mix(in oklab, var(--accent) 8%, transparent); } .ds-filter-trigger:focus-visible { outline: 3px solid color-mix(in oklab, var(--accent) 55%, transparent); outline-offset: 2px; }"
+    },
+    {
+      "name": "Desktop Navigation Link",
+      "kind": "nav",
+      "refersTo": "filter-trigger",
+      "description": "Link de navegação com índice, underline ativo e tratamento mono.",
+      "html": "<a class=\"ds-nav-link\" href=\"#projects\"><span>03.</span> Projetos</a>",
+      "css": ".ds-nav-link { position: relative; display: inline-flex; gap: 0.25rem; padding-block: 0.25rem; color: var(--secondary); font-family: var(--font-mono-family), 'IBM Plex Mono', monospace; font-size: 0.875rem; text-decoration: none; transition: color 0.25s, transform 0.25s; } .ds-nav-link span { color: var(--accent); } .ds-nav-link::after { content: ''; position: absolute; right: 0; bottom: -0.375rem; left: 0; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; } .ds-nav-link:hover, .ds-nav-link[aria-current='location'] { color: var(--accent); transform: translateY(-2px); } .ds-nav-link:hover::after, .ds-nav-link[aria-current='location']::after { transform: scaleX(1); } .ds-nav-link:focus-visible { outline: 2px solid color-mix(in oklab, var(--accent) 60%, transparent); outline-offset: 4px; border-radius: 0.125rem; }"
+    },
+    {
+      "name": "Experience Tab",
+      "kind": "custom",
+      "refersTo": "project-card",
+      "description": "Aba de experiência que comunica seleção sem perder a estrutura de arquivo.",
+      "html": "<button class=\"ds-experience-tab\" aria-selected=\"true\">Migracode</button>",
+      "css": ".ds-experience-tab { display: block; width: 100%; padding: 0.75rem 1.5rem; border: 0; border-left: 2px solid var(--accent); background: color-mix(in oklab, var(--accent) 5%, transparent); color: var(--accent); text-align: left; font-family: var(--font-mono-family), 'IBM Plex Mono', monospace; font-size: 0.875rem; cursor: pointer; transition: color 0.2s, background-color 0.2s, border-color 0.2s; } .ds-experience-tab:not([aria-selected='true']) { border-left-color: var(--border); background: transparent; color: var(--muted-foreground); } .ds-experience-tab:hover { background: color-mix(in oklab, var(--accent) 5%, transparent); color: var(--accent); } .ds-experience-tab:focus-visible { outline: 3px solid color-mix(in oklab, var(--accent) 55%, transparent); outline-offset: -3px; } @media (max-width: 1023px) { .ds-experience-tab { width: auto; border-left: 0; border-bottom: 2px solid var(--accent); } .ds-experience-tab:not([aria-selected='true']) { border-bottom-color: var(--border); } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "A Bancada de Soluções",
+    "overview": "O portfólio deve parecer uma bancada de trabalho organizada: cada projeto, experiência e tecnologia é uma evidência concreta deixada à vista, pronta para ser examinada. A composição combina uma base slate profunda no tema escuro com um modo claro azul-acinzentado, enquanto o âmbar funciona como marca de ação, ênfase e descoberta. A página é técnica sem ser fria, e arrojada sem depender de ruído visual.\n\nSpace Grotesk dá forma aos títulos e à presença do nome; Source Sans 3 mantém os textos longos legíveis; IBM Plex Mono aparece apenas em navegação, metadados e pequenos rótulos. A narrativa deve conduzir o visitante de apresentação para contexto, experiência e projetos, com estados de interação que tornam a exploração mais tátil sem competir com o trabalho apresentado.\n\nO sistema rejeita uma estética genérica de template, efeitos decorativos que competem com as evidências, comunicação vaga ou inflada e interações que prejudicam leitura, teclado ou compreensão.",
+    "keyCharacteristics": [
+      "Evidência antes de promessa: projetos, imagens, contexto e links têm primazia.",
+      "Âmbar concentrado em ação, estado ativo, índice e destaque contextual.",
+      "Hierarquia tipográfica clara, com títulos compactos e corpo confortável.",
+      "Superfícies estruturadas por tonalidade, bordas discretas e profundidade controlada.",
+      "Interações responsivas que parecem precisas e táteis, sem movimento ornamental."
+    ],
+    "rules": [
+      {
+        "name": "The Amber Signal Rule",
+        "body": "O âmbar deve marcar ação, estado ou evidência; não deve ser usado como preenchimento indiscriminado de longos blocos de texto.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Theme Continuity Rule",
+        "body": "Os temas claro e escuro compartilham os mesmos papéis semânticos. Não introduza uma paleta paralela só porque um componente mudou de fundo.",
+        "section": "colors"
+      },
+      {
+        "name": "The Type Ladder Rule",
+        "body": "Cada nível tipográfico deve ter uma função perceptível: o display apresenta, o headline organiza, o title identifica, o body explica e o mono sinaliza. Não use tracking amplo ou caixa alta em prosa.",
+        "section": "typography"
+      },
+      {
+        "name": "The Useful Depth Rule",
+        "body": "Profundidade deve explicar uma relação — fixação, seleção, hover ou destaque — e nunca transformar cada superfície em um objeto flutuante.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do tratar screenshots, experiências e links como a principal prova de valor da página.",
+      "Do usar os tokens semânticos background, foreground, accent, secondary, muted, border e ring para preservar os dois temas.",
+      "Do reservar IBM Plex Mono para navegação, labels e metadados curtos.",
+      "Do manter o âmbar concentrado em ação, estado ativo e destaque contextual.",
+      "Do manter foco visível, contraste legível, navegação por teclado, textos alternativos e uma alternativa para movimento.",
+      "Do usar bordas e camadas tonais antes de adicionar sombras; quando houver sombra, mantê-la funcional e curta."
+    ],
+    "donts": [
+      "Don't criar uma estética genérica de template que poderia representar qualquer desenvolvedor.",
+      "Don't adicionar efeitos decorativos que competem com os projetos e as evidências de trabalho.",
+      "Don't usar comunicação vaga, inflada ou baseada apenas em listas de tecnologias.",
+      "Don't criar interações que dificultem leitura, navegação por teclado ou compreensão do conteúdo.",
+      "Don't usar texto com gradiente, listras decorativas, grid ornamental ou glassmorphism como decoração padrão.",
+      "Don't usar uma faixa colorida lateral acima de 1px em cards, alertas ou callouts; prefira bordas completas, mudança tonal ou um indicador semântico.",
+      "Don't ultrapassar rounded-2xl (1rem) em cards e seções; pills ficam reservadas para tags e estados compactos.",
+      "Don't transformar IBM Plex Mono em fonte de corpo ou usar caixa alta em parágrafos."
+    ]
+  }
+}

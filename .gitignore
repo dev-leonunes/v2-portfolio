@@ -42,6 +42,7 @@ yarn-error.log*
 next-env.d.ts
 
 # others
-todo.md
-agents.md
 /docs
+
+# impeccable local session state
+.impeccable/live/sessions/

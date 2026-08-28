@@ -1,0 +1,48 @@
+Lista de tarefas / Proximas implementações
+
+[x] Criar efeitos de movimento no site;
+[x] Criar logo e mudar icone do site;
+[x] colocar animação em "outros projetos" por linha e não na seção inteira;
+[x] Bug do indicador de seção não funcionar em projetos;
+[x] Criar design de placeholder para projetos sem imagem;
+[x] Melhorar visual de cores da light mode;
+[x] Melhorar SEO e detalhes que aparecem quando o link é enviado;
+[x] Ajustar dimensão da og-image para 1200x630 e atualizar metadados sociais;
+[x] Investigar e redefinir a mídia da seção Sobre no mobile: no Android há travamento e cor distorcida no primeiro paint; no iOS aparece primeiro só a camada colorida/overlay e o vídeo demora 1-2s para surgir. Avaliar trocar `devleo-about.mp4` por imagem estática, GIF ou formato mais otimizado, além de revisar overlay e estratégia de carregamento.
+[x] Refatorar links em OtherProject para reutilizar ProjectLinks e reduzir duplicação;
+[x] Melhorar posição do botão de subir a tela no final da página;
+[x] Otimizar imagens do projeto, tinyfy + conversão para '.webp';
+[x] Planejamento funcional e visual documentado em docs/plan-secao-contato.md;
+[] Melhorar a interação com as fotos dos projetos;
+[] Criar seção de Contato;
+[] Definir copy final (titulo, subtitulo, CTA principal e microcopy de contato);
+[] Definir fontes de dados (reuso de CONTACT e campos adicionais necessarios);
+[] Validar prototipo em mobile e desktop antes da implementacao;
+[] Implementar secao e incluir ancora no menu de navegacao;
+
+---
+
+Plano de contexto visual
+
+[x] Inicializar o contexto estrategico do portfolio com `$impeccable init`, criando `PRODUCT.md` e a configuracao do live mode;
+[x] Executar `$impeccable document` para gerar `DESIGN.md` e `.impeccable/design.json` a partir dos tokens e componentes existentes;
+[] Definir e registrar as referencias visuais da marca no `PRODUCT.md`;
+
+---
+
+Plano SEO
+
+Fase 1 - Validacao e mensuracao
+[] Revalidar Core Web Vitals da home apos ajustes;
+[] Configurar Google Search Console e enviar sitemap.xml;
+[] Monitorar indexacao por 2-4 semanas e ajustar title/description por CTR;
+
+Fase 2 - CTR e relevancia
+[] Revisar title e description da home para aumentar CTR no Google;
+[] Revisar H1/H2 e copy da home com palavras-chave alvo (desenvolvedor full stack, freelancer, React/Node);
+[] Revisar textos dos projetos em destaque com foco em intencao de busca;
+
+Fase 3 - Marca e operacao continua
+[] Garantir favicon, apple-touch-icon e manifest consistentes para marca;
+[] Configurar GA4 para acompanhar paginas mais acessadas e origem organica;
+[] Criar checklist mensal de SEO tecnico e conteudo;
