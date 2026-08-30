@@ -32,6 +32,9 @@ export const CONTACT = {
 export const WHATSAPP_CTA_MESSAGE =
   "Olá, Leonardo! Vi seu portfólio e gostaria de conversar sobre uma oportunidade ou projeto.";
 
+export const HERO_DESCRIPTION =
+  "Desenvolvo aplicações web, APIs e integrações entre sistemas para organizar dados e simplificar processos. Também crio sites e produtos digitais com foco em performance, responsividade e SEO. Se você tem um projeto em mente, vamos conversar.";
+
 export const HERO_TECHS = [
   "React",
   "TypeScript",

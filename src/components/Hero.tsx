@@ -1,7 +1,12 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { CONTACT, HERO_TECHS, WHATSAPP_CTA_MESSAGE } from "@/constants";
+import {
+  CONTACT,
+  HERO_DESCRIPTION,
+  HERO_TECHS,
+  WHATSAPP_CTA_MESSAGE,
+} from "@/constants";
 import type { CSSProperties, ReactNode } from "react";
 
 const whatsappCtaUrl = `${CONTACT.Whatsapp.url}?text=${encodeURIComponent(
@@ -59,26 +64,16 @@ export const HeroSection = () => {
 
           <HeroFadeUp delay={0.4}>
             <p className="text-base sm:text-lg leading-relaxed mb-7 max-w-2xl text-secondary">
-              Desenvolvo aplicações web orientadas a dados, de plataformas
-              industriais em tempo real a sites e produtos digitais com foco em
-              performance e experiência de uso.
+              {HERO_DESCRIPTION}
             </p>
           </HeroFadeUp>
 
           <HeroFadeUp delay={0.5}>
-            <div className="flex flex-wrap gap-3 mb-9">
-              {HERO_TECHS.map((tech) => (
-                <Badge key={tech}>{tech}</Badge>
-              ))}
-            </div>
-          </HeroFadeUp>
-
-          <HeroFadeUp delay={0.6}>
             <div className="flex flex-wrap items-center gap-5 sm:gap-6">
               <Button
                 asChild
                 className={cn(
-                  "font-mono px-6 sm:px-8 border-2 border-accent text-accent bg-transparent hover:bg-transparent",
+                  "font-mono min-h-11 px-6 sm:px-8 border-2 border-accent text-accent bg-transparent hover:bg-transparent",
                   "transition-[transform,box-shadow] duration-250 ease-[cubic-bezier(0.645,0.045,0.355,1)] focus-visible:ring-2 focus-visible:ring-accent/50",
                   "hover:shadow-[4px_4px_0_0] hover:shadow-accent hover:-translate-x-1.25 hover:-translate-y-1.25",
                 )}
@@ -96,10 +91,23 @@ export const HeroSection = () => {
 
               <a
                 href="#projects"
-                className="font-mono text-sm text-secondary underline decoration-accent/35 underline-offset-4 transition-[transform,color,text-decoration-color] duration-200 hover:-translate-y-0.5 hover:text-accent hover:decoration-accent/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="inline-flex min-h-11 items-center px-1 font-mono text-sm text-secondary underline decoration-accent/35 underline-offset-4 transition-[transform,color,text-decoration-color] duration-200 hover:-translate-y-0.5 hover:text-accent hover:decoration-accent/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 Ver projetos
               </a>
+            </div>
+          </HeroFadeUp>
+
+          <HeroFadeUp delay={0.6}>
+            <div className="mt-8">
+              <p className="mb-3 text-sm text-secondary">
+                Tecnologias que uso no dia a dia
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {HERO_TECHS.map((tech) => (
+                  <Badge key={tech}>{tech}</Badge>
+                ))}
+              </div>
             </div>
           </HeroFadeUp>
         </div>

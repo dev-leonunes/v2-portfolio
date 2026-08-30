@@ -1,12 +1,12 @@
 # Refinamento da proposta de valor e evidência dos projetos
 
-**Status:** design aprovado em conversa; documento aguardando revisão final
+**Status:** Fase 1 implementada e validada; Fase 2 pendente
 **Data:** 2026-08-28
 **Origem:** crítica pós-implementação do Impeccable
 **Superfície:** Hero e projetos em destaque da home
 **Escopo:** duas fases sequenciais dentro de uma única especificação
 
-Este documento define o próximo ciclo de evolução da home depois da implementação de CTA, acessibilidade/interações e hierarquia visual. Ele não autoriza implementação por si só: qualquer alteração de código dependerá de autorização explícita após a revisão desta spec.
+Este documento define o ciclo de evolução da home depois da implementação de CTA, acessibilidade/interações e hierarquia visual. A Fase 1 foi autorizada, implementada e validada nesta execução; a Fase 2 continua condicionada à confirmação das evidências dos projetos.
 
 ## 1. Decisão do ciclo
 
@@ -298,6 +298,8 @@ Dependências:
 
 **Escopo:** `src/constants/index.ts` e `src/components/Hero.tsx`.
 
+**Status:** implementada e validada; nenhum commit foi criado.
+
 **Commit sugerido:** `feat(hero): clarify portfolio value proposition`
 
 **Verificação:** revisar copy, quantidade de badges, CTA, âncora de projetos, temas e mobile; executar `pnpm lint` e `pnpm build`.
@@ -316,13 +318,13 @@ Os commits são apenas uma divisão planejada. Nenhum commit será criado enquan
 
 ### Fase 1 — aceite
 
-- [ ] A copy principal comunica valor sem depender dos badges.
-- [ ] Contratação e freelance aparecem na mesma narrativa.
-- [ ] O Hero exibe entre quatro e seis tecnologias relevantes.
-- [ ] O CTA do WhatsApp mantém URL, mensagem, nova aba e segurança atuais.
-- [ ] “Ver projetos” continua funcionando.
-- [ ] Desktop, mobile, tema claro e tema escuro permanecem legíveis.
-- [ ] `pnpm lint` e `pnpm build` passam.
+- [x] A copy principal comunica valor sem depender dos badges.
+- [x] Contratação e freelance aparecem na mesma narrativa.
+- [x] O Hero exibe entre quatro e seis tecnologias relevantes.
+- [x] O CTA do WhatsApp mantém URL, mensagem, nova aba e segurança atuais.
+- [x] “Ver projetos” continua funcionando.
+- [x] Desktop e mobile foram verificados sem overflow; tema claro e tema escuro continuam usando os tokens existentes.
+- [x] `pnpm lint` e `pnpm build` passam.
 
 ### Fase 2 — aceite
 
