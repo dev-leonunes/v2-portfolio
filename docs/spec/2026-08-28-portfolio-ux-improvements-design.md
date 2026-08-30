@@ -1,11 +1,11 @@
 # Melhorias incrementais de UX da home do portfólio
 
-**Status:** implementação concluída no escopo aprovado; commits atômicos pendentes
+**Status:** implementação concluída no escopo aprovado; commits atômicos concluídos
 **Data:** 2026-08-28
 **Branch de implementação:** `feat/portfolio-ux-improvements`
 **Superfície:** `src/app/page.tsx` e componentes da home
 **Base da decisão:** crítica do Impeccable com pontuação 24/40
-**Implementação nesta etapa:** concluída na branch `feat/portfolio-ux-improvements`; validações técnicas concluídas; commits atômicos aguardam autorização.
+**Implementação nesta etapa:** concluída na branch `feat/portfolio-ux-improvements`; validações técnicas e commits atômicos concluídos.
 
 Este documento registra o desenho aprovado que orientou a especificação, a quebra em tarefas e a implementação incremental da home.
 
@@ -272,7 +272,7 @@ O header global, o footer e os tokens globais não serão reformulados nesta eta
 
 ## 9. Divisão de implementação
 
-A implementação dos três escopos abaixo foi concluída na branch. A criação dos commits atômicos permanece pendente, aguardando autorização.
+A implementação dos três escopos abaixo foi concluída na branch e organizada em commits atômicos.
 
 ### Commit 1 — CTA/conversão
 
@@ -300,7 +300,7 @@ A implementação dos três escopos abaixo foi concluída na branch. A criação
 
 ### Validação final
 
-Depois dos três commits:
+Após os três commits:
 
 - executar `npm run lint`;
 - executar `npm run build`;
@@ -308,7 +308,7 @@ Depois dos três commits:
 - verificar o CTA sem enviar mensagem;
 - verificar foco e teclado;
 - revisar os dois temas;
-- registrar pendências restantes no `TODO.md`.
+- registrar pendências restantes no `TODO.md` e neste documento.
 
 Não há suíte de testes automatizados configurada; a validação combinará lint, build, inspeção manual e revisão incremental dos diffs.
 
@@ -348,4 +348,63 @@ O `TODO.md` deverá manter ou receber os seguintes itens fora do escopo atual:
 
 ## 13. Status do planejamento
 
-O planejamento foi concluído e utilizado como base para a implementação do escopo aprovado. Os itens futuros permanecem registrados no `TODO.md`, a branch `feat/portfolio-ux-improvements` contém as alterações funcionais e os commits atômicos ainda aguardam autorização.
+O planejamento foi concluído e utilizado como base para a implementação do escopo aprovado. Os itens futuros permanecem registrados no `TODO.md`, a branch `feat/portfolio-ux-improvements` contém as alterações funcionais e os commits atômicos foram concluídos:
+
+- `3a82d98 feat(hero): connect WhatsApp CTA and refine hero content`;
+- `83685ef fix(a11y): improve home controls and motion support`;
+- `28f9ed8 refactor(projects): refine featured and secondary hierarchy`;
+- `3bb47b9 docs(ux): record home improvement completion`.
+
+## 14. Revisão da crítica e plano do próximo ciclo
+
+A crítica original do Impeccable foi gerada antes desses commits e registrou uma linha de base de 24/40. A revisão pós-implementação está documentada em `.impeccable/critique/2026-08-28T15-35-37Z__src-app-page-tsx.md`. O CTA inerte foi resolvido e os pontos de interação, movimento reduzido e hierarquia visual foram tratados dentro do escopo aprovado; ainda não há uma nova pontuação formal.
+
+As próximas resoluções devem seguir esta ordem, sem alterar código neste ciclo de planejamento:
+
+### Ciclo 1 — proposta de valor e conversão
+
+1. Revisar a copy do hero para deixar explícitos os dois contextos prioritários — contratação e projeto freelance — sem voltar a uma lista de tecnologias como mensagem principal.
+2. Definir a quantidade final de sinais técnicos exibidos no hero e manter a lista completa no About.
+3. Definir a microcopy de contato e o que a pessoa pode esperar após abrir o WhatsApp.
+
+**Critério de saída:** o primeiro viewport comunica quem Leonardo ajuda, que tipo de solução entrega e qual é o próximo passo, sem depender de interpretar os badges.
+
+### Ciclo 2 — evidência dos projetos
+
+1. Escolher os três projetos em destaque que melhor representam a próxima oportunidade desejada.
+2. Levantar, antes de editar os dados, problema, papel desempenhado, resultado, escala e tecnologias relevantes de cada caso.
+3. Atualizar as descrições em `PROJECTS`; só adicionar campos ao contrato `Project` se houver conteúdo real e aprovado para preenchê-los.
+4. Manter a página “Mais Projetos” como trabalho separado, conforme o `TODO.md`.
+
+**Critério de saída:** cada destaque explica por que existe, qual foi a contribuição de Leonardo e que evidência sustenta a escolha; os cards menores continuam escaneáveis.
+
+### Ciclo 3 — endurecimento de acessibilidade da home
+
+1. Adicionar skip link e um landmark `main` com relação clara com a navegação.
+2. Converter a navegação desktop para um landmark `nav` e revisar rótulos do logo, menu mobile e fechamento do drawer.
+3. Dar uma pista visual não intrusiva para a rolagem horizontal das abas de experiência em telas estreitas.
+4. Decidir se os links do footer devem receber rótulos visíveis, mantendo os nomes acessíveis mesmo que o visual continue compacto.
+5. Revalidar tema claro/escuro, foco, zoom de 200%, teclado e movimento reduzido com uma auditoria direcionada.
+
+**Critério de saída:** a home pode ser percorrida por teclado e tecnologia assistiva sem depender de cor, hover, memória ou interpretação de ícones.
+
+### Ciclo 4 — limpeza visual seletiva
+
+Somente depois dos ciclos de conversão, evidência e acessibilidade, avaliar os achados P2 que permaneceram fora do escopo atual:
+
+- faixa lateral de 2px nos seletores de experiência;
+- grid decorativo do `ImagePlaceholder`;
+- numeração e kickers repetidos;
+- combinação de borda com sombra ampla em superfícies remanescentes;
+- densidade visual do grid de projetos secundários.
+
+Esta etapa deve preservar a direção “padrão atual refinado” e exigir uma decisão visual por item; não será um redesign amplo.
+
+### Itens que continuam fora do próximo ciclo
+
+- criar a seção de Contato e migrar o CTA para ela;
+- criar a página “Mais Projetos”;
+- adotar WCAG 2.2 nível AA como meta formal;
+- definir e registrar referências visuais específicas da marca.
+
+Cada ciclo futuro deve resultar em uma mudança isolada, validação própria e commit atômico. A execução só começa mediante autorização explícita para o ciclo escolhido.

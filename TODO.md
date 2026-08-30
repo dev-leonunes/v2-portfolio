@@ -15,6 +15,10 @@ Lista de tarefas / Proximas implementações
 [x] Planejamento funcional e visual documentado em docs/plan-secao-contato.md;
 [x] Implementar melhorias incrementais da home: CTA para WhatsApp, acessibilidade/interações e hierarquia dos projetos;
 [] Melhorar a interação com as fotos dos projetos;
+[] Revisar a proposta de valor do hero para explicitar contratação, freelance e próximo passo (ver `docs/spec/2026-08-28-refinamento-hero-e-projetos-design.md`);
+[] Selecionar os três projetos de maior valor e registrar problema, papel, resultado e escala antes de revisar suas descrições (Fase 2 da spec);
+[] Fazer auditoria direcionada de acessibilidade na home: skip link, landmarks, abas mobile, rótulos visíveis e tema claro;
+[] Avaliar os achados visuais P2 remanescentes sem alterar a direção "padrão atual refinado";
 [] Criar seção de Contato e migrar o CTA do hero para essa seção;
 [] Criar página "Mais Projetos" para reunir todos os projetos fora da home;
 [] Adotar WCAG 2.2 nível AA como meta formal em uma etapa posterior;
