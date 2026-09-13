@@ -1,21 +1,22 @@
 # Refinamento da proposta de valor e evidência dos projetos
 
-**Status:** Fase 1 implementada e validada; Fase 2 pendente
+**Status:** Fases 1 e 2 implementadas e validadas; ciclo encerrado
 **Data:** 2026-08-28
+**Última atualização:** 2026-09-12
 **Origem:** crítica pós-implementação do Impeccable
 **Superfície:** Hero e projetos em destaque da home
 **Escopo:** duas fases sequenciais dentro de uma única especificação
 
-Este documento define o ciclo de evolução da home depois da implementação de CTA, acessibilidade/interações e hierarquia visual. A Fase 1 foi autorizada, implementada e validada nesta execução; a Fase 2 continua condicionada à confirmação das evidências dos projetos.
+Este documento define o ciclo de evolução da home depois da implementação de CTA, acessibilidade/interações e hierarquia visual. As Fases 1 e 2 foram autorizadas, implementadas e validadas; esta especificação registra o encerramento do ciclo.
 
 ## 1. Decisão do ciclo
 
-O próximo ciclo será dividido em duas fases:
+O ciclo foi dividido em duas fases:
 
 1. **Fase 1 — proposta de valor do Hero:** revisar a mensagem, o contexto de contratação/freelance e a densidade de tecnologias.
 2. **Fase 2 — evidência dos projetos:** selecionar e reescrever os três projetos em destaque com base em fatos verificáveis.
 
-As fases pertencem à mesma spec, mas serão executadas, validadas e commitadas separadamente. A Fase 2 só começa depois da validação da Fase 1.
+As fases pertencem à mesma spec e foram executadas, validadas e registradas separadamente. A Fase 2 foi iniciada após a validação da Fase 1.
 
 ## 2. Contexto e problema
 
@@ -23,9 +24,10 @@ A crítica original registrou 24/40 antes da implementação. Desde então:
 
 - o CTA do Hero passou a abrir o WhatsApp com mensagem pré-preenchida;
 - a navegação por abas, o filtro, os links de projetos, o CV e o vídeo receberam melhorias de interação e acessibilidade;
-- os três destaques foram preservados e os cards secundários ficaram mais compactos.
+- os três destaques foram selecionados e passaram a comunicar melhor contexto, contribuição e evidências;
+- os cards secundários ficaram mais compactos, receberam descrições revisadas e o BackScan passou a contar com uma prévia visual das suas duas telas.
 
-Restam dois problemas de maior impacto para conversão:
+O ciclo foi iniciado com dois problemas de maior impacto para conversão, agora tratados:
 
 1. a home ainda não explicita, no primeiro viewport, se a conversa é sobre contratação, freelance ou ambos;
 2. os projetos mostram principalmente tecnologias e implementação, mas pouco contexto, contribuição e resultado.
@@ -65,7 +67,7 @@ Ambos serão atendidos no mesmo Hero, sem criar uma bifurcação de CTAs.
 - revisão da quantidade e da seleção de tecnologias exibidas no Hero;
 - centralização da copy alterada em `src/constants/index.ts`;
 - seleção dos três projetos em destaque com critérios de relevância e evidência;
-- revisão de `description` e, se necessário, curadoria de `technologies` em `PROJECTS`;
+- revisão de `description` e, se necessário, curadoria de `technologies` em `PROJECTS`, incluindo os projetos secundários quando aplicável;
 - validação independente de cada fase;
 - commits atômicos separados por fase.
 
@@ -80,7 +82,7 @@ Ambos serão atendidos no mesmo Hero, sem criar uma bifurcação de CTAs.
 - limpeza dos achados visuais P2, como numeração, grid decorativo e faixa lateral;
 - auditoria formal de conformidade WCAG 2.2 nível AA.
 
-Se a Fase 2 não puder expressar uma evidência real com os campos atuais, a implementação deverá parar e registrar uma decisão adicional antes de alterar o contrato `Project`.
+Durante o planejamento, foi definido que, se a Fase 2 não pudesse expressar uma evidência real com os campos atuais, a implementação deveria parar e registrar uma decisão adicional antes de alterar o contrato `Project`. A execução confirmou que os campos atuais eram suficientes.
 
 ## 6. Fase 1 — proposta de valor do Hero
 
@@ -178,15 +180,15 @@ Os arquivos previstos são `src/constants/index.ts` e `src/components/Hero.tsx`.
 
 ## 7. Fase 2 — evidência dos projetos em destaque
 
-### 7.1 Candidatos atuais
+### 7.1 Seleção concluída
 
-Os três projetos que atualmente possuem `featured: true` são os candidatos iniciais:
+Os três projetos que possuem `featured: true` na home são:
 
 - Dr. Júlio Cézar;
 - Foco em Notícias;
-- Sistema de Gestão de Estoque.
+- Raízes do Nordeste API.
 
-Eles só serão substituídos se a coleta de evidências mostrar que outro projeto representa melhor a oportunidade desejada. A home continuará com exatamente três destaques.
+Raízes do Nordeste API foi escolhido no lugar do Sistema de Gestão de Estoque por representar um projeto de conclusão de curso mais robusto e com maior escopo. A home continua com exatamente três destaques.
 
 ### 7.2 Critérios de seleção
 
@@ -199,11 +201,11 @@ Cada candidato será avaliado por:
 5. capacidade de demonstrar resultado ou benefício;
 6. variedade suficiente para não apresentar três casos tecnicamente equivalentes.
 
-A seleção será confirmada antes da edição dos dados. O valor de `featured` não será alterado apenas para equilibrar visualmente a grade.
+A seleção foi confirmada antes da edição dos dados. O valor de `featured` foi alterado com base na relevância e na evidência dos projetos, não apenas para equilibrar visualmente a grade.
 
 ### 7.3 Conteúdo a levantar
 
-Antes da implementação, cada projeto selecionado deverá ter respostas para:
+Antes da implementação, cada projeto selecionado teve respostas para:
 
 | Informação | Pergunta de verificação | Uso na interface |
 |---|---|---|
@@ -264,7 +266,7 @@ Nenhuma métrica, cliente, responsabilidade ou resultado será inventado para pr
 1. A composição atual dos destaques SHALL permanecer horizontal no desktop e empilhada no mobile.
 2. O label “Projeto em destaque”, as imagens, os placeholders e os links SHALL continuar disponíveis.
 3. Filtros, links externos e estados sem imagem SHALL continuar funcionando.
-4. Cards secundários SHALL permanecer inalterados, salvo correção mínima diretamente causada por uma descrição mais longa.
+4. A estrutura visual e os comportamentos dos cards secundários SHALL ser preservados; revisões editoriais e uma prévia visual do BackScan podem ser incluídas sem criar uma nova superfície ou alterar a hierarquia da home.
 
 ### 7.5 Limites de implementação
 
@@ -298,9 +300,9 @@ Dependências:
 
 **Escopo:** `src/constants/index.ts` e `src/components/Hero.tsx`.
 
-**Status:** implementada e validada; nenhum commit foi criado.
+**Status:** implementada, validada e registrada.
 
-**Commit sugerido:** `feat(hero): clarify portfolio value proposition`
+**Commit:** `ad84f6d feat(hero): clarify value proposition and reprioritize technical signals`
 
 **Verificação:** revisar copy, quantidade de badges, CTA, âncora de projetos, temas e mobile; executar `pnpm lint` e `pnpm build`.
 
@@ -308,11 +310,23 @@ Dependências:
 
 **Escopo:** `src/constants/index.ts` e, somente se necessário, `src/components/Projects/FeaturedProject.tsx`.
 
-**Commit sugerido:** `content(projects): strengthen featured project evidence`
+**Status:** implementada, validada e registrada.
+
+**Commit principal:** `9074b27 feat(projects): strengthen featured project evidence`
 
 **Verificação:** revisar os três casos, confirmar fatos, testar filtros, links, imagens, temas e mobile/desktop; executar `pnpm lint` e `pnpm build`.
 
-Os commits são apenas uma divisão planejada. Nenhum commit será criado enquanto a implementação não for autorizada.
+Os commits funcionais foram criados após autorização explícita e permanecem separados por intenção.
+
+### Complementos concluídos após as entregas principais
+
+Após a implementação das duas fases, foram concluídos ajustes editoriais e de apresentação diretamente relacionados à seção de projetos:
+
+- inclusão do BackScan como projeto secundário e curadoria dos seis projetos exibidos na home (`29a0afe`);
+- revisão das descrições dos projetos secundários (`fcf3cd2` e `5533ad0`);
+- adição da composição visual das telas de configuração e comprovante do BackScan em `public/backscan-screens.webp` (`94fc8c2`).
+
+Esses complementos preservaram o contrato `Project`, os três destaques, a hierarquia existente e os links disponíveis.
 
 ## 10. Validação e critérios de aceite
 
@@ -328,14 +342,14 @@ Os commits são apenas uma divisão planejada. Nenhum commit será criado enquan
 
 ### Fase 2 — aceite
 
-- [ ] Os três destaques foram escolhidos por relevância, evidência e diferenciação.
-- [ ] Cada descrição comunica contexto, contribuição e resultado/benefício confirmado.
-- [ ] Nenhum dado ou métrica foi inventado.
-- [ ] O contrato `Project` e a estrutura visual atual permanecem compatíveis.
-- [ ] Filtros, links, placeholders e imagens continuam funcionando.
-- [ ] Cards secundários não foram alterados sem necessidade.
-- [ ] Desktop, mobile, tema claro e tema escuro permanecem legíveis.
-- [ ] `pnpm lint` e `pnpm build` passam.
+- [x] Os três destaques foram escolhidos por relevância, evidência e diferenciação.
+- [x] Cada descrição comunica contexto, contribuição e resultado/benefício confirmado.
+- [x] Nenhum dado ou métrica foi inventado.
+- [x] O contrato `Project` e a estrutura visual atual permanecem compatíveis.
+- [x] Filtros, links, placeholders e imagens continuam funcionando.
+- [x] A estrutura visual e os comportamentos dos cards secundários foram preservados; as descrições receberam revisão editorial e o BackScan passou a ter uma prévia visual.
+- [x] Desktop, mobile, tema claro e tema escuro permanecem legíveis.
+- [x] `pnpm lint` e `pnpm build` passam.
 
 ## 11. Riscos e mitigação
 
@@ -350,9 +364,10 @@ Os commits são apenas uma divisão planejada. Nenhum commit será criado enquan
 
 | Achado da crítica atualizada | Requisito ou fase | Tratamento |
 |---|---|---|
-| Hero ainda não explicita contratação/freelance | HERO-01, HERO-02 | Resolver na Fase 1 |
-| Badges ainda funcionam como inventário | HERO-04 | Resolver na Fase 1 |
-| Projetos têm pouca evidência de problema, atuação e resultado | PROJ-01, PROJ-02 | Resolver na Fase 2 |
+| Hero ainda não explicita contratação/freelance | HERO-01, HERO-02 | Resolvido na Fase 1 |
+| Badges ainda funcionam como inventário | HERO-04 | Resolvido na Fase 1 |
+| Projetos têm pouca evidência de problema, atuação e resultado | PROJ-01, PROJ-02 | Resolvido na Fase 2 |
+| Cards secundários têm descrições genéricas e o BackScan não apresenta sua interface | Complemento editorial e visual pós-Fase 2 | Resolvido com revisão de copy e prévia visual |
 | Nova página “Mais Projetos” | Fora do escopo | Permanecer no `TODO.md` |
 | Skip link, landmarks, abas mobile e auditoria WCAG | Próximo ciclo de acessibilidade | Não misturar nesta spec |
 | Numeração, grid decorativo e faixa lateral | P2 visual | Avaliar depois das duas fases |
@@ -368,6 +383,8 @@ Continuam fora deste ciclo:
 - referências visuais específicas da marca;
 - limpeza ampla dos padrões visuais P2.
 
-## 14. Próximo passo
+## 14. Encerramento e próximo ciclo
 
-Após a revisão deste documento, a execução deverá começar pela Fase 1. A Fase 2 só deverá ser planejada em tarefas executáveis depois que a Fase 1 estiver validada e as evidências dos três projetos tiverem sido confirmadas.
+As Fases 1 e 2 foram implementadas, validadas e registradas em commits atômicos. Os critérios de aceite desta especificação estão concluídos, e os complementos editoriais e visuais posteriores também foram documentados.
+
+O próximo passo recomendado é encerrar esta branch e, após uma nova linha de base com crítica e auditoria direcionadas, iniciar o ciclo de endurecimento de acessibilidade da home. Esse ciclo está descrito na seção “Ciclo 3 — endurecimento de acessibilidade da home” da [spec de melhorias incrementais da home](./2026-08-28-portfolio-ux-improvements-design.md#ciclo-3--endurecimento-de-acessibilidade-da-home).
