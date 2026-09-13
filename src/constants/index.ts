@@ -171,6 +171,15 @@ export interface Project {
   liveUrl?: string;
 }
 
+export const HOME_SECONDARY_PROJECT_IDS = [
+  "backscan",
+  "gestao-estoque-app",
+  "fibras-maravigirl",
+  "vem-ver-noticias",
+  "the-legend-of-zelda",
+  "sistema-dindin",
+] as const;
+
 export const PROJECTS: Project[] = [
   {
     id: "site-dr-julio",
@@ -229,6 +238,23 @@ export const PROJECTS: Project[] = [
     featured: false,
     githubUrl: "https://github.com/dev-leonunes/gestao-estoque-app",
     liveUrl: "https://gestao-estoque-app-frontend.vercel.app/",
+  },
+  {
+    id: "backscan",
+    title: "BackScan",
+    description:
+      "Experimento de segurança desenvolvido a partir de um fork e ampliado com geração de comprovantes configuráveis, links compartilháveis, validação explícita de geolocalização e integração serverless com Telegram.",
+    technologies: [
+      "JavaScript",
+      "Vercel Serverless",
+      "Telegram Bot API",
+      "Geolocation API",
+      "HTML",
+      "CSS",
+    ],
+    type: "personal",
+    featured: false,
+    githubUrl: "https://github.com/dev-leonunes/backscan",
   },
   {
     id: "fibras-maravigirl",
