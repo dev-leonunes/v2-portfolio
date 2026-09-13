@@ -176,7 +176,7 @@ export const PROJECTS: Project[] = [
     id: "site-dr-julio",
     title: "Dr. Júlio Cézar",
     description:
-      "Site profissional com seção 'Sobre Mim', especialidades, agendamento direto via WhatsApp e integração com redes sociais. Estrutura otimizada para SEO e performance.",
+      "Landing page criada para ampliar a presença local de um psiquiatra no Google, facilitar o agendamento e reunir seus links em uma página de bio. Desenvolvi sozinho o design, frontend, SEO, deploy e manutenção; os dados compartilhados do Search Console registraram 2,06 mil impressões e 65 cliques no período analisado.",
     image: "/dr-julio-cezar-site.webp",
     imageAlt:
       "Página inicial do site profissional do Dr. Júlio Cézar com seções de apresentação e especialidades",
@@ -196,7 +196,7 @@ export const PROJECTS: Project[] = [
     id: "foco-em-noticias",
     title: "Foco em Notícias",
     description:
-      "Portal Foco em Notícias, um projeto que se destaca pelo uso estratégico de técnicas de SEO.",
+      "Portal de notícias entregue de ponta a ponta em WordPress, incluindo domínio, DNS, hospedagem, conteúdo inicial e banners de publicidade. Também cuidei da estrutura de SEO, segurança, backups, cache e otimização de imagens, com foco em melhorar o carregamento do portal.",
     image: "/foco-em-noticias-homepage.webp",
     imageAlt:
       "Página inicial do portal Foco em Notícias com destaques editoriais e estrutura otimizada para SEO",
@@ -226,7 +226,7 @@ export const PROJECTS: Project[] = [
       "Axios",
     ],
     type: "personal",
-    featured: true,
+    featured: false,
     githubUrl: "https://github.com/dev-leonunes/gestao-estoque-app",
     liveUrl: "https://gestao-estoque-app-frontend.vercel.app/",
   },
@@ -302,7 +302,7 @@ export const PROJECTS: Project[] = [
     id: "raizes-do-nordeste-api",
     title: "Raízes do Nordeste API",
     description:
-      "API REST para uma rede fictícia de restaurantes nordestinos, com autenticação JWT, autorização por perfis, cardápio, estoque por unidade, pedidos multicanal, pagamento mock e auditoria.",
+      "Projeto de conclusão de curso desenvolvido individualmente: um MVP de API REST para simular a operação de uma rede de lanchonetes nordestinas em expansão. Implementei autenticação, perfis de acesso, pedidos multicanal, estoque por unidade, pagamento simulado, auditoria, documentação Swagger e testes automatizados.",
     technologies: [
       "NestJS",
       "TypeScript",
@@ -311,10 +311,9 @@ export const PROJECTS: Project[] = [
       "JWT",
       "Swagger/OpenAPI",
       "Vitest",
-      "Docker",
     ],
     type: "personal",
-    featured: false,
+    featured: true,
     githubUrl: "https://github.com/dev-leonunes/raizes-do-nordeste-api",
   },
   {
