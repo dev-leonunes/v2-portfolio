@@ -244,6 +244,9 @@ export const PROJECTS: Project[] = [
     title: "BackScan",
     description:
       "Experimento de segurança desenvolvido a partir de um fork e ampliado com geração de comprovantes configuráveis, links compartilháveis, validação explícita de geolocalização e integração serverless com Telegram.",
+    image: "/backscan-screens.webp",
+    imageAlt:
+      "Telas de configuração e comprovante gerado pelo BackScan com dados fictícios",
     technologies: [
       "JavaScript",
       "Vercel Serverless",
