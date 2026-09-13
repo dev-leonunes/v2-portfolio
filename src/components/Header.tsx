@@ -129,12 +129,12 @@ export const Header = () => {
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl flex items-center justify-between">
         <div className="hidden lg:block">
           <HeaderSlideIn distance={-24} duration={0.58}>
-            <Link href="/">
+            <Link href="/" aria-label="Página inicial de Leonardo Nunes">
               <Image
                 width={131}
                 height={114}
                 src={isDarkTheme ? "/Logo-dark.webp" : "/Logo-light.webp"}
-                alt="Logo"
+                alt=""
                 className="h-7 w-auto lg:h-8"
                 priority
               />
@@ -142,12 +142,16 @@ export const Header = () => {
           </HeaderSlideIn>
         </div>
 
-        <Link href="/" className="lg:hidden">
+        <Link
+          href="/"
+          className="lg:hidden"
+          aria-label="Página inicial de Leonardo Nunes"
+        >
           <Image
             width={131}
             height={114}
             src={isDarkTheme ? "/Logo-dark.webp" : "/Logo-light.webp"}
-            alt="Logo"
+            alt=""
             className="h-7 w-auto lg:h-8"
             priority
           />
@@ -155,15 +159,20 @@ export const Header = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-10">
-          {NAV_ITEMS.map((item, index) => (
-            <HeaderSlideIn key={item.label} delay={0.05 + index * 0.09}>
-              <NavItem
-                {...item}
-                index={index}
-                active={activeSection === item.href.slice(1)}
-              />
-            </HeaderSlideIn>
-          ))}
+          <nav
+            aria-label="Navegação principal"
+            className="flex items-center gap-10"
+          >
+            {NAV_ITEMS.map((item, index) => (
+              <HeaderSlideIn key={item.label} delay={0.05 + index * 0.09}>
+                <NavItem
+                  {...item}
+                  index={index}
+                  active={activeSection === item.href.slice(1)}
+                />
+              </HeaderSlideIn>
+            ))}
+          </nav>
           <HeaderSlideIn delay={0.32} duration={0.56} distance={26}>
             <ThemeToggle />
           </HeaderSlideIn>
@@ -177,7 +186,7 @@ export const Header = () => {
                 variant="ghost"
                 size="icon"
                 className="text-accent hover:bg-accent/10 h-12 w-12 rounded-lg"
-                aria-label="Abrir menu de navegacao"
+                aria-label="Abrir menu de navegação"
               >
                 <Menu className="h-5! w-5!" />
               </Button>
@@ -187,7 +196,10 @@ export const Header = () => {
               className="w-70 border-l border-border/80 bg-background/95 backdrop-blur-xl"
             >
               <SheetTitle className="sr-only">Menu</SheetTitle>
-              <nav className="flex flex-col gap-6 mt-8">
+              <nav
+                aria-label="Navegação principal"
+                className="flex flex-col gap-6 mt-8"
+              >
                 {NAV_ITEMS.map((item, index) => (
                   <Link
                     key={item.label}

@@ -380,27 +380,27 @@ Os Ciclos 1 e 2 abaixo foram concluídos após a revisão da crítica. O próxim
 
 **Critério de saída:** atendido. Cada destaque explica por que existe, qual foi a contribuição de Leonardo e que evidência sustenta a escolha; os cards menores continuam escaneáveis.
 
-### Ciclo 3 — endurecimento de acessibilidade da home (planejado)
+### Ciclo 3 — endurecimento de acessibilidade da home (concluído)
 
-**Status do planejamento:** decisões registradas nesta seção; implementação ainda não iniciada.
+**Status da implementação:** concluída na branch de melhorias; sem commit ou merge nesta etapa.
 
 #### Decisões e contexto
 
-1. **Skip link — incluir.** Um skip link é um link de atalho, normalmente invisível até receber foco, que permite a quem navega por teclado pular o cabeçalho repetido e ir diretamente ao conteúdo principal. Ele reduz o número de teclas necessárias, evita que a pessoa precise atravessar a navegação fixa em toda visita e oferece um caminho previsível para leitores de tela. A home já possui um elemento `<main>`; o ajuste planejado é dar a ele um alvo identificável e conectá-lo ao atalho.
-2. **Landmarks — incluir.** Landmarks são regiões semânticas como `header`, `nav`, `main` e `footer`, reconhecidas pelas tecnologias assistivas como pontos de navegação. Eles permitem saltar diretamente para a navegação ou para o conteúdo, sem depender da aparência da página. O mobile já possui um `nav`; a navegação desktop ainda está dentro de um `div` e deve receber o landmark `nav`, com rótulo claro.
-3. **Pista visual das abas mobile — incluir.** As experiências continuam usando rolagem horizontal nativa. A direção recomendada é uma pista discreta na borda do conjunto — por exemplo, um fade/gradiente ou a indicação parcial da próxima aba — exibida apenas quando houver conteúdo além da área visível. A pista não deve cobrir rótulos, criar uma segunda navegação ou transformar as abas em carrossel.
+1. **Skip link — incluído.** Um skip link é um link de atalho, normalmente invisível até receber foco, que permite a quem navega por teclado pular o cabeçalho repetido e ir diretamente ao conteúdo principal. Ele reduz o número de teclas necessárias, evita que a pessoa precise atravessar a navegação fixa em toda visita e oferece um caminho previsível para leitores de tela. A home agora identifica o `<main>` com `main-content` e o torna um alvo focável do atalho.
+2. **Landmarks — incluídos.** Landmarks são regiões semânticas como `header`, `nav`, `main` e `footer`, reconhecidas pelas tecnologias assistivas como pontos de navegação. Eles permitem saltar diretamente para a navegação ou para o conteúdo, sem depender da aparência da página. A navegação desktop e a navegação mobile agora usam `nav` com rótulo claro.
+3. **Pista visual das abas mobile — incluída.** As experiências continuam usando rolagem horizontal nativa. Uma pista discreta em gradiente aparece somente quando há conteúdo além da área visível e desaparece quando a pessoa chega ao fim. Ela não cria uma segunda navegação nem altera o comportamento das abas.
 4. **Links do footer — manter compactos.** Não serão adicionados rótulos visíveis aos ícones, pois isso quebraria a composição enxuta e deixaria o rodapé mais poluído. Os nomes acessíveis (`aria-label`) devem permanecer completos e será verificado se cada link continua identificável por teclado e tecnologia assistiva.
-5. **Rótulos e idioma — revisar.** Serão revisados o nome acessível dos links do logo, o rótulo do botão de abertura do menu mobile e o texto do controle de fechamento do drawer. A revisão deve manter o visual atual e padronizar os nomes em PT-BR, sem introduzir texto visível desnecessário.
-6. **Validação — executar após a implementação.** A home será verificada em desktop e mobile com teclado, foco visível, skip link, landmarks, abas, filtro, links do footer, tema claro/escuro, zoom de 200% e `prefers-reduced-motion`. Também serão executados o detector do Impeccable e `pnpm run lint`. Esta validação direcionada não representa ainda a adoção formal de WCAG 2.2 nível AA.
+5. **Rótulos e idioma — revisados.** Foram revisados o nome acessível dos links do logo, o rótulo do botão de abertura do menu mobile e o texto do controle de fechamento do drawer. O visual atual foi mantido e os nomes foram padronizados em PT-BR, sem introduzir texto visível desnecessário.
+6. **Validação — executada.** A home foi verificada em desktop e mobile com teclado, foco visível, skip link, landmarks, abas, filtro, links do footer, tema claro/escuro, viewport estreito representativo de zoom ampliado, ausência de overflow horizontal e emulação de `prefers-reduced-motion`. Também foram executados o detector do Impeccable, `pnpm run lint` e `pnpm run build`. Esta validação direcionada não representa ainda a adoção formal de WCAG 2.2 nível AA.
 
 #### Sequência planejada
 
-- **Tarefa 3.1 — Estrutura navegável:** skip link, alvo do conteúdo principal e landmark da navegação desktop.
-- **Tarefa 3.2 — Abas em telas estreitas:** pista visual de overflow sem alterar o comportamento nativo de rolagem.
-- **Tarefa 3.3 — Nomes acessíveis:** revisão do logo, menu mobile e fechamento do drawer; manter o footer icon-only com `aria-label`.
-- **Tarefa 3.4 — Validação:** teclado, tecnologia assistiva, temas, zoom, movimento reduzido, detector e lint.
+- [x] **Tarefa 3.1 — Estrutura navegável:** skip link, alvo do conteúdo principal e landmark da navegação desktop.
+- [x] **Tarefa 3.2 — Abas em telas estreitas:** pista visual de overflow sem alterar o comportamento nativo de rolagem.
+- [x] **Tarefa 3.3 — Nomes acessíveis:** revisão do logo, menu mobile e fechamento do drawer; manter o footer icon-only com `aria-label`.
+- [x] **Tarefa 3.4 — Validação:** teclado, tecnologia assistiva, temas, viewport estreito, movimento reduzido, detector, lint e build.
 
-**Critério de saída:** a home pode ser percorrida por teclado e tecnologia assistiva sem depender de cor, hover, memória ou interpretação de ícones; o footer permanece visualmente compacto; e a validação não identifica regressões nos fluxos existentes.
+**Critério de saída:** atendido. A home pode ser percorrida por teclado e tecnologia assistiva sem depender de cor, hover, memória ou interpretação de ícones; o footer permanece visualmente compacto; e a validação não identificou regressões nos fluxos existentes.
 
 ### Ciclo 4 — limpeza visual seletiva
 
