@@ -47,7 +47,7 @@ export const OtherProject = ({ project }: { project: Project }) => {
             {project.title}
           </h4>
 
-          <p className="text-sm leading-relaxed mb-5 text-muted-foreground line-clamp-3">
+          <p className="text-sm leading-relaxed mb-5 text-pretty text-muted-foreground">
             {project.description}
           </p>
 

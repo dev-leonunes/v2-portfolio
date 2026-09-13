@@ -76,7 +76,7 @@ export const ProjectsSection = () => {
                 Outros Projetos
               </h3>
             </Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:auto-rows-[1fr]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {displayedOtherProjects.map((project, index) => (
                 <Reveal
                   key={project.id}
