@@ -22,7 +22,6 @@ export const ImagePlaceholder = ({
   if (isBackendProject) {
     return (
       <div className="relative h-full w-full overflow-hidden bg-[radial-gradient(circle_at_15%_15%,color-mix(in_oklab,var(--accent)_25%,transparent),transparent_55%),linear-gradient(135deg,color-mix(in_oklab,var(--background)_76%,black_24%),color-mix(in_oklab,var(--background)_88%,var(--accent)_12%))]">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,color-mix(in_oklab,var(--border)_45%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_oklab,var(--border)_45%,transparent)_1px,transparent_1px)] bg-size-[28px_28px] opacity-30" />
         <div className="relative z-10 h-full w-full px-4 py-3 sm:px-5 sm:py-4 flex flex-col justify-between">
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-accent/45 bg-accent/10 px-3 py-1">
             <ServerCog className="size-3.5 text-accent" aria-hidden="true" />

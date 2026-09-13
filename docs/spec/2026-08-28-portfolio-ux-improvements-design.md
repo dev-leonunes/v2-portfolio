@@ -402,17 +402,21 @@ Os Ciclos 1 e 2 abaixo foram concluídos após a revisão da crítica. O próxim
 
 **Critério de saída:** atendido. A home pode ser percorrida por teclado e tecnologia assistiva sem depender de cor, hover, memória ou interpretação de ícones; o footer permanece visualmente compacto; e a validação não identificou regressões nos fluxos existentes.
 
-### Ciclo 4 — limpeza visual seletiva
+### Ciclo 4 — limpeza visual seletiva (concluído)
 
-Somente depois dos ciclos de conversão, evidência e acessibilidade, avaliar os achados P2 que permaneceram fora do escopo atual:
+**Status da implementação:** concluída na branch de melhorias; sem commit ou merge nesta etapa. Ver a [spec do Ciclo 4](2026-09-13-ciclo-4-limpeza-visual-seletiva-design.md).
 
-- faixa lateral de 2px nos seletores de experiência;
-- grid decorativo do `ImagePlaceholder`;
-- numeração e kickers repetidos;
-- combinação de borda com sombra ampla em superfícies remanescentes;
-- densidade visual do grid de projetos secundários.
+Após os ciclos de conversão, evidência e acessibilidade, foram avaliados os achados P2 que permaneceram fora do escopo anterior:
 
-Esta etapa deve preservar a direção “padrão atual refinado” e exigir uma decisão visual por item; não será um redesign amplo.
+- [x] Faixa lateral de 2px nos seletores de experiência: substituída por borda uniforme de 1px e estado selecionado composto por borda, fundo e texto em `accent`.
+- [x] Grid decorativo do `ImagePlaceholder`: removido somente do placeholder de back-end, preservando seus dados visuais.
+- [x] Numeração e kickers repetidos: mantidos, pois continuam coerentes com a direção “padrão atual refinado”.
+- [x] Combinação de borda com sombra ampla em superfícies remanescentes: mantida, pois não apresentou impacto suficiente para esta alteração localizada.
+- [x] Densidade visual do grid de projetos secundários: mantida, pois a composição atual continua escaneável após os ajustes dos ciclos anteriores.
+
+Esta etapa preservou a direção “padrão atual refinado” e aplicou somente as duas decisões visuais aprovadas; não houve redesign amplo.
+
+**Critério de saída:** atendido. O ruído decorativo selecionado foi reduzido sem alterar a arquitetura, a semântica, o comportamento responsivo ou a hierarquia da home.
 
 ### Itens que continuam fora do próximo ciclo
 

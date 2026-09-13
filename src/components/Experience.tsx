@@ -108,11 +108,11 @@ export const ExperienceSection = () => {
                     onClick={() => selectExperience(exp.id)}
                     className={cn(
                       "relative px-6 py-3 text-left font-mono text-sm whitespace-nowrap lg:whitespace-normal cursor-pointer",
-                      "transition-[color,background-color,border-color] duration-200 border-l-2 lg:border-l-2 border-b-2 lg:border-b-0",
+                      "transition-[color,background-color,border-color] duration-200 border border-transparent",
                       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                       selectedExperience.id === exp.id
-                        ? "border-accent text-accent bg-accent/5"
-                        : "border-border text-muted-foreground hover:bg-accent/5 hover:text-accent",
+                        ? "border-accent bg-accent/10 text-accent"
+                        : "text-muted-foreground hover:bg-accent/5 hover:text-accent",
                     )}
                   >
                     {exp.company}
