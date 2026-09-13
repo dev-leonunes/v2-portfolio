@@ -218,7 +218,7 @@ export const PROJECTS: Project[] = [
     id: "gestao-estoque-app",
     title: "Sistema de Gestão de Estoque",
     description:
-      "Aplicação full stack para gerenciamento de produtos e movimentações de estoque (entradas e saídas), com controle de estoque mínimo, filtros e foco em experiência de uso.",
+      "Projeto acadêmico desenvolvido individualmente: aplicação web para cadastro de produtos e controle de entradas e saídas do estoque, com acompanhamento de estoque mínimo e filtros.",
     image: "/sistema-gestao-estoque-dashboard.webp",
     imageAlt:
       "Dashboard do sistema de gestão de estoque com listagem de produtos e controles de movimentação",
@@ -260,7 +260,7 @@ export const PROJECTS: Project[] = [
     id: "fibras-maravigirl",
     title: "Fibras Maravigirl",
     description:
-      "E-commerce desenvolvido na plataforma Nuvemshop, com personalização de layout via CSS e HTML para adaptar às necessidades do cliente.",
+      "E-commerce desenvolvido e personalizado na Nuvemshop, com ajustes de layout em HTML e CSS para adaptar a loja à identidade e às necessidades do cliente.",
     image: "/fibras-maravigirl-loja.webp",
     imageAlt:
       "Página da loja virtual Fibras Maravigirl com vitrine de produtos e identidade personalizada",
@@ -273,7 +273,7 @@ export const PROJECTS: Project[] = [
     id: "vem-ver-noticias",
     title: "Vem Ver Notícias",
     description:
-      "Portal desenvolvido como projeto freelancer em WordPress, usando Elementor e estratégias de SEO.",
+      "Portal de notícias desenvolvido em WordPress para um projeto freelancer, com personalização em Elementor e otimizações de SEO.",
     image: "/vem-ver-noticias-homepage.webp",
     imageAlt:
       "Página inicial do portal Vem Ver Notícias com matérias em destaque e layout de portal de conteúdo",
@@ -286,7 +286,7 @@ export const PROJECTS: Project[] = [
     id: "the-legend-of-zelda",
     title: "The Legend of Zelda",
     description:
-      "Mini-game tributo ao jogo original onde o objetivo é coletar 3 itens e abrir uma porta para enfrentar o chefão.",
+      "Jogo interativo inspirado no The Legend of Zelda original, com exploração, coleta de três itens e progressão até o confronto com o chefão.",
     image: "/the-legend-of-zelda-game.webp",
     imageAlt:
       "Tela do mini-game The Legend of Zelda com cenário retrô e personagem em exploração",
@@ -300,7 +300,7 @@ export const PROJECTS: Project[] = [
     id: "amigo-secreto",
     title: "Amigo Secreto",
     description:
-      "Gerador de amigo secreto que sorteia os participantes e informa quem é o amigo secreto de cada um.",
+      "Aplicação web para cadastrar participantes, realizar o sorteio e visualizar o resultado de cada pessoa.",
     image: "/amigo-secreto-app.webp",
     imageAlt:
       "Interface do gerador de amigo secreto com lista de participantes e ação de sorteio",
@@ -314,7 +314,7 @@ export const PROJECTS: Project[] = [
     id: "encrypt-text",
     title: "Encrypt Text",
     description:
-      "Encriptador de texto simples que utiliza um algoritmo de substituição para criptografar e descriptografar mensagens.",
+      "Aplicação web para criptografar e descriptografar mensagens usando um algoritmo de substituição.",
     image: "/encrypt-text-app.webp",
     imageAlt:
       "Aplicação Encrypt Text com campos para criptografar e descriptografar mensagens de texto",
@@ -346,7 +346,7 @@ export const PROJECTS: Project[] = [
     id: "sistema-dindin",
     title: "Sistema DinDin",
     description:
-      "RESTful API desenvolvida para gerenciamento de finanças pessoais.",
+      "API para gerenciamento de finanças pessoais, com autenticação, categorias, transações e consulta de extrato.",
     technologies: ["Node.js", "Express.js", "PostgreSQL", "JWT"],
     type: "personal",
     featured: false,
@@ -355,7 +355,8 @@ export const PROJECTS: Project[] = [
   {
     id: "sistema-pdv",
     title: "Sistema PDV",
-    description: "Aplicação Back-end para sistema frente de caixa.",
+    description:
+      "API para simular um sistema de ponto de venda, com cadastro de produtos, clientes e pedidos.",
     technologies: ["Node.js", "Express.js", "PostgreSQL", "Knex", "JWT", "AWS"],
     type: "personal",
     featured: false,
@@ -364,7 +365,8 @@ export const PROJECTS: Project[] = [
   {
     id: "sistema-bancario",
     title: "Sistema Bancario",
-    description: "Aplicação Back-end que simula um sistema bancário simples.",
+    description:
+      "API que simula contas bancárias e operações como depósitos, saques e transferências.",
     technologies: ["TypeScript", "Node.js", "Express.js", "MongoDB", "Vitest"],
     type: "personal",
     featured: false,
