@@ -14,7 +14,7 @@ Lista de tarefas / Proximas implementações
 [x] Otimizar imagens do projeto, tinyfy + conversão para '.webp';
 [x] Planejamento funcional e visual documentado em docs/plan-secao-contato.md;
 [x] Implementar melhorias incrementais da home: CTA para WhatsApp, acessibilidade/interações e hierarquia dos projetos;
-[] Melhorar a interação com as fotos dos projetos;
+[x] Melhorar a interação com as fotos dos projetos (Ciclo 5 concluído; ver `docs/spec/2026-09-13-ciclo-5-galeria-imagens-projetos-design.md`);
 [x] Revisar a proposta de valor do hero para explicitar contratação, freelance e próximo passo (Fase 1 concluída; ver `docs/spec/2026-08-28-refinamento-hero-e-projetos-design.md`);
 [x] Selecionar os três projetos de maior valor e registrar problema, papel, resultado e escala antes de revisar suas descrições (Fase 2 concluída; ver `docs/spec/2026-08-28-refinamento-hero-e-projetos-design.md`);
 [x] Revisar as descrições dos projetos secundários e adicionar a prévia visual composta do BackScan;

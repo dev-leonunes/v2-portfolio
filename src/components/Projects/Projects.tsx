@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   HOME_SECONDARY_PROJECT_IDS,
   type Project,
@@ -10,12 +10,15 @@ import {
 import { ProjectFilter } from "./ProjectFilter";
 import { FeaturedProject } from "./FeaturedProject";
 import { OtherProject } from "./OtherProject";
+import { ProjectGallery, type GalleryState } from "./ProjectGallery";
 import { Reveal } from "@/components/animations";
 
 const MAX_HOME_SECONDARY_PROJECTS = 6;
 
 export const ProjectsSection = () => {
   const [filterType, setFilterType] = useState<ProjectType | "all">("all");
+  const [galleryState, setGalleryState] = useState<GalleryState>(null);
+  const galleryOriginRef = useRef<HTMLButtonElement | null>(null);
 
   const filteredProjects = PROJECTS.filter((project) =>
     filterType === "all" ? true : project.type === filterType,
@@ -32,6 +35,26 @@ export const ProjectsSection = () => {
           .slice(0, MAX_HOME_SECONDARY_PROJECTS)
       : otherProjects;
   const displayedProjects = [...featuredProjects, ...displayedOtherProjects];
+  const galleryProjects = displayedProjects.filter(
+    (project) => (project.images?.length ?? 0) > 0,
+  );
+
+  const handleOpenGallery = (
+    projectId: string,
+    imageIndex: number,
+    trigger: HTMLButtonElement,
+  ) => {
+    const projectIndex = galleryProjects.findIndex(
+      (project) => project.id === projectId,
+    );
+
+    if (projectIndex < 0) {
+      return;
+    }
+
+    galleryOriginRef.current = trigger;
+    setGalleryState({ projectIndex, imageIndex });
+  };
 
   return (
     <section
@@ -49,7 +72,10 @@ export const ProjectsSection = () => {
 
             <ProjectFilter
               filterType={filterType}
-              onFilterChange={setFilterType}
+              onFilterChange={(nextFilterType) => {
+                setGalleryState(null);
+                setFilterType(nextFilterType);
+              }}
               resultCount={displayedProjects.length}
             />
           </div>
@@ -63,7 +89,13 @@ export const ProjectsSection = () => {
               delay={index * 0.12}
               duration={0.78}
             >
-              <FeaturedProject project={project} index={index} />
+              <FeaturedProject
+                project={project}
+                index={index}
+                onImageOpen={(imageIndex, trigger) =>
+                  handleOpenGallery(project.id, imageIndex, trigger)
+                }
+              />
             </Reveal>
           ))}
         </div>
@@ -83,7 +115,12 @@ export const ProjectsSection = () => {
                   delay={index * 0.08}
                   duration={0.66}
                 >
-                  <OtherProject project={project} />
+                  <OtherProject
+                    project={project}
+                    onImageOpen={(imageIndex, trigger) =>
+                      handleOpenGallery(project.id, imageIndex, trigger)
+                    }
+                  />
                 </Reveal>
               ))}
             </div>
@@ -97,6 +134,14 @@ export const ProjectsSection = () => {
             </p>
           </div>
         )}
+
+        <ProjectGallery
+          projects={galleryProjects}
+          state={galleryState}
+          onStateChange={setGalleryState}
+          onClose={() => setGalleryState(null)}
+          originRef={galleryOriginRef}
+        />
       </div>
     </section>
   );

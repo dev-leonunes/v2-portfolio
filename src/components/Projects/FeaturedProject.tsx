@@ -1,16 +1,17 @@
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { type Project } from "@/constants";
-import { ImagePlaceholder } from "./ImagePlaceholder";
 import { ProjectTypeBadge } from "./ProjectTypeBadge";
 import { ProjectLinks } from "./ProjectLinks";
+import { ProjectImage } from "./ProjectImage";
 
 export const FeaturedProject = ({
   project,
   index,
+  onImageOpen,
 }: {
   project: Project;
   index: number;
+  onImageOpen: (imageIndex: number, trigger: HTMLButtonElement) => void;
 }) => {
   return (
     <div
@@ -23,24 +24,12 @@ export const FeaturedProject = ({
       {/* Imagem */}
       <div className="flex-1 relative group w-full">
         <div className="absolute -inset-2 -z-10 rounded-xl bg-accent/20 blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-65" />
-        <div className="relative rounded-xl overflow-hidden border border-accent/40 aspect-video bg-background/40">
-          {project.image ? (
-            <Image
-              src={project.image}
-              alt={project.imageAlt ?? project.title}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-103"
-              sizes="(max-width: 1024px) calc(100vw - 3rem), (max-width: 1280px) 41vw, 34rem"
-            />
-          ) : (
-            <div className="w-full h-full bg-linear-to-br from-muted to-muted/50 flex items-center justify-center transition-transform duration-500 group-hover:scale-103">
-              <ImagePlaceholder
-                title={project.title}
-                technologies={project.technologies}
-              />
-            </div>
-          )}
-        </div>
+        <ProjectImage
+          project={project}
+          onOpen={onImageOpen}
+          className="aspect-video rounded-xl border border-accent/40 bg-background/40"
+          sizes="(max-width: 1024px) calc(100vw - 3rem), (max-width: 1280px) 41vw, 34rem"
+        />
       </div>
 
       {/* Conteúdo */}

@@ -100,6 +100,17 @@
 }
 
 @layer utilities {
+  @media (hover: hover) and (pointer: fine) {
+    .project-image-trigger .project-image-action {
+      opacity: 0;
+    }
+
+    .project-image-trigger:hover .project-image-action,
+    .project-image-trigger:focus-visible .project-image-action {
+      opacity: 1;
+    }
+  }
+
   .section-shell {
     padding-block: var(--section-space);
   }

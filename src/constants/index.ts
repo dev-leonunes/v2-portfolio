@@ -158,12 +158,16 @@ export const EXPERIENCES = [
 
 export type ProjectType = "personal" | "freelance";
 
+export interface ProjectImage {
+  src: string;
+  alt: string;
+}
+
 export interface Project {
   id: string;
   title: string;
   description: string;
-  image?: string;
-  imageAlt?: string;
+  images?: ProjectImage[];
   technologies: string[];
   type: ProjectType;
   featured: boolean;
@@ -186,9 +190,12 @@ export const PROJECTS: Project[] = [
     title: "Dr. Júlio Cézar",
     description:
       "Landing page criada para ampliar a presença local de um psiquiatra no Google, facilitar o agendamento e reunir seus links em uma página de bio. Desenvolvi sozinho o design, frontend, SEO, deploy e manutenção; os dados compartilhados do Search Console registraram 2,06 mil impressões e 65 cliques no período analisado.",
-    image: "/dr-julio-cezar-site.webp",
-    imageAlt:
-      "Página inicial do site profissional do Dr. Júlio Cézar com seções de apresentação e especialidades",
+    images: [
+      {
+        src: "/dr-julio-cezar-site.webp",
+        alt: "Página inicial do site profissional do Dr. Júlio Cézar com seções de apresentação e especialidades",
+      },
+    ],
     technologies: [
       "React",
       "TypeScript",
@@ -206,9 +213,12 @@ export const PROJECTS: Project[] = [
     title: "Foco em Notícias",
     description:
       "Portal de notícias entregue de ponta a ponta em WordPress, incluindo domínio, DNS, hospedagem, conteúdo inicial e banners de publicidade. Também cuidei da estrutura de SEO, segurança, backups, cache e otimização de imagens, com foco em melhorar o carregamento do portal.",
-    image: "/foco-em-noticias-homepage.webp",
-    imageAlt:
-      "Página inicial do portal Foco em Notícias com destaques editoriais e estrutura otimizada para SEO",
+    images: [
+      {
+        src: "/foco-em-noticias-homepage.webp",
+        alt: "Página inicial do portal Foco em Notícias com destaques editoriais e estrutura otimizada para SEO",
+      },
+    ],
     technologies: ["WordPress", "Elementor", "SEO"],
     type: "freelance",
     featured: true,
@@ -219,9 +229,12 @@ export const PROJECTS: Project[] = [
     title: "Sistema de Gestão de Estoque",
     description:
       "Projeto acadêmico desenvolvido individualmente: aplicação web para cadastro de produtos e controle de entradas e saídas do estoque, com acompanhamento de estoque mínimo e filtros.",
-    image: "/sistema-gestao-estoque-dashboard.webp",
-    imageAlt:
-      "Dashboard do sistema de gestão de estoque com listagem de produtos e controles de movimentação",
+    images: [
+      {
+        src: "/sistema-gestao-estoque-dashboard.webp",
+        alt: "Dashboard do sistema de gestão de estoque com listagem de produtos e controles de movimentação",
+      },
+    ],
     technologies: [
       "React",
       "TypeScript",
@@ -244,9 +257,12 @@ export const PROJECTS: Project[] = [
     title: "BackScan",
     description:
       "Experimento de segurança desenvolvido a partir de um fork e ampliado com geração de comprovantes configuráveis, links compartilháveis, validação explícita de geolocalização e integração serverless com Telegram.",
-    image: "/backscan-screens.webp",
-    imageAlt:
-      "Telas de configuração e comprovante gerado pelo BackScan com dados fictícios",
+    images: [
+      {
+        src: "/backscan-screens.webp",
+        alt: "Telas de configuração e comprovante gerado pelo BackScan com dados fictícios",
+      },
+    ],
     technologies: [
       "JavaScript",
       "Vercel Serverless",
@@ -264,9 +280,12 @@ export const PROJECTS: Project[] = [
     title: "Fibras Maravigirl",
     description:
       "E-commerce desenvolvido e personalizado na Nuvemshop, com ajustes de layout em HTML e CSS para adaptar a loja à identidade e às necessidades do cliente.",
-    image: "/fibras-maravigirl-loja.webp",
-    imageAlt:
-      "Página da loja virtual Fibras Maravigirl com vitrine de produtos e identidade personalizada",
+    images: [
+      {
+        src: "/fibras-maravigirl-loja.webp",
+        alt: "Página da loja virtual Fibras Maravigirl com vitrine de produtos e identidade personalizada",
+      },
+    ],
     technologies: ["Nuvemshop", "HTML", "CSS"],
     type: "freelance",
     featured: false,
@@ -277,9 +296,12 @@ export const PROJECTS: Project[] = [
     title: "Vem Ver Notícias",
     description:
       "Portal de notícias desenvolvido em WordPress para um projeto freelancer, com personalização em Elementor e otimizações de SEO.",
-    image: "/vem-ver-noticias-homepage.webp",
-    imageAlt:
-      "Página inicial do portal Vem Ver Notícias com matérias em destaque e layout de portal de conteúdo",
+    images: [
+      {
+        src: "/vem-ver-noticias-homepage.webp",
+        alt: "Página inicial do portal Vem Ver Notícias com matérias em destaque e layout de portal de conteúdo",
+      },
+    ],
     technologies: ["WordPress", "Elementor", "SEO"],
     type: "freelance",
     featured: false,
@@ -290,9 +312,12 @@ export const PROJECTS: Project[] = [
     title: "The Legend of Zelda",
     description:
       "Jogo interativo inspirado no The Legend of Zelda original, com exploração, coleta de três itens e progressão até o confronto com o chefão.",
-    image: "/the-legend-of-zelda-game.webp",
-    imageAlt:
-      "Tela do mini-game The Legend of Zelda com cenário retrô e personagem em exploração",
+    images: [
+      {
+        src: "/the-legend-of-zelda-game.webp",
+        alt: "Tela do mini-game The Legend of Zelda com cenário retrô e personagem em exploração",
+      },
+    ],
     technologies: ["JavaScript", "p5.js"],
     type: "personal",
     featured: false,
@@ -304,9 +329,12 @@ export const PROJECTS: Project[] = [
     title: "Amigo Secreto",
     description:
       "Aplicação web para cadastrar participantes, realizar o sorteio e visualizar o resultado de cada pessoa.",
-    image: "/amigo-secreto-app.webp",
-    imageAlt:
-      "Interface do gerador de amigo secreto com lista de participantes e ação de sorteio",
+    images: [
+      {
+        src: "/amigo-secreto-app.webp",
+        alt: "Interface do gerador de amigo secreto com lista de participantes e ação de sorteio",
+      },
+    ],
     technologies: ["HTML", "CSS", "JavaScript"],
     type: "personal",
     featured: false,
@@ -318,9 +346,12 @@ export const PROJECTS: Project[] = [
     title: "Encrypt Text",
     description:
       "Aplicação web para criptografar e descriptografar mensagens usando um algoritmo de substituição.",
-    image: "/encrypt-text-app.webp",
-    imageAlt:
-      "Aplicação Encrypt Text com campos para criptografar e descriptografar mensagens de texto",
+    images: [
+      {
+        src: "/encrypt-text-app.webp",
+        alt: "Aplicação Encrypt Text com campos para criptografar e descriptografar mensagens de texto",
+      },
+    ],
     technologies: ["HTML", "CSS", "JavaScript"],
     type: "personal",
     featured: false,
