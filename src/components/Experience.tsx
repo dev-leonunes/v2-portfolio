@@ -201,7 +201,7 @@ export const ExperienceSection = () => {
               )}
             </div>
 
-            <div className="space-y-6 rounded-2xl border border-border/70 bg-muted/10 p-6 lg:p-8 shadow-[0_26px_60px_-52px_color-mix(in_oklab,var(--accent)_60%,transparent)]">
+            <div className="space-y-6 rounded-2xl border border-border/70 bg-muted/10 p-7 sm:p-8 lg:p-10 shadow-[0_26px_60px_-52px_color-mix(in_oklab,var(--accent)_60%,transparent)]">
               <div
                 key={selectedExperience.id}
                 id="experience-panel"
@@ -223,7 +223,7 @@ export const ExperienceSection = () => {
                     </p>
                   </div>
 
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-lg text-muted-foreground leading-relaxed">
                     {selectedExperience.description}
                   </p>
 

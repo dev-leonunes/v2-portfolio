@@ -1,6 +1,6 @@
 # Ciclo 6 — curadoria de projetos e acessibilidade crítica
 
-**Status:** C6-T01, C6-T02, C6-T03 e C6-T04 implementadas e validadas; C6-T05 pendente
+**Status:** C6-T01, C6-T02, C6-T03, C6-T04 e C6-T06 implementadas e validadas; C6-T05 executada e validada
 **Data:** 2026-09-13
 **Última atualização:** 2026-09-14
 **Branch de implementação:** `feat/portfolio-ux-improvements`
@@ -20,8 +20,10 @@ três filtros. A C6-T02 também foi validada no navegador, com a galeria limitad
 claros de `primary`, `accent` e `ring`, com validação de contraste no navegador
 e preservação dos valores do tema escuro. A C6-T04 completou a navegação das
 tabs com roving `tabIndex`, orientação responsiva, teclas de eixo, `Home`/`End`,
-foco e rolagem acompanhando a seleção. A C6-T05 continua pendente para validar
-o ciclo integrado. Nenhum commit ou merge foi realizado.
+foco e rolagem acompanhando a seleção. A C6-T05 validou o ciclo integrado em
+desktop, mobile, temas e movimento reduzido. A C6-T06 refinou a legibilidade do
+painel de experiências sem alterar sua estrutura. Nenhum commit ou merge foi
+realizado.
 
 ## 1. Contexto
 
@@ -256,11 +258,30 @@ tema, quero que as correções não removam previsibilidade nem legibilidade.
 **Teste independente:** alternar temas, reduzir movimento e testar larguras
 desktop/mobile nas duas etapas.
 
+### C6-READ-01 — Legibilidade equilibrada do painel de experiências
+
+**História:** como pessoa lendo a experiência profissional, quero um bloco com
+fonte e espaçamento confortáveis para acompanhar a descrição e as
+responsabilidades sem uma linha excessivamente longa.
+
+**Critérios de aceitação:**
+
+1. WHEN o painel estiver em desktop THEN o espaçamento interno SHALL aumentar
+   de forma uniforme nos quatro lados.
+2. WHEN a descrição da experiência for exibida THEN sua fonte SHALL usar 18 px,
+   sem alterar os demais textos da seção.
+3. WHEN o painel estiver em mobile THEN o conteúdo SHALL se adaptar à largura
+   disponível sem truncamento ou overflow horizontal.
+4. WHEN a experiência mudar por teclado THEN a relação entre tab e painel SHALL
+   permanecer intacta.
+
+**Teste independente:** inspecionar o painel em desktop e mobile, alternar uma
+experiência usando o teclado e confirmar a ausência de overflow.
+
 ## 8. Tarefas atômicas de implementação
 
-As tarefas abaixo serão executadas em ordem de etapa. As C6-T01, C6-T02 e C6-T03
-já foram aplicadas; as demais continuam pendentes conforme os status registrados
-em cada tarefa.
+As tarefas abaixo foram executadas em ordem de etapa, conforme os status
+registrados em cada tarefa.
 
 ### Etapa 1 — Projetos
 
@@ -416,15 +437,88 @@ C6-A11Y-03.
 
 **Concluída quando:**
 
-- [ ] `pnpm run lint` passa.
-- [ ] `pnpm run build` passa.
-- [ ] A home é verificada em desktop/mobile e nos dois temas.
-- [ ] Movimento reduzido é verificado.
-- [ ] A galeria, filtros, CTA e links externos continuam funcionando.
-- [ ] Nenhuma rota ou link futuro foi adicionado por engano.
+- [x] `pnpm run lint` passa.
+- [x] `pnpm run build` passa.
+- [x] A home é verificada em desktop/mobile e nos dois temas.
+- [x] Movimento reduzido é verificado.
+- [x] A galeria, filtros, CTA e links externos continuam funcionando.
+- [x] Nenhuma rota ou link futuro foi adicionado por engano.
 
 **Verificação:** checklist técnico, visual e comportamental documentado antes
 de solicitar commits atômicos.
+
+**Registro de execução:**
+
+- [x] `pnpm run lint` passou; `pnpm run build` compilou TypeScript e gerou as
+      rotas estáticas esperadas (`/`, `/_not-found`, `/robots.txt` e
+      `/sitemap.xml`). O primeiro build no sandbox foi bloqueado apenas pelo
+      download das fontes do Google; a repetição com acesso externo passou.
+- [x] Em desktop (1280×800), “Todos” exibiu 6 secundários e 9 projetos no
+      total; “Projetos Pessoais” exibiu 4 secundários e 5 projetos; “Freelas”
+      exibiu 2 secundários e 4 projetos. As contagens acessíveis acompanharam
+      cada lista.
+- [x] A galeria acompanhou as listas filtradas, com 7 projetos navegáveis em
+      “Todos”, 3 em “Projetos Pessoais” e 4 em “Freelas”; a navegação por
+      projeto avançou para o item seguinte sem incluir projetos sem imagem.
+- [x] As tabs mantiveram orientação vertical no desktop e horizontal no
+      mobile, com seleção, foco, painel associado e limites de navegação
+      preservados.
+- [x] A alternância entre tema claro e escuro preservou o filtro ativo, a
+      experiência selecionada e o painel associado. A inspeção integrou os
+      tokens de contraste ajustados no C6-T03.
+- [x] Com `prefers-reduced-motion: reduce`, o conteúdo permaneceu visível, a
+      animação do hero ficou desativada e a troca de experiência não aplicou
+      animação de entrada.
+- [x] Em mobile (390×844), a tab “Freelancer” ficou visível após `ArrowRight`,
+      o filtro pessoal exibiu 4 secundários, a galeria ficou contida em
+      350×292 px e a largura efetiva da página não excedeu o viewport.
+- [x] O CTA continuou apontando para o WhatsApp com `target="_blank"` e
+      `rel="noopener noreferrer"`; os 18 links externos inspecionados
+      mantiveram esses atributos e não foi encontrado link para “Mais Projetos”
+      ou rota futura.
+- [x] O detector estático do Impeccable não encontrou antipadrões nos arquivos
+      da superfície validada, e `git diff --check` passou antes do registro.
+
+#### C6-T06 — Ajustar espaçamento e legibilidade do painel de experiências
+
+**Onde:** `src/components/Experience.tsx`.
+
+**Entrega:** aumentar o respiro interno do card e a fonte da descrição da
+experiência, mantendo o card preenchendo a coluna disponível e sem criar uma
+coluna `max-width` separada.
+
+**Status:** implementação e validação concluídas.
+
+**Depende de:** C6-T05.
+
+**Requisito:** C6-READ-01, C6-A11Y-03.
+
+**Concluída quando:**
+
+- [x] O padding do card é responsivo e uniforme nos quatro lados.
+- [x] A descrição usa fonte de 18 px sem alterar os demais textos da seção.
+- [x] O card mantém sua composição e o conteúdo não é truncado.
+- [x] Tabs, temas e navegação por teclado permanecem funcionando.
+- [x] Não há overflow horizontal em mobile.
+
+**Verificação:** inspeção visual e comportamental em desktop/mobile, seguida
+de `pnpm run lint`, `pnpm run build`, `git diff --check` e detector do
+Impeccable.
+
+**Registro de execução:**
+
+- [x] O card passou de `p-6 lg:p-8` para `p-7 sm:p-8 lg:p-10`, aumentando o
+      espaço igualmente à esquerda, direita, acima e abaixo.
+- [x] A descrição passou a usar `text-lg`, com 18 px no navegador; os demais
+      textos do painel permaneceram inalterados.
+- [x] Em 1280×800, o card apresentou 40 px de padding nos quatro lados e
+      continuou preenchendo a coluna, sem faixa vazia criada por `max-width`.
+- [x] Em 390×844, o card apresentou 28 px de padding nos quatro lados, adaptou
+      o conteúdo a 276 px e a página permaneceu dentro do viewport.
+- [x] `ArrowDown` no desktop e `ArrowRight` no mobile continuaram trocando a
+      experiência e atualizando o painel associado.
+- [x] `pnpm run lint`, `pnpm run build`, `git diff --check` e o detector do
+      Impeccable passaram.
 
 ## 9. Sequência e dependências
 
@@ -432,14 +526,13 @@ de solicitar commits atômicos.
 Etapa 1: C6-T01 → C6-T02
 
 Etapa 2: C6-T03 ─┐
-                 ├→ C6-T05
+                 ├→ C6-T05 → C6-T06
           C6-T04 ─┘
 ```
 
 C6-T03 e C6-T04 podem ser implementadas em paralelo depois que a Etapa 1 for
-validada, desde que não sejam misturadas no mesmo commit. C6-T05 é uma
-validação integrada e não deve iniciar antes das duas frentes passarem por suas
-verificações individuais.
+validada, desde que não sejam misturadas no mesmo commit. C6-T05 é a validação
+integrada e C6-T06 é um refinamento de legibilidade dependente dessa validação.
 
 ## 10. Rastreabilidade
 
@@ -449,9 +542,10 @@ verificações individuais.
 | C6-PROJ-02 | C6-T01, C6-T02, C6-T05 | Curadoria e galeria alinhadas à home. |
 | C6-A11Y-01 | C6-T03, C6-T05 | Contraste mínimo validado no tema claro. |
 | C6-A11Y-02 | C6-T04, C6-T05 | Tabs navegáveis e semanticamente honestas. |
-| C6-A11Y-03 | C6-T03, C6-T04, C6-T05 | Temas, responsividade e movimento preservados. |
+| C6-A11Y-03 | C6-T03, C6-T04, C6-T05, C6-T06 | Temas, responsividade e movimento preservados. |
+| C6-READ-01 | C6-T06 | Legibilidade e espaçamento do painel equilibrados. |
 
-**Cobertura:** 5 requisitos, 5 mapeados a tarefas, 0 não mapeados.
+**Cobertura:** 6 requisitos, 6 mapeados a tarefas, 0 não mapeados.
 
 ## 11. Direção futura — Contato
 
@@ -476,7 +570,6 @@ dependência para evitar decisões conflitantes:
 - [x] Tarefas e critérios de validação definidos para implementação posterior.
 - [x] Implementação da C6-T01 autorizada e iniciada.
 - [x] Etapa 1 de Projetos (C6-T01 e C6-T02) implementada e validada.
-- [x] C6-T03 e C6-T04 implementadas e validadas; C6-T05 permanece pendente.
-- [ ] Validação concluída.
-- [ ] Commits atômicos solicitados e criados.
-- [ ] Merge solicitado e realizado.
+- [x] C6-T03 e C6-T04 implementadas e validadas.
+- [x] C6-T05 executada e validada; o ciclo integrado foi concluído.
+- [x] C6-T06 implementada e validada como refinamento de legibilidade do ciclo.
