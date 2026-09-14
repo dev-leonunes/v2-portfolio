@@ -20,6 +20,7 @@ Lista de tarefas / Proximas implementações
 [x] Revisar as descrições dos projetos secundários e adicionar a prévia visual composta do BackScan;
 [x] Executar o Ciclo 3 de acessibilidade na home: skip link, landmarks, pista visual das abas mobile, revisão de rótulos acessíveis (sem rótulos visíveis no footer) e tema claro;
 [x] Avaliar os achados visuais P2 remanescentes sem alterar a direção "padrão atual refinado" (Ciclo 4 concluído; ver `docs/spec/2026-09-13-ciclo-4-limpeza-visual-seletiva-design.md`);
+[] Concluir o Ciclo 6 de curadoria dos projetos e acessibilidade crítica (C6-T01 implementada; ver `docs/spec/2026-09-13-ciclo-6-projetos-acessibilidade-design.md`);
 [] Criar seção de Contato e migrar o CTA do hero para essa seção;
 [] Criar página "Mais Projetos" para reunir todos os projetos fora da home;
 [] Adotar WCAG 2.2 nível AA como meta formal em uma etapa posterior;

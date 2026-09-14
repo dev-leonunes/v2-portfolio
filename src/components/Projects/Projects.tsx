@@ -26,14 +26,11 @@ export const ProjectsSection = () => {
 
   const featuredProjects = filteredProjects.filter((p) => p.featured);
   const otherProjects = filteredProjects.filter((p) => !p.featured);
-  const displayedOtherProjects =
-    filterType === "all"
-      ? HOME_SECONDARY_PROJECT_IDS.map((projectId) =>
-          otherProjects.find((project) => project.id === projectId),
-        )
-          .filter((project): project is Project => project !== undefined)
-          .slice(0, MAX_HOME_SECONDARY_PROJECTS)
-      : otherProjects;
+  const displayedOtherProjects = HOME_SECONDARY_PROJECT_IDS.map((projectId) =>
+    otherProjects.find((project) => project.id === projectId),
+  )
+    .filter((project): project is Project => project !== undefined)
+    .slice(0, MAX_HOME_SECONDARY_PROJECTS);
   const displayedProjects = [...featuredProjects, ...displayedOtherProjects];
   const galleryProjects = displayedProjects.filter(
     (project) => (project.images?.length ?? 0) > 0,
