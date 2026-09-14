@@ -1,8 +1,8 @@
 # Ciclo 6 — curadoria de projetos e acessibilidade crítica
 
-**Status:** C6-T01 implementada; validação manual dos filtros pendente; demais tarefas não iniciadas
+**Status:** C6-T01, C6-T02 e C6-T03 implementadas e validadas; C6-T04 e C6-T05 pendentes
 **Data:** 2026-09-13
-**Última atualização:** 2026-09-13
+**Última atualização:** 2026-09-14
 **Branch de implementação:** `feat/portfolio-ux-improvements`
 **Superfície:** seção `Projects` e interação de experiências da home
 **Direção:** preservar o padrão atual refinado e corrigir os pontos de maior impacto
@@ -14,12 +14,13 @@ Este documento consolida o planejamento do Ciclo 6 após a nova crítica do
 2. acessibilidade crítica, começando por contraste e tabs.
 
 A implementação da C6-T01 foi autorizada e aplicada. `pnpm run lint` e
-`git diff --check` passaram, e a renderização inicial do filtro “Todos” confirmou
-seis projetos secundários e nove projetos no total. A interação automatizada dos
-filtros não pôde ser concluída porque o servidor dev atual não hidratou os
-eventos no Chrome headless; a validação manual dos três filtros continua
-pendente. As demais tarefas serão executadas posteriormente, etapa por etapa,
-após autorização explícita. Nenhum commit ou merge foi realizado.
+`git diff --check` passaram, e a validação manual e automatizada confirmou os
+três filtros. A C6-T02 também foi validada no navegador, com a galeria limitada
+à lista filtrada de projetos que possuem imagem. A C6-T03 ajustou os tokens
+claros de `primary`, `accent` e `ring`, com validação de contraste no navegador
+e preservação dos valores do tema escuro. A C6-T04 e a C6-T05 serão executadas
+posteriormente, após autorização explícita. Nenhum commit ou merge foi
+realizado.
 
 ## 1. Contexto
 
@@ -256,8 +257,9 @@ desktop/mobile nas duas etapas.
 
 ## 8. Tarefas atômicas de implementação
 
-As tarefas abaixo serão executadas em ordem de etapa. A C6-T01 já foi aplicada;
-as demais continuam pendentes conforme os status registrados em cada tarefa.
+As tarefas abaixo serão executadas em ordem de etapa. As C6-T01, C6-T02 e C6-T03
+já foram aplicadas; as demais continuam pendentes conforme os status registrados
+em cada tarefa.
 
 ### Etapa 1 — Projetos
 
@@ -268,7 +270,7 @@ as demais continuam pendentes conforme os status registrados em cada tarefa.
 **Entrega:** ajustar o cálculo de `displayedOtherProjects` para aplicar a
 curadoria e o limite também quando houver filtro por tipo.
 
-**Status:** implementação aplicada; validação manual dos filtros pendente.
+**Status:** implementação e validação concluídas.
 
 **Depende de:** nenhuma.
 
@@ -276,10 +278,10 @@ curadoria e o limite também quando houver filtro por tipo.
 
 **Concluída quando:**
 
-- [ ] Os três estados de filtro exibem no máximo seis secundários.
-- [ ] A ordem de `HOME_SECONDARY_PROJECT_IDS` é preservada.
-- [ ] A contagem acessível corresponde aos cards visíveis.
-- [ ] Nenhum link ou placeholder para “Mais Projetos” é renderizado.
+- [x] Os três estados de filtro exibem no máximo seis secundários.
+- [x] A ordem de `HOME_SECONDARY_PROJECT_IDS` é preservada.
+- [x] A contagem acessível corresponde aos cards visíveis.
+- [x] Nenhum link ou placeholder para “Mais Projetos” é renderizado.
 
 **Verificação:** `pnpm run lint` e inspeção visual dos três filtros em desktop e
 mobile.
@@ -291,7 +293,7 @@ mobile.
 - [x] Contagem acessível derivada da lista exibida.
 - [x] Nenhum link ou placeholder para “Mais Projetos” foi adicionado.
 - [x] `pnpm run lint` e `git diff --check` passaram.
-- [ ] Interação manual dos filtros validada em desktop e mobile.
+- [x] Interação manual dos filtros validada em desktop e mobile.
 
 #### C6-T02 — Validar regressão da galeria com a lista curada
 
@@ -301,19 +303,33 @@ mobile.
 **Entrega:** confirmar que a galeria navega apenas pelos projetos curados e
 visíveis após cada filtro, sem incluir itens fora da home.
 
+**Status:** validação concluída; nenhuma alteração adicional de código foi
+necessária.
+
 **Depende de:** C6-T01.
 
 **Requisito:** C6-PROJ-02.
 
 **Concluída quando:**
 
-- [ ] A galeria respeita a lista filtrada em “Todos”, “Projetos Pessoais” e
+- [x] A galeria respeita a lista filtrada em “Todos”, “Projetos Pessoais” e
       “Freelas”.
-- [ ] Projetos sem imagem continuam fora da navegação da galeria.
-- [ ] Os limites vertical/horizontal permanecem corretos.
+- [x] Projetos sem imagem continuam fora da navegação da galeria.
+- [x] Os limites vertical/horizontal permanecem corretos.
 
 **Verificação:** abrir a primeira imagem de cada filtro e percorrer os projetos
 com teclado e controles visuais.
+
+**Registro de execução:**
+
+- [x] “Todos” exibiu 7 projetos navegáveis na galeria.
+- [x] “Projetos Pessoais” exibiu BackScan, Gestão de Estoque e Zelda, total de
+      3 projetos navegáveis.
+- [x] “Freelas” exibiu 4 projetos navegáveis.
+- [x] A navegação por projetos avançou e recuou respeitando os limites, sem
+      incluir projetos sem imagem.
+- [x] No viewport mobile de 390×844, a galeria permaneceu contida e sem
+      overflow horizontal.
 
 ### Etapa 2 — Acessibilidade
 
@@ -324,18 +340,31 @@ com teclado e controles visuais.
 **Entrega:** ajustar os tokens claros necessários e revisar estados derivados
 sem alterar a direção visual do tema.
 
+**Status:** implementação e validação concluídas.
+
 **Depende de:** C6-T01 e C6-T02 concluídas ou isoladas sem conflito.
 
 **Requisito:** C6-A11Y-01, C6-A11Y-03.
 
 **Concluída quando:**
 
-- [ ] Os seis achados de 4.1:1 deixam de ocorrer.
-- [ ] Texto normal em accent atinge 4.5:1 no tema claro.
-- [ ] Tema escuro, badges, links e focos continuam legíveis.
+- [x] Os seis achados de 4.1:1 deixam de ocorrer.
+- [x] Texto normal em accent atinge 4.5:1 no tema claro.
+- [x] Tema escuro, badges, links e focos continuam legíveis.
 
 **Verificação:** executar detector do Impeccable na superfície renderizada e
 inspecionar os dois temas.
+
+**Registro de execução:**
+
+- [x] `--primary`, `--accent` e `--ring` do tema claro foram ajustados para
+      `#7c2d12`, mantendo a família âmbar e centralizando a correção nos tokens.
+- [x] O tema claro apresentou 7,68:1 contra o fundo principal e 5,46:1 no
+      fundo translúcido dos badges; texto claro sobre o âmbar apresentou 8,83:1.
+- [x] O tema escuro permaneceu com `#f59e0b` e apresentou 8,31:1 no texto de
+      acento e no texto claro sobre o primário.
+- [x] O detector estático do Impeccable não registrou novos antipadrões.
+- [x] `pnpm run lint` e `git diff --check` passaram.
 
 #### C6-T04 — Implementar teclado completo das tabs
 
@@ -431,6 +460,8 @@ dependência para evitar decisões conflitantes:
 - [x] Contato explicitamente mantido fora desta branch.
 - [x] Tarefas e critérios de validação definidos para implementação posterior.
 - [x] Implementação da C6-T01 autorizada e iniciada.
+- [x] Etapa 1 de Projetos (C6-T01 e C6-T02) implementada e validada.
+- [x] C6-T03 implementada e validada; C6-T04 e C6-T05 permanecem pendentes.
 - [ ] Validação concluída.
 - [ ] Commits atômicos solicitados e criados.
 - [ ] Merge solicitado e realizado.

@@ -9,12 +9,12 @@ colors:
   surface-slate: "#334155"
   cool-muted-dark: "#b5c2d7"
   light-surface: "#e3e9f2"
-  signal-amber-light: "#b45309"
+  signal-amber-light: "#7c2d12"
   light-on-signal: "#fff7ed"
   cool-ink-light: "#243244"
   light-border: "#8398b4"
   light-muted: "#ccd6e5"
-  signal-ring-light: "#d97706"
+  signal-ring-light: "#7c2d12"
   danger: "#ef4444"
   danger-light: "#dc2626"
   on-danger: "#f8fafc"
@@ -135,11 +135,12 @@ valores mudam.
 
 ### Primary
 
-- **Âmbar de Sinal** (#f59e0b no tema escuro; #b45309 no tema claro): CTA,
+- **Âmbar de Sinal** (#f59e0b no tema escuro; #7c2d12 no tema claro): CTA,
   links, foco, navegação ativa, marcadores de seção e trechos que precisam ser
   descobertos rapidamente.
-- **Âmbar de Anel** (#f59e0b no tema escuro; #d97706 no tema claro): variação
-  de contraste para anéis de foco e estados de interação no modo claro.
+- **Âmbar de Anel** (#f59e0b no tema escuro; #7c2d12 no tema claro): token dos
+  anéis de foco e estados de interação, com valor profundo no modo claro para
+  manter contraste.
 
 ### Secondary
 
