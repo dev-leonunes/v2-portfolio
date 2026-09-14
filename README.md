@@ -24,7 +24,7 @@ Portfólio pessoal em página única, construído com **Next.js (App Router)**. 
 Regra prática: **comece por `src/constants/index.ts`**.
 
 - `CONTACT`: links e ícones de contato
-- `TECHS` e `ABOUT_TECHS`: tecnologias exibidas
+- `HERO_TECHS` e `ABOUT_TECHS`: tecnologias exibidas
 - `EXPERIENCES`: histórico profissional
 - `PROJECTS`: projetos (com `type` e `featured`)
 

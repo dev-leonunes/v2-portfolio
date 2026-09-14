@@ -1,14 +1,24 @@
 "use client";
 
-import { useState } from "react";
-import { type ProjectType, PROJECTS } from "@/constants";
+import { useRef, useState } from "react";
+import {
+  HOME_SECONDARY_PROJECT_IDS,
+  type Project,
+  type ProjectType,
+  PROJECTS,
+} from "@/constants";
 import { ProjectFilter } from "./ProjectFilter";
 import { FeaturedProject } from "./FeaturedProject";
 import { OtherProject } from "./OtherProject";
+import { ProjectGallery, type GalleryState } from "./ProjectGallery";
 import { Reveal } from "@/components/animations";
+
+const MAX_HOME_SECONDARY_PROJECTS = 6;
 
 export const ProjectsSection = () => {
   const [filterType, setFilterType] = useState<ProjectType | "all">("all");
+  const [galleryState, setGalleryState] = useState<GalleryState>(null);
+  const galleryOriginRef = useRef<HTMLButtonElement | null>(null);
 
   const filteredProjects = PROJECTS.filter((project) =>
     filterType === "all" ? true : project.type === filterType,
@@ -16,6 +26,32 @@ export const ProjectsSection = () => {
 
   const featuredProjects = filteredProjects.filter((p) => p.featured);
   const otherProjects = filteredProjects.filter((p) => !p.featured);
+  const displayedOtherProjects = HOME_SECONDARY_PROJECT_IDS.map((projectId) =>
+    otherProjects.find((project) => project.id === projectId),
+  )
+    .filter((project): project is Project => project !== undefined)
+    .slice(0, MAX_HOME_SECONDARY_PROJECTS);
+  const displayedProjects = [...featuredProjects, ...displayedOtherProjects];
+  const galleryProjects = displayedProjects.filter(
+    (project) => (project.images?.length ?? 0) > 0,
+  );
+
+  const handleOpenGallery = (
+    projectId: string,
+    imageIndex: number,
+    trigger: HTMLButtonElement,
+  ) => {
+    const projectIndex = galleryProjects.findIndex(
+      (project) => project.id === projectId,
+    );
+
+    if (projectIndex < 0) {
+      return;
+    }
+
+    galleryOriginRef.current = trigger;
+    setGalleryState({ projectIndex, imageIndex });
+  };
 
   return (
     <section
@@ -33,7 +69,11 @@ export const ProjectsSection = () => {
 
             <ProjectFilter
               filterType={filterType}
-              onFilterChange={setFilterType}
+              onFilterChange={(nextFilterType) => {
+                setGalleryState(null);
+                setFilterType(nextFilterType);
+              }}
+              resultCount={displayedProjects.length}
             />
           </div>
         </Reveal>
@@ -46,40 +86,59 @@ export const ProjectsSection = () => {
               delay={index * 0.12}
               duration={0.78}
             >
-              <FeaturedProject project={project} index={index} />
+              <FeaturedProject
+                project={project}
+                index={index}
+                onImageOpen={(imageIndex, trigger) =>
+                  handleOpenGallery(project.id, imageIndex, trigger)
+                }
+              />
             </Reveal>
           ))}
         </div>
 
         {/* Outros Projetos */}
-        {otherProjects.length > 0 && (
+        {displayedOtherProjects.length > 0 && (
           <div>
             <Reveal>
               <h3 className="text-2xl font-bold text-foreground mb-8">
                 Outros Projetos
               </h3>
             </Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:auto-rows-[1fr]">
-              {otherProjects.map((project, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {displayedOtherProjects.map((project, index) => (
                 <Reveal
                   key={project.id}
                   delay={index * 0.08}
                   duration={0.66}
                 >
-                  <OtherProject project={project} />
+                  <OtherProject
+                    project={project}
+                    onImageOpen={(imageIndex, trigger) =>
+                      handleOpenGallery(project.id, imageIndex, trigger)
+                    }
+                  />
                 </Reveal>
               ))}
             </div>
           </div>
         )}
 
-        {filteredProjects.length === 0 && (
+        {displayedProjects.length === 0 && (
           <div className="text-center py-12 rounded-2xl border border-dashed border-border bg-muted/10">
             <p className="text-muted-foreground text-lg">
               Nenhum projeto encontrado com este filtro.
             </p>
           </div>
         )}
+
+        <ProjectGallery
+          projects={galleryProjects}
+          state={galleryState}
+          onStateChange={setGalleryState}
+          onClose={() => setGalleryState(null)}
+          originRef={galleryOriginRef}
+        />
       </div>
     </section>
   );

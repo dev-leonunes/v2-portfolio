@@ -1,22 +1,22 @@
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { type Project } from "@/constants";
-import { ImagePlaceholder } from "./ImagePlaceholder";
 import { ProjectTypeBadge } from "./ProjectTypeBadge";
 import { ProjectLinks } from "./ProjectLinks";
+import { ProjectImage } from "./ProjectImage";
 
 export const FeaturedProject = ({
   project,
   index,
+  onImageOpen,
 }: {
   project: Project;
   index: number;
+  onImageOpen: (imageIndex: number, trigger: HTMLButtonElement) => void;
 }) => {
   return (
     <div
       className={cn(
         "relative flex flex-col gap-6 items-stretch rounded-2xl border border-border/70 bg-muted/10 p-5 lg:p-8",
-        "shadow-[0_28px_65px_-54px_color-mix(in_oklab,var(--accent)_55%,transparent)]",
         "lg:flex-row lg:gap-8 lg:items-center",
         index % 2 === 0 ? "" : "lg:flex-row-reverse",
       )}
@@ -24,24 +24,12 @@ export const FeaturedProject = ({
       {/* Imagem */}
       <div className="flex-1 relative group w-full">
         <div className="absolute -inset-2 -z-10 rounded-xl bg-accent/20 blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-65" />
-        <div className="relative rounded-xl overflow-hidden border border-accent/40 aspect-video bg-background/40">
-          {project.image ? (
-            <Image
-              src={project.image}
-              alt={project.imageAlt ?? project.title}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-103"
-              sizes="(max-width: 1024px) calc(100vw - 3rem), (max-width: 1280px) 41vw, 34rem"
-            />
-          ) : (
-            <div className="w-full h-full bg-linear-to-br from-muted to-muted/50 flex items-center justify-center transition-transform duration-500 group-hover:scale-103">
-              <ImagePlaceholder
-                title={project.title}
-                technologies={project.technologies}
-              />
-            </div>
-          )}
-        </div>
+        <ProjectImage
+          project={project}
+          onOpen={onImageOpen}
+          className="aspect-video rounded-xl border border-accent/40 bg-background/40"
+          sizes="(max-width: 1024px) calc(100vw - 3rem), (max-width: 1280px) 41vw, 34rem"
+        />
       </div>
 
       {/* Conteúdo */}
@@ -58,11 +46,9 @@ export const FeaturedProject = ({
           {project.title}
         </h3>
 
-        <div className="p-6 rounded-xl mb-4 bg-background/45 border border-border/60">
-          <p className="leading-relaxed text-muted-foreground">
-            {project.description}
-          </p>
-        </div>
+        <p className="mb-6 leading-relaxed text-muted-foreground">
+          {project.description}
+        </p>
 
         <div className="flex flex-wrap gap-2 mb-6">
           {project.technologies.map((tech) => (
@@ -77,6 +63,7 @@ export const FeaturedProject = ({
 
         <div className="pt-4 border-t border-border/60">
           <ProjectLinks
+            projectTitle={project.title}
             githubUrl={project.githubUrl}
             liveUrl={project.liveUrl}
             size="md"

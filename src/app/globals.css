@@ -26,9 +26,9 @@
   :root:not(.dark) {
     --background: #e3e9f2;
     --foreground: #0f172a;
-    --primary: #b45309;
+    --primary: #7c2d12;
     --primary-foreground: #fff7ed;
-    --accent: #b45309;
+    --accent: #7c2d12;
     --accent-foreground: #fff7ed;
     --secondary: #334155;
     --secondary-foreground: #f8fafc;
@@ -36,7 +36,7 @@
     --muted-foreground: #243244;
     --border: #8398b4;
     --input: #8398b4;
-    --ring: #d97706;
+    --ring: #7c2d12;
     --destructive: #dc2626;
     --destructive-foreground: #f8fafc;
   }
@@ -45,9 +45,9 @@
 :root.light {
   --background: #e3e9f2;
   --foreground: #0f172a;
-  --primary: #b45309;
+  --primary: #7c2d12;
   --primary-foreground: #fff7ed;
-  --accent: #b45309;
+  --accent: #7c2d12;
   --accent-foreground: #fff7ed;
   --secondary: #334155;
   --secondary-foreground: #f8fafc;
@@ -55,7 +55,7 @@
   --muted-foreground: #243244;
   --border: #8398b4;
   --input: #8398b4;
-  --ring: #d97706;
+  --ring: #7c2d12;
   --destructive: #dc2626;
   --destructive-foreground: #f8fafc;
 }
@@ -100,6 +100,17 @@
 }
 
 @layer utilities {
+  @media (hover: hover) and (pointer: fine) {
+    .project-image-trigger .project-image-action {
+      opacity: 0;
+    }
+
+    .project-image-trigger:hover .project-image-action,
+    .project-image-trigger:focus-visible .project-image-action {
+      opacity: 1;
+    }
+  }
+
   .section-shell {
     padding-block: var(--section-space);
   }

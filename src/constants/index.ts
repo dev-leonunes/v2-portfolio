@@ -29,15 +29,17 @@ export const CONTACT = {
   },
 };
 
-export const TECHS = [
-  "Node.js",
+export const WHATSAPP_CTA_MESSAGE =
+  "Olá, Leonardo! Vi seu portfólio e gostaria de conversar sobre uma oportunidade ou projeto.";
+
+export const HERO_DESCRIPTION =
+  "Desenvolvo aplicações web, APIs e integrações entre sistemas para organizar dados e simplificar processos. Também crio sites e produtos digitais com foco em performance, responsividade e SEO. Se você tem um projeto em mente, vamos conversar.";
+
+export const HERO_TECHS = [
   "React",
-  "Next.js",
-  "JavaScript",
   "TypeScript",
-  "NestJS",
+  "Node.js",
   "PostgreSQL",
-  "MongoDB",
   "WebSockets",
   "IA",
 ];
@@ -156,12 +158,16 @@ export const EXPERIENCES = [
 
 export type ProjectType = "personal" | "freelance";
 
+export interface ProjectImage {
+  src: string;
+  alt: string;
+}
+
 export interface Project {
   id: string;
   title: string;
   description: string;
-  image?: string;
-  imageAlt?: string;
+  images?: ProjectImage[];
   technologies: string[];
   type: ProjectType;
   featured: boolean;
@@ -169,15 +175,27 @@ export interface Project {
   liveUrl?: string;
 }
 
+export const HOME_SECONDARY_PROJECT_IDS = [
+  "backscan",
+  "gestao-estoque-app",
+  "fibras-maravigirl",
+  "vem-ver-noticias",
+  "the-legend-of-zelda",
+  "sistema-dindin",
+] as const;
+
 export const PROJECTS: Project[] = [
   {
     id: "site-dr-julio",
     title: "Dr. Júlio Cézar",
     description:
-      "Site profissional com seção 'Sobre Mim', especialidades, agendamento direto via WhatsApp e integração com redes sociais. Estrutura otimizada para SEO e performance.",
-    image: "/dr-julio-cezar-site.webp",
-    imageAlt:
-      "Página inicial do site profissional do Dr. Júlio Cézar com seções de apresentação e especialidades",
+      "Landing page criada para ampliar a presença local de um psiquiatra no Google, facilitar o agendamento e reunir seus links em uma página de bio. Desenvolvi sozinho o design, frontend, SEO, deploy e manutenção; os dados compartilhados do Search Console registraram 2,06 mil impressões e 65 cliques no período analisado.",
+    images: [
+      {
+        src: "/dr-julio-cezar-site.webp",
+        alt: "Página inicial do site profissional do Dr. Júlio Cézar com seções de apresentação e especialidades",
+      },
+    ],
     technologies: [
       "React",
       "TypeScript",
@@ -194,10 +212,13 @@ export const PROJECTS: Project[] = [
     id: "foco-em-noticias",
     title: "Foco em Notícias",
     description:
-      "Portal Foco em Notícias, um projeto que se destaca pelo uso estratégico de técnicas de SEO.",
-    image: "/foco-em-noticias-homepage.webp",
-    imageAlt:
-      "Página inicial do portal Foco em Notícias com destaques editoriais e estrutura otimizada para SEO",
+      "Portal de notícias entregue de ponta a ponta em WordPress, incluindo domínio, DNS, hospedagem, conteúdo inicial e banners de publicidade. Também cuidei da estrutura de SEO, segurança, backups, cache e otimização de imagens, com foco em melhorar o carregamento do portal.",
+    images: [
+      {
+        src: "/foco-em-noticias-homepage.webp",
+        alt: "Página inicial do portal Foco em Notícias com destaques editoriais e estrutura otimizada para SEO",
+      },
+    ],
     technologies: ["WordPress", "Elementor", "SEO"],
     type: "freelance",
     featured: true,
@@ -207,10 +228,13 @@ export const PROJECTS: Project[] = [
     id: "gestao-estoque-app",
     title: "Sistema de Gestão de Estoque",
     description:
-      "Aplicação full stack para gerenciamento de produtos e movimentações de estoque (entradas e saídas), com controle de estoque mínimo, filtros e foco em experiência de uso.",
-    image: "/sistema-gestao-estoque-dashboard.webp",
-    imageAlt:
-      "Dashboard do sistema de gestão de estoque com listagem de produtos e controles de movimentação",
+      "Projeto acadêmico desenvolvido individualmente: aplicação web para cadastro de produtos e controle de entradas e saídas do estoque, com acompanhamento de estoque mínimo e filtros.",
+    images: [
+      {
+        src: "/sistema-gestao-estoque-dashboard.webp",
+        alt: "Dashboard do sistema de gestão de estoque com listagem de produtos e controles de movimentação",
+      },
+    ],
     technologies: [
       "React",
       "TypeScript",
@@ -224,18 +248,44 @@ export const PROJECTS: Project[] = [
       "Axios",
     ],
     type: "personal",
-    featured: true,
+    featured: false,
     githubUrl: "https://github.com/dev-leonunes/gestao-estoque-app",
     liveUrl: "https://gestao-estoque-app-frontend.vercel.app/",
+  },
+  {
+    id: "backscan",
+    title: "BackScan",
+    description:
+      "Experimento de segurança desenvolvido a partir de um fork e ampliado com geração de comprovantes configuráveis, links compartilháveis, validação explícita de geolocalização e integração serverless com Telegram.",
+    images: [
+      {
+        src: "/backscan-screens.webp",
+        alt: "Telas de configuração e comprovante gerado pelo BackScan com dados fictícios",
+      },
+    ],
+    technologies: [
+      "JavaScript",
+      "Vercel Serverless",
+      "Telegram Bot API",
+      "Geolocation API",
+      "HTML",
+      "CSS",
+    ],
+    type: "personal",
+    featured: false,
+    githubUrl: "https://github.com/dev-leonunes/backscan",
   },
   {
     id: "fibras-maravigirl",
     title: "Fibras Maravigirl",
     description:
-      "E-commerce desenvolvido na plataforma Nuvemshop, com personalização de layout via CSS e HTML para adaptar às necessidades do cliente.",
-    image: "/fibras-maravigirl-loja.webp",
-    imageAlt:
-      "Página da loja virtual Fibras Maravigirl com vitrine de produtos e identidade personalizada",
+      "E-commerce desenvolvido e personalizado na Nuvemshop, com ajustes de layout em HTML e CSS para adaptar a loja à identidade e às necessidades do cliente.",
+    images: [
+      {
+        src: "/fibras-maravigirl-loja.webp",
+        alt: "Página da loja virtual Fibras Maravigirl com vitrine de produtos e identidade personalizada",
+      },
+    ],
     technologies: ["Nuvemshop", "HTML", "CSS"],
     type: "freelance",
     featured: false,
@@ -245,10 +295,13 @@ export const PROJECTS: Project[] = [
     id: "vem-ver-noticias",
     title: "Vem Ver Notícias",
     description:
-      "Portal desenvolvido como projeto freelancer em WordPress, usando Elementor e estratégias de SEO.",
-    image: "/vem-ver-noticias-homepage.webp",
-    imageAlt:
-      "Página inicial do portal Vem Ver Notícias com matérias em destaque e layout de portal de conteúdo",
+      "Portal de notícias desenvolvido em WordPress para um projeto freelancer, com personalização em Elementor e otimizações de SEO.",
+    images: [
+      {
+        src: "/vem-ver-noticias-homepage.webp",
+        alt: "Página inicial do portal Vem Ver Notícias com matérias em destaque e layout de portal de conteúdo",
+      },
+    ],
     technologies: ["WordPress", "Elementor", "SEO"],
     type: "freelance",
     featured: false,
@@ -258,10 +311,13 @@ export const PROJECTS: Project[] = [
     id: "the-legend-of-zelda",
     title: "The Legend of Zelda",
     description:
-      "Mini-game tributo ao jogo original onde o objetivo é coletar 3 itens e abrir uma porta para enfrentar o chefão.",
-    image: "/the-legend-of-zelda-game.webp",
-    imageAlt:
-      "Tela do mini-game The Legend of Zelda com cenário retrô e personagem em exploração",
+      "Jogo interativo inspirado no The Legend of Zelda original, com exploração, coleta de três itens e progressão até o confronto com o chefão.",
+    images: [
+      {
+        src: "/the-legend-of-zelda-game.webp",
+        alt: "Tela do mini-game The Legend of Zelda com cenário retrô e personagem em exploração",
+      },
+    ],
     technologies: ["JavaScript", "p5.js"],
     type: "personal",
     featured: false,
@@ -272,10 +328,13 @@ export const PROJECTS: Project[] = [
     id: "amigo-secreto",
     title: "Amigo Secreto",
     description:
-      "Gerador de amigo secreto que sorteia os participantes e informa quem é o amigo secreto de cada um.",
-    image: "/amigo-secreto-app.webp",
-    imageAlt:
-      "Interface do gerador de amigo secreto com lista de participantes e ação de sorteio",
+      "Aplicação web para cadastrar participantes, realizar o sorteio e visualizar o resultado de cada pessoa.",
+    images: [
+      {
+        src: "/amigo-secreto-app.webp",
+        alt: "Interface do gerador de amigo secreto com lista de participantes e ação de sorteio",
+      },
+    ],
     technologies: ["HTML", "CSS", "JavaScript"],
     type: "personal",
     featured: false,
@@ -286,10 +345,13 @@ export const PROJECTS: Project[] = [
     id: "encrypt-text",
     title: "Encrypt Text",
     description:
-      "Encriptador de texto simples que utiliza um algoritmo de substituição para criptografar e descriptografar mensagens.",
-    image: "/encrypt-text-app.webp",
-    imageAlt:
-      "Aplicação Encrypt Text com campos para criptografar e descriptografar mensagens de texto",
+      "Aplicação web para criptografar e descriptografar mensagens usando um algoritmo de substituição.",
+    images: [
+      {
+        src: "/encrypt-text-app.webp",
+        alt: "Aplicação Encrypt Text com campos para criptografar e descriptografar mensagens de texto",
+      },
+    ],
     technologies: ["HTML", "CSS", "JavaScript"],
     type: "personal",
     featured: false,
@@ -300,7 +362,7 @@ export const PROJECTS: Project[] = [
     id: "raizes-do-nordeste-api",
     title: "Raízes do Nordeste API",
     description:
-      "API REST para uma rede fictícia de restaurantes nordestinos, com autenticação JWT, autorização por perfis, cardápio, estoque por unidade, pedidos multicanal, pagamento mock e auditoria.",
+      "Projeto de conclusão de curso desenvolvido individualmente: um MVP de API REST para simular a operação de uma rede de lanchonetes nordestinas em expansão. Implementei autenticação, perfis de acesso, pedidos multicanal, estoque por unidade, pagamento simulado, auditoria, documentação Swagger e testes automatizados.",
     technologies: [
       "NestJS",
       "TypeScript",
@@ -309,17 +371,16 @@ export const PROJECTS: Project[] = [
       "JWT",
       "Swagger/OpenAPI",
       "Vitest",
-      "Docker",
     ],
     type: "personal",
-    featured: false,
+    featured: true,
     githubUrl: "https://github.com/dev-leonunes/raizes-do-nordeste-api",
   },
   {
     id: "sistema-dindin",
     title: "Sistema DinDin",
     description:
-      "RESTful API desenvolvida para gerenciamento de finanças pessoais.",
+      "API para gerenciamento de finanças pessoais, com autenticação, categorias, transações e consulta de extrato.",
     technologies: ["Node.js", "Express.js", "PostgreSQL", "JWT"],
     type: "personal",
     featured: false,
@@ -328,7 +389,8 @@ export const PROJECTS: Project[] = [
   {
     id: "sistema-pdv",
     title: "Sistema PDV",
-    description: "Aplicação Back-end para sistema frente de caixa.",
+    description:
+      "API para simular um sistema de ponto de venda, com cadastro de produtos, clientes e pedidos.",
     technologies: ["Node.js", "Express.js", "PostgreSQL", "Knex", "JWT", "AWS"],
     type: "personal",
     featured: false,
@@ -337,7 +399,8 @@ export const PROJECTS: Project[] = [
   {
     id: "sistema-bancario",
     title: "Sistema Bancario",
-    description: "Aplicação Back-end que simula um sistema bancário simples.",
+    description:
+      "API que simula contas bancárias e operações como depósitos, saques e transferências.",
     technologies: ["TypeScript", "Node.js", "Express.js", "MongoDB", "Vitest"],
     type: "personal",
     featured: false,

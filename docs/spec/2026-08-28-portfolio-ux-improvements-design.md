@@ -1,13 +1,14 @@
 # Melhorias incrementais de UX da home do portfólio
 
-**Status:** design aprovado, aguardando especificação formal e implementação
+**Status:** implementação concluída no escopo aprovado; commits atômicos concluídos
 **Data:** 2026-08-28
+**Última atualização:** 2026-09-12
 **Branch de implementação:** `feat/portfolio-ux-improvements`
 **Superfície:** `src/app/page.tsx` e componentes da home
 **Base da decisão:** crítica do Impeccable com pontuação 24/40
-**Implementação nesta etapa:** nenhuma
+**Implementação nesta etapa:** concluída na branch `feat/portfolio-ux-improvements`; validações técnicas e commits atômicos concluídos.
 
-Este documento registra o desenho aprovado para uma evolução incremental da home. Ele será usado como base para a especificação formal, a quebra em tarefas e a implementação posterior.
+Este documento registra o desenho aprovado que orientou a especificação, a quebra em tarefas e a implementação incremental da home.
 
 ## 1. Contexto e problema
 
@@ -272,6 +273,8 @@ O header global, o footer e os tokens globais não serão reformulados nesta eta
 
 ## 9. Divisão de implementação
 
+A implementação dos três escopos abaixo foi concluída na branch e organizada em commits atômicos.
+
 ### Commit 1 — CTA/conversão
 
 **Escopo:** `src/constants/index.ts` e `src/components/Hero.tsx`.
@@ -298,7 +301,7 @@ O header global, o footer e os tokens globais não serão reformulados nesta eta
 
 ### Validação final
 
-Depois dos três commits:
+Após os três commits:
 
 - executar `npm run lint`;
 - executar `npm run build`;
@@ -306,7 +309,7 @@ Depois dos três commits:
 - verificar o CTA sem enviar mensagem;
 - verificar foco e teclado;
 - revisar os dois temas;
-- registrar pendências restantes no `TODO.md`.
+- registrar pendências restantes no `TODO.md` e neste documento.
 
 Não há suíte de testes automatizados configurada; a validação combinará lint, build, inspeção manual e revisão incremental dos diffs.
 
@@ -344,12 +347,82 @@ O `TODO.md` deverá manter ou receber os seguintes itens fora do escopo atual:
 - adotar WCAG 2.2 nível AA como meta formal;
 - definir e registrar referências visuais específicas da marca.
 
-## 13. Critério de conclusão do planejamento
+## 13. Status do planejamento
 
-O planejamento será considerado pronto quando:
+O planejamento foi concluído e utilizado como base para a implementação do escopo aprovado. Os itens futuros permanecem registrados no `TODO.md`, a branch `feat/portfolio-ux-improvements` contém as alterações funcionais e os commits atômicos foram concluídos:
 
-- este documento estiver revisado e sem ambiguidades;
-- o `TODO.md` registrar claramente os itens futuros;
-- a branch `feat/portfolio-ux-improvements` existir;
-- nenhuma correção da interface tiver sido aplicada;
-- a próxima etapa puder transformar os requisitos deste documento em uma especificação formal e tarefas executáveis.
+- `3a82d98 feat(hero): connect WhatsApp CTA and refine hero content`;
+- `83685ef fix(a11y): improve home controls and motion support`;
+- `28f9ed8 refactor(projects): refine featured and secondary hierarchy`;
+- `3bb47b9 docs(ux): record home improvement completion`.
+
+## 14. Revisão da crítica e plano do próximo ciclo
+
+A crítica original do Impeccable foi gerada antes desses commits e registrou uma linha de base de 24/40. A revisão pós-implementação está documentada em `.impeccable/critique/2026-08-28T15-35-37Z__src-app-page-tsx.md`. O CTA inerte foi resolvido e os pontos de interação, movimento reduzido e hierarquia visual foram tratados dentro do escopo aprovado; ainda não há uma nova pontuação formal.
+
+Os Ciclos 1 e 2 abaixo foram concluídos após a revisão da crítica. O próximo ciclo recomendado é o endurecimento direcionado de acessibilidade da home.
+
+### Ciclo 1 — proposta de valor e conversão (concluído)
+
+- [x] Revisar a copy do Hero para deixar explícitos os dois contextos prioritários — contratação e projeto freelance — sem voltar a uma lista de tecnologias como mensagem principal.
+- [x] Definir a quantidade final de sinais técnicos exibidos no Hero e manter a lista completa no About.
+- [x] Definir a microcopy de contato e o que a pessoa pode esperar após abrir o WhatsApp.
+
+**Critério de saída:** atendido. O primeiro viewport comunica quem Leonardo ajuda, que tipo de solução entrega e qual é o próximo passo, sem depender de interpretar os badges.
+
+### Ciclo 2 — evidência dos projetos (concluído)
+
+- [x] Escolher Dr. Júlio Cézar, Foco em Notícias e Raízes do Nordeste API como os três projetos em destaque, considerando relevância, evidência e diferenciação.
+- [x] Levantar, antes de editar os dados, problema, papel desempenhado, resultado, escala e tecnologias relevantes de cada caso.
+- [x] Atualizar as descrições em `PROJECTS` sem ampliar o contrato `Project`.
+- [x] Manter a página “Mais Projetos” como trabalho separado, conforme o `TODO.md`.
+- [x] Revisar as descrições dos projetos secundários e adicionar a prévia visual composta das telas do BackScan.
+
+**Critério de saída:** atendido. Cada destaque explica por que existe, qual foi a contribuição de Leonardo e que evidência sustenta a escolha; os cards menores continuam escaneáveis.
+
+### Ciclo 3 — endurecimento de acessibilidade da home (concluído)
+
+**Status da implementação:** concluída na branch de melhorias; sem commit ou merge nesta etapa.
+
+#### Decisões e contexto
+
+1. **Skip link — incluído.** Um skip link é um link de atalho, normalmente invisível até receber foco, que permite a quem navega por teclado pular o cabeçalho repetido e ir diretamente ao conteúdo principal. Ele reduz o número de teclas necessárias, evita que a pessoa precise atravessar a navegação fixa em toda visita e oferece um caminho previsível para leitores de tela. A home agora identifica o `<main>` com `main-content` e o torna um alvo focável do atalho.
+2. **Landmarks — incluídos.** Landmarks são regiões semânticas como `header`, `nav`, `main` e `footer`, reconhecidas pelas tecnologias assistivas como pontos de navegação. Eles permitem saltar diretamente para a navegação ou para o conteúdo, sem depender da aparência da página. A navegação desktop e a navegação mobile agora usam `nav` com rótulo claro.
+3. **Pista visual das abas mobile — incluída.** As experiências continuam usando rolagem horizontal nativa. Uma pista discreta em gradiente aparece somente quando há conteúdo além da área visível e desaparece quando a pessoa chega ao fim. Ela não cria uma segunda navegação nem altera o comportamento das abas.
+4. **Links do footer — manter compactos.** Não serão adicionados rótulos visíveis aos ícones, pois isso quebraria a composição enxuta e deixaria o rodapé mais poluído. Os nomes acessíveis (`aria-label`) devem permanecer completos e será verificado se cada link continua identificável por teclado e tecnologia assistiva.
+5. **Rótulos e idioma — revisados.** Foram revisados o nome acessível dos links do logo, o rótulo do botão de abertura do menu mobile e o texto do controle de fechamento do drawer. O visual atual foi mantido e os nomes foram padronizados em PT-BR, sem introduzir texto visível desnecessário.
+6. **Validação — executada.** A home foi verificada em desktop e mobile com teclado, foco visível, skip link, landmarks, abas, filtro, links do footer, tema claro/escuro, viewport estreito representativo de zoom ampliado, ausência de overflow horizontal e emulação de `prefers-reduced-motion`. Também foram executados o detector do Impeccable, `pnpm run lint` e `pnpm run build`. Esta validação direcionada não representa ainda a adoção formal de WCAG 2.2 nível AA.
+
+#### Sequência planejada
+
+- [x] **Tarefa 3.1 — Estrutura navegável:** skip link, alvo do conteúdo principal e landmark da navegação desktop.
+- [x] **Tarefa 3.2 — Abas em telas estreitas:** pista visual de overflow sem alterar o comportamento nativo de rolagem.
+- [x] **Tarefa 3.3 — Nomes acessíveis:** revisão do logo, menu mobile e fechamento do drawer; manter o footer icon-only com `aria-label`.
+- [x] **Tarefa 3.4 — Validação:** teclado, tecnologia assistiva, temas, viewport estreito, movimento reduzido, detector, lint e build.
+
+**Critério de saída:** atendido. A home pode ser percorrida por teclado e tecnologia assistiva sem depender de cor, hover, memória ou interpretação de ícones; o footer permanece visualmente compacto; e a validação não identificou regressões nos fluxos existentes.
+
+### Ciclo 4 — limpeza visual seletiva (concluído)
+
+**Status da implementação:** concluída na branch de melhorias; sem commit ou merge nesta etapa. Ver a [spec do Ciclo 4](2026-09-13-ciclo-4-limpeza-visual-seletiva-design.md).
+
+Após os ciclos de conversão, evidência e acessibilidade, foram avaliados os achados P2 que permaneceram fora do escopo anterior:
+
+- [x] Faixa lateral de 2px nos seletores de experiência: substituída por borda uniforme de 1px e estado selecionado composto por borda, fundo e texto em `accent`.
+- [x] Grid decorativo do `ImagePlaceholder`: removido somente do placeholder de back-end, preservando seus dados visuais.
+- [x] Numeração e kickers repetidos: mantidos, pois continuam coerentes com a direção “padrão atual refinado”.
+- [x] Combinação de borda com sombra ampla em superfícies remanescentes: mantida, pois não apresentou impacto suficiente para esta alteração localizada.
+- [x] Densidade visual do grid de projetos secundários: mantida, pois a composição atual continua escaneável após os ajustes dos ciclos anteriores.
+
+Esta etapa preservou a direção “padrão atual refinado” e aplicou somente as duas decisões visuais aprovadas; não houve redesign amplo.
+
+**Critério de saída:** atendido. O ruído decorativo selecionado foi reduzido sem alterar a arquitetura, a semântica, o comportamento responsivo ou a hierarquia da home.
+
+### Itens que continuam fora do próximo ciclo
+
+- criar a seção de Contato e migrar o CTA para ela;
+- criar a página “Mais Projetos”;
+- adotar WCAG 2.2 nível AA como meta formal;
+- definir e registrar referências visuais específicas da marca.
+
+Cada ciclo futuro deve resultar em uma mudança isolada, validação própria e commit atômico. A execução só começa mediante autorização explícita para o ciclo escolhido.

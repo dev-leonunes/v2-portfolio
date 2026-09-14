@@ -1,6 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+} from "react";
 import { cn } from "@/lib/utils";
 import { EXPERIENCES } from "@/constants";
 import { Button } from "@/components/ui/button";
@@ -10,6 +15,45 @@ import { Download } from "lucide-react";
 export const ExperienceSection = () => {
   const [selectedExperience, setSelectedExperience] = useState(EXPERIENCES[0]);
   const [hasChangedExperience, setHasChangedExperience] = useState(false);
+  const experienceTabsRef = useRef<HTMLDivElement>(null);
+  const experienceTabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const [hasMoreTabs, setHasMoreTabs] = useState(false);
+  const [isExperienceTabsVertical, setIsExperienceTabsVertical] =
+    useState(false);
+
+  useEffect(() => {
+    const tabList = experienceTabsRef.current;
+
+    if (!tabList) {
+      return;
+    }
+
+    const updateOverflow = () => {
+      setIsExperienceTabsVertical(
+        getComputedStyle(tabList).flexDirection === "column",
+      );
+
+      const hasOverflow = tabList.scrollWidth > tabList.clientWidth + 1;
+      const isAtEnd =
+        tabList.scrollLeft + tabList.clientWidth >= tabList.scrollWidth - 1;
+
+      setHasMoreTabs(hasOverflow && !isAtEnd);
+    };
+
+    updateOverflow();
+    tabList.addEventListener("scroll", updateOverflow, { passive: true });
+
+    const resizeObserver = new ResizeObserver(updateOverflow);
+    resizeObserver.observe(tabList);
+    Array.from(tabList.children).forEach((child) => {
+      resizeObserver.observe(child);
+    });
+
+    return () => {
+      tabList.removeEventListener("scroll", updateOverflow);
+      resizeObserver.disconnect();
+    };
+  }, []);
 
   const selectExperience = (experienceId: string) => {
     if (selectedExperience.id === experienceId) {
@@ -26,6 +70,58 @@ export const ExperienceSection = () => {
     setSelectedExperience(nextExperience);
   };
 
+  const moveToExperience = (experienceIndex: number) => {
+    const nextExperience = EXPERIENCES[experienceIndex];
+
+    if (!nextExperience) {
+      return;
+    }
+
+    selectExperience(nextExperience.id);
+
+    const nextTab = experienceTabRefs.current[experienceIndex];
+
+    if (!nextTab) {
+      return;
+    }
+
+    nextTab.focus();
+    nextTab.scrollIntoView({ block: "nearest", inline: "nearest" });
+  };
+
+  const handleExperienceTabKeyDown = (
+    event: KeyboardEvent<HTMLButtonElement>,
+    experienceIndex: number,
+  ) => {
+    const lastExperienceIndex = EXPERIENCES.length - 1;
+    let nextExperienceIndex: number | null = null;
+
+    if (event.key === (isExperienceTabsVertical ? "ArrowDown" : "ArrowRight")) {
+      nextExperienceIndex =
+        experienceIndex === lastExperienceIndex ? 0 : experienceIndex + 1;
+    }
+
+    if (event.key === (isExperienceTabsVertical ? "ArrowUp" : "ArrowLeft")) {
+      nextExperienceIndex =
+        experienceIndex === 0 ? lastExperienceIndex : experienceIndex - 1;
+    }
+
+    if (event.key === "Home") {
+      nextExperienceIndex = 0;
+    }
+
+    if (event.key === "End") {
+      nextExperienceIndex = lastExperienceIndex;
+    }
+
+    if (nextExperienceIndex === null) {
+      return;
+    }
+
+    event.preventDefault();
+    moveToExperience(nextExperienceIndex);
+  };
+
   return (
     <section
       id="experience"
@@ -40,47 +136,81 @@ export const ExperienceSection = () => {
               <div className="flex-1 h-px bg-border ml-4 max-w-xs"></div>
             </h2>
 
-            <a href="/Resume.pdf" download="Leonardo-Nunes-CV.pdf">
-              <Button
-                className={cn(
-                  "font-mono px-6 border-2 border-accent text-accent bg-transparent hover:bg-transparent cursor-pointer",
-                  "transition-[transform,box-shadow] duration-250 ease-[cubic-bezier(0.645,0.045,0.355,1)]",
-                  "hover:shadow-[4px_4px_0_0] hover:shadow-accent hover:-translate-x-1.25 hover:-translate-y-1.25",
-                )}
-              >
+            <Button
+              asChild
+              className={cn(
+                "font-mono px-6 border-2 border-accent text-accent bg-transparent hover:bg-transparent cursor-pointer",
+                "transition-[transform,box-shadow] duration-250 ease-[cubic-bezier(0.645,0.045,0.355,1)]",
+                "hover:shadow-[4px_4px_0_0] hover:shadow-accent hover:-translate-x-1.25 hover:-translate-y-1.25",
+              )}
+            >
+              <a href="/Resume.pdf" download="Leonardo-Nunes-CV.pdf">
                 <Download size={18} />
                 Baixar Currículo
-              </Button>
-            </a>
+              </a>
+            </Button>
           </div>
         </Reveal>
 
         <Reveal delay={0.1}>
           <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-8 lg:gap-10">
-            <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible">
-              {EXPERIENCES.map((exp) => (
-                <button
-                  key={exp.id}
-                  onClick={() => selectExperience(exp.id)}
-                  className={cn(
-                    "relative px-6 py-3 text-left font-mono text-sm whitespace-nowrap lg:whitespace-normal cursor-pointer",
-                    "transition-[color,background-color,border-color] duration-200 border-l-2 lg:border-l-2 border-b-2 lg:border-b-0",
-                    selectedExperience.id === exp.id
-                      ? "border-accent text-accent bg-accent/5"
-                      : "border-border text-muted-foreground hover:bg-accent/5 hover:text-accent",
-                  )}
-                >
-                  {exp.company}
-                </button>
-              ))}
+            <div className="relative">
+              <div
+                ref={experienceTabsRef}
+                className="flex pr-8 lg:flex-col lg:pr-0 overflow-x-auto lg:overflow-x-visible"
+                role="tablist"
+                aria-label="Experiências profissionais"
+                aria-orientation={
+                  isExperienceTabsVertical ? "vertical" : "horizontal"
+                }
+              >
+                {EXPERIENCES.map((exp, index) => (
+                  <button
+                    key={exp.id}
+                    type="button"
+                    id={`experience-tab-${exp.id}`}
+                    role="tab"
+                    aria-selected={selectedExperience.id === exp.id}
+                    aria-controls="experience-panel"
+                    tabIndex={selectedExperience.id === exp.id ? 0 : -1}
+                    ref={(tab) => {
+                      experienceTabRefs.current[index] = tab;
+                    }}
+                    onClick={() => selectExperience(exp.id)}
+                    onKeyDown={(event) =>
+                      handleExperienceTabKeyDown(event, index)
+                    }
+                    className={cn(
+                      "relative px-6 py-3 text-left font-mono text-sm whitespace-nowrap lg:whitespace-normal cursor-pointer",
+                      "transition-[color,background-color,border-color] duration-200 border border-transparent",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                      selectedExperience.id === exp.id
+                        ? "border-accent bg-accent/10 text-accent"
+                        : "text-muted-foreground hover:bg-accent/5 hover:text-accent",
+                    )}
+                  >
+                    {exp.company}
+                  </button>
+                ))}
+              </div>
+              {hasMoreTabs && (
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-linear-to-l from-background via-background/85 to-transparent lg:hidden"
+                />
+              )}
             </div>
 
-            <div className="space-y-6 rounded-2xl border border-border/70 bg-muted/10 p-6 lg:p-8 shadow-[0_26px_60px_-52px_color-mix(in_oklab,var(--accent)_60%,transparent)]">
+            <div className="space-y-6 rounded-2xl border border-border/70 bg-muted/10 p-7 sm:p-8 lg:p-10 shadow-[0_26px_60px_-52px_color-mix(in_oklab,var(--accent)_60%,transparent)]">
               <div
-                  key={selectedExperience.id}
-                  className="experience-content space-y-6"
-                  data-experience-transition={hasChangedExperience || undefined}
-                >
+                key={selectedExperience.id}
+                id="experience-panel"
+                role="tabpanel"
+                aria-labelledby={`experience-tab-${selectedExperience.id}`}
+                tabIndex={0}
+                className="experience-content space-y-6"
+                data-experience-transition={hasChangedExperience || undefined}
+              >
                   <div>
                     <h3 className="text-2xl font-bold text-foreground mb-1">
                       {selectedExperience.role}
@@ -93,7 +223,7 @@ export const ExperienceSection = () => {
                     </p>
                   </div>
 
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-lg text-muted-foreground leading-relaxed">
                     {selectedExperience.description}
                   </p>
 

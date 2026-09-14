@@ -3,14 +3,28 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { ABOUT_TECHS } from "@/constants";
+import { ABOUT_TECHS, CONTACT } from "@/constants";
 import { Reveal } from "@/components/animations";
 
 export const AboutSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [hasPlayed, setHasPlayed] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const handleMotionPreferenceChange = () => {
+      setPrefersReducedMotion(mediaQuery.matches);
+    };
+
+    handleMotionPreferenceChange();
+    mediaQuery.addEventListener("change", handleMotionPreferenceChange);
+
+    return () =>
+      mediaQuery.removeEventListener("change", handleMotionPreferenceChange);
+  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 1024px)");
@@ -38,7 +52,7 @@ export const AboutSection = () => {
   }, []);
 
   useEffect(() => {
-    if (!isDesktop) return;
+    if (!isDesktop || prefersReducedMotion) return;
 
     const section = sectionRef.current;
     const video = videoRef.current;
@@ -47,7 +61,7 @@ export const AboutSection = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !hasPlayed) {
-          void video.play();
+          void video.play().catch(() => undefined);
           setHasPlayed(true);
         }
       },
@@ -57,7 +71,23 @@ export const AboutSection = () => {
     observer.observe(section);
 
     return () => observer.disconnect();
-  }, [hasPlayed, isDesktop]);
+  }, [hasPlayed, isDesktop, prefersReducedMotion]);
+
+  useEffect(() => {
+    if (!prefersReducedMotion && isDesktop) {
+      return;
+    }
+
+    const video = videoRef.current;
+
+    if (video) {
+      video.loop = false;
+      video.pause();
+      video.currentTime = 0;
+    }
+
+    setHasPlayed(false);
+  }, [isDesktop, prefersReducedMotion]);
 
   const handleEnded = () => {
     if (videoRef.current && !videoRef.current.loop) {
@@ -67,19 +97,21 @@ export const AboutSection = () => {
   };
 
   const handleMouseEnter = () => {
-    if (videoRef.current) {
+    if (videoRef.current && !prefersReducedMotion) {
       videoRef.current.loop = true;
-      videoRef.current.play();
+      void videoRef.current.play().catch(() => undefined);
     }
   };
 
   const handleMouseLeave = () => {
-    if (videoRef.current) {
+    if (videoRef.current && !prefersReducedMotion) {
       videoRef.current.loop = false;
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
     }
   };
+
+  const shouldShowVideo = isDesktop && !prefersReducedMotion;
 
   return (
     <section
@@ -165,6 +197,36 @@ export const AboutSection = () => {
                     </li>
                   ))}
                 </ul>
+
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-border/60 pt-5">
+                  <span className="font-mono text-xs tracking-[0.16em] uppercase text-accent">
+                    Mais sobre mim
+                  </span>
+
+                  <div className="flex flex-wrap items-center gap-4">
+                    <a
+                      href={CONTACT.Github.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-sm font-mono text-sm text-secondary underline decoration-accent/35 underline-offset-4 transition-[transform,color,text-decoration-color] duration-200 hover:-translate-y-0.5 hover:text-accent hover:decoration-accent/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                      aria-label="Abrir perfil de Leonardo Nunes no GitHub"
+                    >
+                      <CONTACT.Github.icon size={18} aria-hidden="true" />
+                      GitHub
+                    </a>
+
+                    <a
+                      href={CONTACT.Linkedin.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-sm font-mono text-sm text-secondary underline decoration-accent/35 underline-offset-4 transition-[transform,color,text-decoration-color] duration-200 hover:-translate-y-0.5 hover:text-accent hover:decoration-accent/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                      aria-label="Abrir perfil de Leonardo Nunes no LinkedIn"
+                    >
+                      <CONTACT.Linkedin.icon size={18} aria-hidden="true" />
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
               </div>
             </Reveal>
           </div>
@@ -189,10 +251,14 @@ export const AboutSection = () => {
                       "lg:transition-transform lg:duration-300 lg:ease-out",
                       "lg:group-hover:-translate-x-1 lg:group-hover:-translate-y-1",
                     )}
-                    onMouseEnter={isDesktop ? handleMouseEnter : undefined}
-                    onMouseLeave={isDesktop ? handleMouseLeave : undefined}
+                    onMouseEnter={
+                      shouldShowVideo ? handleMouseEnter : undefined
+                    }
+                    onMouseLeave={
+                      shouldShowVideo ? handleMouseLeave : undefined
+                    }
                   >
-                    {isDesktop ? (
+                    {shouldShowVideo ? (
                       <div className="h-full w-full">
                         <div
                           className={cn(
@@ -209,6 +275,7 @@ export const AboutSection = () => {
                           muted
                           playsInline
                           onEnded={handleEnded}
+                          poster="/devleo-about-mobile.webp"
                           preload="auto"
                         />
                       </div>
