@@ -1,6 +1,6 @@
 # Ciclo 6 — curadoria de projetos e acessibilidade crítica
 
-**Status:** C6-T01, C6-T02 e C6-T03 implementadas e validadas; C6-T04 e C6-T05 pendentes
+**Status:** C6-T01, C6-T02, C6-T03 e C6-T04 implementadas e validadas; C6-T05 pendente
 **Data:** 2026-09-13
 **Última atualização:** 2026-09-14
 **Branch de implementação:** `feat/portfolio-ux-improvements`
@@ -18,9 +18,10 @@ A implementação da C6-T01 foi autorizada e aplicada. `pnpm run lint` e
 três filtros. A C6-T02 também foi validada no navegador, com a galeria limitada
 à lista filtrada de projetos que possuem imagem. A C6-T03 ajustou os tokens
 claros de `primary`, `accent` e `ring`, com validação de contraste no navegador
-e preservação dos valores do tema escuro. A C6-T04 e a C6-T05 serão executadas
-posteriormente, após autorização explícita. Nenhum commit ou merge foi
-realizado.
+e preservação dos valores do tema escuro. A C6-T04 completou a navegação das
+tabs com roving `tabIndex`, orientação responsiva, teclas de eixo, `Home`/`End`,
+foco e rolagem acompanhando a seleção. A C6-T05 continua pendente para validar
+o ciclo integrado. Nenhum commit ou merge foi realizado.
 
 ## 1. Contexto
 
@@ -379,13 +380,27 @@ botões acessíveis definida na seção 6.2.
 
 **Concluída quando:**
 
-- [ ] Tab, setas, Home e End têm comportamento previsível.
-- [ ] O painel e os estados ARIA permanecem relacionados.
-- [ ] Foco e rolagem funcionam no desktop e no mobile.
-- [ ] Não há semântica ARIA declarada sem comportamento correspondente.
+- [x] Tab, setas, Home e End têm comportamento previsível.
+- [x] O painel e os estados ARIA permanecem relacionados.
+- [x] Foco e rolagem funcionam no desktop e no mobile.
+- [x] Não há semântica ARIA declarada sem comportamento correspondente.
 
 **Verificação:** teste manual somente com teclado, inspeção de DOM e
 `pnpm run lint`.
+
+**Registro de execução:**
+
+- [x] A tab selecionada é a única com `tabIndex=0`; as demais usam `tabIndex=-1`.
+- [x] A orientação é refletida em `aria-orientation`: vertical no desktop e
+      horizontal no mobile, acompanhando o eixo visual da lista.
+- [x] Setas do eixo, `Home` e `End` ativam a experiência correspondente,
+      atualizam `aria-selected`/`aria-labelledby` e mantêm o foco na tab ativa.
+- [x] A tab focada usa `scrollIntoView` com alinhamento mínimo; no mobile, a
+      última tab foi levada à área visível sem criar overflow na página.
+- [x] A validação no navegador confirmou o painel associado após a troca e o
+      avanço de `Tab` da tab ativa para o `tabpanel`.
+- [x] O detector estático do Impeccable não registrou novos antipadrões.
+- [x] `pnpm run lint` e `git diff --check` passaram.
 
 #### C6-T05 — Validação integrada do ciclo
 
@@ -461,7 +476,7 @@ dependência para evitar decisões conflitantes:
 - [x] Tarefas e critérios de validação definidos para implementação posterior.
 - [x] Implementação da C6-T01 autorizada e iniciada.
 - [x] Etapa 1 de Projetos (C6-T01 e C6-T02) implementada e validada.
-- [x] C6-T03 implementada e validada; C6-T04 e C6-T05 permanecem pendentes.
+- [x] C6-T03 e C6-T04 implementadas e validadas; C6-T05 permanece pendente.
 - [ ] Validação concluída.
 - [ ] Commits atômicos solicitados e criados.
 - [ ] Merge solicitado e realizado.

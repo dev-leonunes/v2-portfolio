@@ -1,6 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+} from "react";
 import { cn } from "@/lib/utils";
 import { EXPERIENCES } from "@/constants";
 import { Button } from "@/components/ui/button";
@@ -11,7 +16,10 @@ export const ExperienceSection = () => {
   const [selectedExperience, setSelectedExperience] = useState(EXPERIENCES[0]);
   const [hasChangedExperience, setHasChangedExperience] = useState(false);
   const experienceTabsRef = useRef<HTMLDivElement>(null);
+  const experienceTabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const [hasMoreTabs, setHasMoreTabs] = useState(false);
+  const [isExperienceTabsVertical, setIsExperienceTabsVertical] =
+    useState(false);
 
   useEffect(() => {
     const tabList = experienceTabsRef.current;
@@ -21,6 +29,10 @@ export const ExperienceSection = () => {
     }
 
     const updateOverflow = () => {
+      setIsExperienceTabsVertical(
+        getComputedStyle(tabList).flexDirection === "column",
+      );
+
       const hasOverflow = tabList.scrollWidth > tabList.clientWidth + 1;
       const isAtEnd =
         tabList.scrollLeft + tabList.clientWidth >= tabList.scrollWidth - 1;
@@ -56,6 +68,58 @@ export const ExperienceSection = () => {
 
     setHasChangedExperience(true);
     setSelectedExperience(nextExperience);
+  };
+
+  const moveToExperience = (experienceIndex: number) => {
+    const nextExperience = EXPERIENCES[experienceIndex];
+
+    if (!nextExperience) {
+      return;
+    }
+
+    selectExperience(nextExperience.id);
+
+    const nextTab = experienceTabRefs.current[experienceIndex];
+
+    if (!nextTab) {
+      return;
+    }
+
+    nextTab.focus();
+    nextTab.scrollIntoView({ block: "nearest", inline: "nearest" });
+  };
+
+  const handleExperienceTabKeyDown = (
+    event: KeyboardEvent<HTMLButtonElement>,
+    experienceIndex: number,
+  ) => {
+    const lastExperienceIndex = EXPERIENCES.length - 1;
+    let nextExperienceIndex: number | null = null;
+
+    if (event.key === (isExperienceTabsVertical ? "ArrowDown" : "ArrowRight")) {
+      nextExperienceIndex =
+        experienceIndex === lastExperienceIndex ? 0 : experienceIndex + 1;
+    }
+
+    if (event.key === (isExperienceTabsVertical ? "ArrowUp" : "ArrowLeft")) {
+      nextExperienceIndex =
+        experienceIndex === 0 ? lastExperienceIndex : experienceIndex - 1;
+    }
+
+    if (event.key === "Home") {
+      nextExperienceIndex = 0;
+    }
+
+    if (event.key === "End") {
+      nextExperienceIndex = lastExperienceIndex;
+    }
+
+    if (nextExperienceIndex === null) {
+      return;
+    }
+
+    event.preventDefault();
+    moveToExperience(nextExperienceIndex);
   };
 
   return (
@@ -96,8 +160,11 @@ export const ExperienceSection = () => {
                 className="flex pr-8 lg:flex-col lg:pr-0 overflow-x-auto lg:overflow-x-visible"
                 role="tablist"
                 aria-label="Experiências profissionais"
+                aria-orientation={
+                  isExperienceTabsVertical ? "vertical" : "horizontal"
+                }
               >
-                {EXPERIENCES.map((exp) => (
+                {EXPERIENCES.map((exp, index) => (
                   <button
                     key={exp.id}
                     type="button"
@@ -105,7 +172,14 @@ export const ExperienceSection = () => {
                     role="tab"
                     aria-selected={selectedExperience.id === exp.id}
                     aria-controls="experience-panel"
+                    tabIndex={selectedExperience.id === exp.id ? 0 : -1}
+                    ref={(tab) => {
+                      experienceTabRefs.current[index] = tab;
+                    }}
                     onClick={() => selectExperience(exp.id)}
+                    onKeyDown={(event) =>
+                      handleExperienceTabKeyDown(event, index)
+                    }
                     className={cn(
                       "relative px-6 py-3 text-left font-mono text-sm whitespace-nowrap lg:whitespace-normal cursor-pointer",
                       "transition-[color,background-color,border-color] duration-200 border border-transparent",
