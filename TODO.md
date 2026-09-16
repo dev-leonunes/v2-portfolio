@@ -14,13 +14,13 @@ Lista de tarefas / Proximas implementações
 [x] Otimizar imagens do projeto, tinyfy + conversão para '.webp';
 [x] Planejamento funcional e visual documentado em docs/plan-secao-contato.md;
 [x] Implementar melhorias incrementais da home: CTA para WhatsApp, acessibilidade/interações e hierarquia dos projetos;
-[x] Melhorar a interação com as fotos dos projetos (Ciclo 5 concluído; ver `docs/spec/2026-09-13-ciclo-5-galeria-imagens-projetos-design.md`);
-[x] Revisar a proposta de valor do hero para explicitar contratação, freelance e próximo passo (Fase 1 concluída; ver `docs/spec/2026-08-28-refinamento-hero-e-projetos-design.md`);
-[x] Selecionar os três projetos de maior valor e registrar problema, papel, resultado e escala antes de revisar suas descrições (Fase 2 concluída; ver `docs/spec/2026-08-28-refinamento-hero-e-projetos-design.md`);
+[x] Melhorar a interação com as fotos dos projetos (Ciclo 5 concluído);
+[x] Revisar a proposta de valor do hero para explicitar contratação, freelance e próximo passo (Fase 1 concluída);
+[x] Selecionar os três projetos de maior valor e registrar problema, papel, resultado e escala antes de revisar suas descrições (Fase 2 concluída);
 [x] Revisar as descrições dos projetos secundários e adicionar a prévia visual composta do BackScan;
 [x] Executar o Ciclo 3 de acessibilidade na home: skip link, landmarks, pista visual das abas mobile, revisão de rótulos acessíveis (sem rótulos visíveis no footer) e tema claro;
-[x] Avaliar os achados visuais P2 remanescentes sem alterar a direção "padrão atual refinado" (Ciclo 4 concluído; ver `docs/spec/2026-09-13-ciclo-4-limpeza-visual-seletiva-design.md`);
-[x] Concluir o Ciclo 6 de curadoria dos projetos e acessibilidade crítica (C6-T01 a C6-T04 e C6-T06 implementadas; C6-T05 executada e validada; ver `docs/spec/2026-09-13-ciclo-6-projetos-acessibilidade-design.md`);
+[x] Avaliar os achados visuais P2 remanescentes sem alterar a direção "padrão atual refinado" (Ciclo 4 concluído);
+[x] Concluir o Ciclo 6 de curadoria dos projetos e acessibilidade crítica (C6-T01 a C6-T04 e C6-T06 implementadas; C6-T05 executada e validada);
 [] Criar seção de Contato e migrar o CTA do hero para essa seção;
 [] Criar página "Mais Projetos" para reunir todos os projetos fora da home;
 [] Adotar WCAG 2.2 nível AA como meta formal em uma etapa posterior;
