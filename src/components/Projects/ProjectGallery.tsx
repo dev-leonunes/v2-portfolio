@@ -18,7 +18,6 @@ import {
   useState,
 } from "react";
 import { type Project } from "@/constants";
-import { cn } from "@/lib/utils";
 import {
   Dialog,
   DialogContent,
@@ -203,7 +202,7 @@ export const ProjectGallery = ({
         </div>
 
         <div
-          className="relative aspect-video max-h-[calc(100svh-8rem)] w-full shrink-0 touch-pan-y bg-black/90 p-2 sm:h-full sm:max-h-none sm:aspect-auto sm:min-h-0 sm:flex-1 sm:p-8"
+          className="relative aspect-video max-h-[calc(100svh-15rem)] w-full shrink-0 touch-pan-y bg-black/90 p-2 sm:h-full sm:max-h-none sm:aspect-auto sm:min-h-0 sm:flex-1 sm:p-8"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
@@ -238,56 +237,59 @@ export const ProjectGallery = ({
             )}
           </div>
 
-          {activeImages.length > 1 && (
-            <div className="pointer-events-none absolute inset-x-3 top-1/2 flex -translate-y-1/2 items-center justify-between sm:inset-x-6">
-              <button
-                type="button"
-                className={cn(
-                  navigationButtonClass,
-                  "pointer-events-auto",
-                  projects.length > 1 && "mr-14 sm:mr-16",
-                )}
-                onClick={() => changeImage(state.imageIndex - 1)}
-                disabled={!canGoToPreviousImage}
-                aria-label="Ver imagem anterior"
-              >
-                <ChevronLeft className="size-5" aria-hidden="true" />
-              </button>
-              <button
-                type="button"
-                className={cn(navigationButtonClass, "pointer-events-auto")}
-                onClick={() => changeImage(state.imageIndex + 1)}
-                disabled={!canGoToNextImage}
-                aria-label="Ver próxima imagem"
-              >
-                <ChevronRight className="size-5" aria-hidden="true" />
-              </button>
-            </div>
-          )}
-
-          {projects.length > 1 && (
-            <div className="pointer-events-none absolute right-3 top-1/2 flex -translate-y-1/2 flex-col gap-2 sm:right-6">
-              <button
-                type="button"
-                className={cn(navigationButtonClass, "pointer-events-auto")}
-                onClick={() => changeProject(state.projectIndex - 1)}
-                disabled={!canGoToPreviousProject}
-                aria-label="Ver projeto anterior"
-              >
-                <ChevronUp className="size-5" aria-hidden="true" />
-              </button>
-              <button
-                type="button"
-                className={cn(navigationButtonClass, "pointer-events-auto")}
-                onClick={() => changeProject(state.projectIndex + 1)}
-                disabled={!canGoToNextProject}
-                aria-label="Ver próximo projeto"
-              >
-                <ChevronDown className="size-5" aria-hidden="true" />
-              </button>
-            </div>
-          )}
         </div>
+
+        {(activeImages.length > 1 || projects.length > 1) && (
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 border-t border-border/70 px-4 py-3 sm:px-8">
+            {activeImages.length > 1 && (
+              <div className="flex items-center gap-2">
+                <span className="mr-1 text-sm text-muted-foreground">Imagens</span>
+                <button
+                  type="button"
+                  className={navigationButtonClass}
+                  onClick={() => changeImage(state.imageIndex - 1)}
+                  disabled={!canGoToPreviousImage}
+                  aria-label="Ver imagem anterior"
+                >
+                  <ChevronLeft className="size-5" aria-hidden="true" />
+                </button>
+                <button
+                  type="button"
+                  className={navigationButtonClass}
+                  onClick={() => changeImage(state.imageIndex + 1)}
+                  disabled={!canGoToNextImage}
+                  aria-label="Ver próxima imagem"
+                >
+                  <ChevronRight className="size-5" aria-hidden="true" />
+                </button>
+              </div>
+            )}
+
+            {projects.length > 1 && (
+              <div className="ml-auto flex items-center gap-2">
+                <span className="mr-1 text-sm text-muted-foreground">Projetos</span>
+                <button
+                  type="button"
+                  className={navigationButtonClass}
+                  onClick={() => changeProject(state.projectIndex - 1)}
+                  disabled={!canGoToPreviousProject}
+                  aria-label="Ver projeto anterior"
+                >
+                  <ChevronUp className="size-5" aria-hidden="true" />
+                </button>
+                <button
+                  type="button"
+                  className={navigationButtonClass}
+                  onClick={() => changeProject(state.projectIndex + 1)}
+                  disabled={!canGoToNextProject}
+                  aria-label="Ver próximo projeto"
+                >
+                  <ChevronDown className="size-5" aria-hidden="true" />
+                </button>
+              </div>
+            )}
+          </div>
+        )}
 
         <p className="sr-only">
           Use as setas esquerda e direita para navegar pelas imagens e as setas

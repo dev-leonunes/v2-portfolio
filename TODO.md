@@ -21,7 +21,7 @@ Lista de tarefas / Proximas implementações
 [x] Executar o Ciclo 3 de acessibilidade na home: skip link, landmarks, pista visual das abas mobile, revisão de rótulos acessíveis (sem rótulos visíveis no footer) e tema claro;
 [x] Avaliar os achados visuais P2 remanescentes sem alterar a direção "padrão atual refinado" (Ciclo 4 concluído);
 [x] Concluir o Ciclo 6 de curadoria dos projetos e acessibilidade crítica (C6-T01 a C6-T04 e C6-T06 implementadas; C6-T05 executada e validada);
-[] Adicionar o novo projeto freela ao portfólio;
+[x] Adicionar o novo projeto freela ao portfólio;
 [x] Remover o vídeo do site e manter apenas uma imagem;
 [] Criar seção de Contato e migrar o CTA do hero para essa seção;
 [] Criar página "Mais Projetos" para reunir todos os projetos fora da home;

@@ -28,6 +28,26 @@ export const HOME_SECONDARY_PROJECT_IDS = [
 
 export const PROJECTS: Project[] = [
   {
+    id: "vs-contabilidade",
+    title: "VS Contabilidade",
+    description:
+      "Site institucional e página de links para a VS Contabilidade e Gestão Financeira Empresarial, reunindo serviços, informações de contato e localização, com atenção à identidade visual, SEO e performance.",
+    images: [
+      {
+        src: "/vs-contabilidade.webp",
+        alt: "Página inicial do site da VS Contabilidade com apresentação, serviços e foto dos sócios",
+      },
+      {
+        src: "/vs-contabilidade-bio.webp",
+        alt: "Página de links da VS Contabilidade com acesso ao site, contato e redes sociais",
+      },
+    ],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "SEO"],
+    type: "freelance",
+    featured: true,
+    liveUrl: "https://www.contatovscontabilidade.com/",
+  },
+  {
     id: "site-dr-julio",
     title: "Dr. Júlio Cézar",
     description:
@@ -36,6 +56,10 @@ export const PROJECTS: Project[] = [
       {
         src: "/dr-julio-cezar-site.webp",
         alt: "Página inicial do site profissional do Dr. Júlio Cézar com seções de apresentação e especialidades",
+      },
+      {
+        src: "/dr-julio-cezar-bio.webp",
+        alt: "Página de links do Dr. Júlio Cézar com acesso ao site, agendamento e redes sociais",
       },
     ],
     technologies: [
