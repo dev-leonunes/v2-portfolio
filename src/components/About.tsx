@@ -1,123 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ABOUT_TECHS, CONTACT } from "@/constants";
 import { Reveal } from "@/components/animations";
 
 export const AboutSection = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isDesktop, setIsDesktop] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const [hasPlayed, setHasPlayed] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const handleMotionPreferenceChange = () => {
-      setPrefersReducedMotion(mediaQuery.matches);
-    };
-
-    handleMotionPreferenceChange();
-    mediaQuery.addEventListener("change", handleMotionPreferenceChange);
-
-    return () =>
-      mediaQuery.removeEventListener("change", handleMotionPreferenceChange);
-  }, []);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 1024px)");
-
-    const handleBreakpointChange = () => {
-      if (!mediaQuery.matches) {
-        const video = videoRef.current;
-
-        if (video) {
-          video.loop = false;
-          video.pause();
-          video.currentTime = 0;
-        }
-
-        setHasPlayed(false);
-      }
-
-      setIsDesktop(mediaQuery.matches);
-    };
-
-    handleBreakpointChange();
-    mediaQuery.addEventListener("change", handleBreakpointChange);
-
-    return () => mediaQuery.removeEventListener("change", handleBreakpointChange);
-  }, []);
-
-  useEffect(() => {
-    if (!isDesktop || prefersReducedMotion) return;
-
-    const section = sectionRef.current;
-    const video = videoRef.current;
-    if (!section || !video) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasPlayed) {
-          void video.play().catch(() => undefined);
-          setHasPlayed(true);
-        }
-      },
-      { threshold: 0.5 },
-    );
-
-    observer.observe(section);
-
-    return () => observer.disconnect();
-  }, [hasPlayed, isDesktop, prefersReducedMotion]);
-
-  useEffect(() => {
-    if (!prefersReducedMotion && isDesktop) {
-      return;
-    }
-
-    const video = videoRef.current;
-
-    if (video) {
-      video.loop = false;
-      video.pause();
-      video.currentTime = 0;
-    }
-
-    setHasPlayed(false);
-  }, [isDesktop, prefersReducedMotion]);
-
-  const handleEnded = () => {
-    if (videoRef.current && !videoRef.current.loop) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  };
-
-  const handleMouseEnter = () => {
-    if (videoRef.current && !prefersReducedMotion) {
-      videoRef.current.loop = true;
-      void videoRef.current.play().catch(() => undefined);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (videoRef.current && !prefersReducedMotion) {
-      videoRef.current.loop = false;
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  };
-
-  const shouldShowVideo = isDesktop && !prefersReducedMotion;
-
   return (
     <section
       id="about"
       className="w-full section-shell section-anchor relative"
-      ref={sectionRef}
     >
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -251,46 +143,15 @@ export const AboutSection = () => {
                       "lg:transition-transform lg:duration-300 lg:ease-out",
                       "lg:group-hover:-translate-x-1 lg:group-hover:-translate-y-1",
                     )}
-                    onMouseEnter={
-                      shouldShowVideo ? handleMouseEnter : undefined
-                    }
-                    onMouseLeave={
-                      shouldShowVideo ? handleMouseLeave : undefined
-                    }
                   >
-                    {shouldShowVideo ? (
-                      <div className="h-full w-full">
-                        <div
-                          className={cn(
-                            "absolute inset-0 bg-accent/35 mix-blend-multiply z-20",
-                            "transition-opacity duration-300",
-                            "group-hover:opacity-0",
-                          )}
-                        ></div>
-
-                        <video
-                          ref={videoRef}
-                          className="w-full h-full object-cover"
-                          src="/devleo-about.mp4"
-                          muted
-                          playsInline
-                          onEnded={handleEnded}
-                          poster="/devleo-about-mobile.webp"
-                          preload="auto"
-                        />
-                      </div>
-                    ) : (
-                      <div className="h-full w-full">
-                        <Image
-                          src="/devleo-about-mobile.webp"
-                          alt="Leonardo Nunes trabalhando em seu setup"
-                          width={800}
-                          height={800}
-                          sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) min(100vw - 3rem, 21.875rem), 0px"
-                          className="h-full w-full object-cover"
-                        />
-                      </div>
-                    )}
+                    <Image
+                      src="/devleo-about-mobile.webp"
+                      alt="Leonardo Nunes trabalhando em seu setup"
+                      width={800}
+                      height={800}
+                      sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1023px) min(100vw - 3rem, 21.875rem), 25rem"
+                      className="h-full w-full object-cover"
+                    />
                   </div>
                 </div>
               </div>
